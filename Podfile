@@ -13,7 +13,7 @@ target 'Franklin' do
   pod 'IHKeyboardAvoiding'
   pod 'StatusBarOverlay'
   pod 'Alamofire'
-  pod 'AZTabBar'
   pod 'NVActivityIndicatorView'
+  pod 'TransitionableTab', '~> 0.2.0'
 
 end

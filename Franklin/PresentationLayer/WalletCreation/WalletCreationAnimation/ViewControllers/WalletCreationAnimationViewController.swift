@@ -25,19 +25,32 @@ class WalletCreationAnimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.alpha = 0
+        additionalSetup()
+        navigationSetup()
+    }
+    
+    func navigationSetup() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    func additionalSetup() {
+        self.parent?.view.backgroundColor = .white
+        self.view.alpha = 0
         self.indicator.color = Colors.positive
         self.indicator.type = .ballSpinFadeLoader
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    func animation() {
         UIView.animate(withDuration: 1) {
             self.view.alpha = 1
         }
         self.animationTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
         self.indicator.startAnimating()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.animation()
         self.creatingWallet()
     }
 

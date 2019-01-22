@@ -12,22 +12,29 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
 
     @IBOutlet weak var contactsTableView: BasicTableView!
     @IBOutlet weak var helpLabel: UILabel!
-
+    @IBOutlet weak var addContactButton: BasicBlueButton!
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var contactsList: [Contact] = []
-
-    var searchController: UISearchController!
+    var filteredContactsList: [Contact] = []
     
     let contactsService = ContactsService()
     let alerts = Alerts()
+    
+    var searchActive : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = Colors.firstMain
+        self.view.backgroundColor = Colors.background
         self.hideKeyboardWhenTappedAround()
         self.setupNavigation()
         self.setupTableView()
-        self.setupSearchController()
-        self.setGestureForSidebar()
+        self.setupSearchBar()
+        self.additionalSetup()
+    }
+    
+    func additionalSetup() {
+        self.addContactButton.setTitle("Add contact", for: .normal)
     }
     
     func setGestureForSidebar() {
@@ -36,9 +43,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     }
 
     func setupNavigation() {
-        self.navigationItem.setLeftBarButton(showMenuBarItem(), animated: false)
-        self.navigationItem.setRightBarButton(addContactBarItem(), animated: false)
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
     }
 
     func setupTableView() {
@@ -53,17 +58,18 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         self.contactsList.removeAll()
     }
 
-    func setupSearchController() {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = false
-        contactsTableView.tableHeaderView = searchController.searchBar
-        searchController.searchBar.delegate = self
-        searchController.searchBar.barTintColor = UIColor.white
-        searchController.delegate = self
-        searchController.searchBar.tintColor = UIColor.lightGray
-        searchController.hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
-        self.searchController.hideKeyboardWhenTappedOutsideSearchBar(for: self)
+    func setupSearchBar() {
+        searchBar.delegate = self
+//        searchController = UISearchController(searchResultsController: nil)
+//        searchController.dimsBackgroundDuringPresentation = false
+//        contactsTableView.tableHeaderView = searchController.searchBar
+//        searchController.searchBar.delegate = self
+//        searchController.searchBar.barTintColor = UIColor.white
+//        searchController.delegate = self
+//        searchController.searchBar.tintColor = UIColor.lightGray
+//        searchController.hidesNavigationBarDuringPresentation = false
+//        definesPresentationContext = true
+//        self.searchController.hideKeyboardWhenTappedOutsideSearchBar(for: self)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -71,7 +77,6 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         self.makeHelpLabel(enabled: false)
         self.setGestureForSidebar()
         getAllContacts()
-        self.contactsTableView.reloadData()
     }
 
     func getAllContacts() {
@@ -83,24 +88,15 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         }
     }
     
-    func showMenuBarItem() -> UIBarButtonItem {
-        let addButton = UIBarButtonItem(image: UIImage(named: "menuicon"), style: .plain, target: self, action: #selector(showMenu))
-        return addButton
-    }
-
-    func addContactBarItem() -> UIBarButtonItem {
-        let addButton = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addContact))
-        return addButton
-    }
-    
-    @objc func showMenu() {
+    @IBAction func showMenu(_ sender: UIButton) {
         self.revealViewController()?.revealToggle(animated: true)
     }
 
-    @objc func addContact() {
-        self.searchController.searchBar.endEditing(true)
+    @IBAction func addContact(_ sender: Any) {
+        self.searchBar.endEditing(true)
         let addContactController = AddContactController()
-        self.navigationController?.pushViewController(addContactController, animated: true)
+        addContactController.modalPresentationStyle = .overCurrentContext
+        self.present(addContactController, animated: true, completion: nil)
     }
     
     func makeHelpLabel(enabled: Bool) {
@@ -119,7 +115,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     func updateContactsList(with list: [Contact]) {
         DispatchQueue.main.async { [weak self] in
             self?.contactsList = list
-            if list.count == 0 && self?.searchController.searchBar.text == "" {
+            if list.count == 0 && self?.searchBar.text == "" {
                 self?.makeHelpLabel(enabled: true)
             }
             self?.contactsTableView.reloadData()
@@ -171,7 +167,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
             do {
                 let contact = contactsList[indexPath.row]
                 try contact.deleteContact()
-                let searchText = self.searchController.searchBar.text ?? ""
+                let searchText = self.searchBar.text ?? ""
                 if searchText != "" {
                     self.searchContact(string: searchText)
                 } else {
@@ -184,11 +180,11 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ContactsViewController: UISearchControllerDelegate {
-    func didPresentSearchController(_ searchController: UISearchController) {
-        searchController.searchBar.showsCancelButton = false
-    }
-}
+//extension ContactsViewController: UISearchControllerDelegate {
+//    func didPresentSearchController(_ searchController: UISearchController) {
+//        searchController.searchBar.showsCancelButton = false
+//    }
+//}
 
 extension ContactsViewController: UISearchBarDelegate {
 

@@ -43,6 +43,8 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parent?.view.backgroundColor = .white
+        self.view.alpha = 0
         self.view.backgroundColor = Colors.background
         self.tabBarController?.tabBar.selectedItem?.title = nil
         self.setupNavigation()
@@ -72,9 +74,16 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.appearAnimation()
         //self.refreshing(true)
         self.setGestureForSidebar()
         self.setTokensList()
+    }
+    
+    func appearAnimation() {
+        UIView.animate(withDuration: 1) { [unowned self] in
+            self.view.alpha = 1
+        }
     }
 
     func setupNavigation() {

@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double EasyNotificationBadgeVersionNumber;
-FOUNDATION_EXPORT const unsigned char EasyNotificationBadgeVersionString[];
+FOUNDATION_EXPORT double TransitionableTabVersionNumber;
+FOUNDATION_EXPORT const unsigned char TransitionableTabVersionString[];
 

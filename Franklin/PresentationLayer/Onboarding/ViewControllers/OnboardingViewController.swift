@@ -16,10 +16,11 @@ class OnboardingViewController: BasicViewController {
     private let userDefaults = UserDefaultKeys()
 
     var pageViewController: UIPageViewController!
-    let continueButton = BasicGreenButton()
+    let continueButton = BasicGreenButton(frame: CGRect(x: 0, y: 0, width: 0.8 * UIScreen.main.bounds.width, height: Constants.buttons.heights.main))
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.parent?.view.backgroundColor = .white
         self.view.alpha = 0
         self.navigationController?.navigationBar.isHidden = true
         createPages()

@@ -86,7 +86,7 @@ public class AppController {
         var mainRevealController = SWRevealViewController()
         
         let nav = UINavigationController()
-        let tabs = UITabBarController()
+        let tabs = TabBarController()
         let nav1 = navigationController(withTitle: nil,
                                         withImage: UIImage(named: "wallet_white"),
                                         withController: WalletViewController(nibName: nil, bundle: nil),
