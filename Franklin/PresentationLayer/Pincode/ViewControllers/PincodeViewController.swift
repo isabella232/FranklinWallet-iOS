@@ -63,20 +63,20 @@ class PincodeViewController: BasicViewController {
     @IBAction func numButtonPressed(_ sender: PinCodeNumberButton) {
         let number = sender.currentTitle!
 
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.lightSelect)
 
         numberPressedAction(number: number)
 
     }
 
     @IBAction func deletePressed(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.lightSelect)
 
         deletePressedAction()
     }
 
     @IBAction func biometricsPressed(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.lightSelect)
 
         biometricsPressedAction()
     }

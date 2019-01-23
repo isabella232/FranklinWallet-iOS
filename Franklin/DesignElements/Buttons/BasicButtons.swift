@@ -60,11 +60,11 @@ class BasicGreenButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender)
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.mainGreen)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.mainGreen)
     }
 }
 
@@ -93,11 +93,11 @@ class BasicBlueButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender)
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.mainBlue)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.mainBlue)
     }
 }
 
@@ -124,10 +124,8 @@ class ScanButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
     }
 }

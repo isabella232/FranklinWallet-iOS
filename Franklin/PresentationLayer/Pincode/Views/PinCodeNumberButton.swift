@@ -26,10 +26,10 @@ class PinCodeNumberButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender)
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.lightSelect)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.lightSelect)
     }
 }

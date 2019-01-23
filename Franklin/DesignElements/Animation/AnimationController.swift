@@ -10,20 +10,21 @@ import UIKit
 
 final class AnimationController {
     
-    func pressButtonStartedAnimation(for sender: UIButton) {
+    static let viewTag = 1001
+    
+    func pressButtonStartedAnimation(for sender: UIButton, color: UIColor) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.05,
                            animations: {
-                            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-            },
-                           completion: nil)
+                            sender.backgroundColor = color.darker(by: 10)
+            }, completion: nil)
         }
     }
     
-    func pressButtonCanceledAnimation(for sender: UIButton) {
+    func pressButtonCanceledAnimation(for sender: UIButton, color: UIColor) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.05) {
-                sender.transform = CGAffineTransform.identity
+                sender.backgroundColor = color
             }
         }
     }

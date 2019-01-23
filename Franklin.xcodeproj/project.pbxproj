@@ -213,6 +213,7 @@
 		E2F0EFDE21F8BD1500F11AD1 /* librefranklin-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFCC21F8BD1500F11AD1 /* librefranklin-regular.ttf */; };
 		E2F0EFDF21F8BD1500F11AD1 /* librefranklin-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFCD21F8BD1500F11AD1 /* librefranklin-italic.ttf */; };
 		E2F0EFE821F8CAF000F11AD1 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFE721F8CAF000F11AD1 /* loading.gif */; };
+		E2F0EFEA21F8F1C000F11AD1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -489,6 +490,7 @@
 		E2F0EFCC21F8BD1500F11AD1 /* librefranklin-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librefranklin-regular.ttf"; sourceTree = "<group>"; };
 		E2F0EFCD21F8BD1500F11AD1 /* librefranklin-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librefranklin-italic.ttf"; sourceTree = "<group>"; };
 		E2F0EFE721F8CAF000F11AD1 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
+		E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		F1EAA67A3BA7548BCFC82F33 /* Pods-DiveLane.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiveLane.beta.xcconfig"; path = "Pods/Target Support Files/Pods-DiveLane/Pods-DiveLane.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1342,6 +1344,7 @@
 				E2C1107B21E507330012A978 /* SearchControllerExtension.swift */,
 				E2C1107C21E507330012A978 /* StringExtension.swift */,
 				E2D451DC21EE980B00218872 /* DoubleExtension.swift */,
+				E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */,
 			);
 			path = CommonExtensions;
 			sourceTree = "<group>";
@@ -2139,6 +2142,7 @@
 				91E72556214FE104003FAD76 /* SearchTokenCell.swift in Sources */,
 				E2C1106521E507260012A978 /* Constants.swift in Sources */,
 				E27BF77421D1447A00951061 /* TransactionHelpers.swift in Sources */,
+				E2F0EFEA21F8F1C000F11AD1 /* ColorExtension.swift in Sources */,
 				E27BF77221D1447A00951061 /* PlasmaTransaction.swift in Sources */,
 				E2B45A602176379100F38E50 /* AddContactController.swift in Sources */,
 				E2C1105C21E507260012A978 /* ContractsService.swift in Sources */,
