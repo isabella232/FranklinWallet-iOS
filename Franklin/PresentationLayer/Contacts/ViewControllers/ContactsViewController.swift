@@ -20,6 +20,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     
     let contactsService = ContactsService()
     let alerts = Alerts()
+    let interactor = Interactor()
     
     var searchActive : Bool = false
 
@@ -60,6 +61,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
 
     func setupSearchBar() {
         searchBar.delegate = self
+        definesPresentationContext = true
 //        searchController = UISearchController(searchResultsController: nil)
 //        searchController.dimsBackgroundDuringPresentation = false
 //        contactsTableView.tableHeaderView = searchController.searchBar
@@ -156,9 +158,9 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let contact = contactsList[indexPath.row]
-        let tokenController = TokenViewController(destinationAddress: contact.address)
-        tokenController.modalPresentationStyle = .overCurrentContext
-        self.navigationController?.pushViewController(tokenController, animated: true)
+//        let tokenController = TokenViewController(destinationAddress: contact.address)
+//        tokenController.modalPresentationStyle = .overCurrentContext
+//        self.navigationController?.pushViewController(tokenController, animated: true)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
@@ -208,5 +210,15 @@ extension ContactsViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.contactsTableView.setContentOffset(.zero, animated: true)
         getAllContacts()
+    }
+}
+
+extension ContactsViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimator()
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return interactor.hasStarted ? interactor : nil
     }
 }

@@ -159,6 +159,9 @@
 		E2D451D721EE331600218872 /* BasicSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451D621EE331600218872 /* BasicSegmentedControl.swift */; };
 		E2D451DD21EE980B00218872 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451DC21EE980B00218872 /* DoubleExtension.swift */; };
 		E2F0EF6D21F7C2F500F11AD1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EF6C21F7C2F500F11AD1 /* TabBarController.swift */; };
+		E2F0EF7821F7DD6000F11AD1 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A2D2174D1CC00F38E50 /* DismissAnimator.swift */; };
+		E2F0EF7921F7DD8C00F11AD1 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A412174D2B400F38E50 /* TokenInfoViewController.swift */; };
+		E2F0EF7A21F7DD9600F11AD1 /* TokenInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A392174D27E00F38E50 /* TokenInfoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1086,8 +1089,6 @@
 		E2B45A2B2174D1CC00F38E50 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
-				E2B45A2C2174D1CC00F38E50 /* Interactor.swift */,
-				E2B45A2D2174D1CC00F38E50 /* DismissAnimator.swift */,
 			);
 			path = Animators;
 			sourceTree = "<group>";
@@ -1111,9 +1112,6 @@
 		E2B45A362174D27E00F38E50 /* TokenInfo */ = {
 			isa = PBXGroup;
 			children = (
-				E2B45A372174D27E00F38E50 /* TokenInfoCell.xib */,
-				E2B45A382174D27E00F38E50 /* TokenInfoViewController.xib */,
-				E2B45A392174D27E00F38E50 /* TokenInfoCell.swift */,
 			);
 			path = TokenInfo;
 			sourceTree = "<group>";
@@ -1129,6 +1127,9 @@
 		E2B45A402174D2B400F38E50 /* TokenInfo */ = {
 			isa = PBXGroup;
 			children = (
+				E2B45A372174D27E00F38E50 /* TokenInfoCell.xib */,
+				E2B45A382174D27E00F38E50 /* TokenInfoViewController.xib */,
+				E2B45A392174D27E00F38E50 /* TokenInfoCell.swift */,
 				E2B45A412174D2B400F38E50 /* TokenInfoViewController.swift */,
 			);
 			path = TokenInfo;
@@ -1531,6 +1532,8 @@
 			isa = PBXGroup;
 			children = (
 				E234C7AB21ECCC1800F175AF /* AnimationController.swift */,
+				E2B45A2D2174D1CC00F38E50 /* DismissAnimator.swift */,
+				E2B45A2C2174D1CC00F38E50 /* Interactor.swift */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -1965,6 +1968,7 @@
 				E2C1109521E557FE0012A978 /* EIP681Router.swift in Sources */,
 				E2C110CC21E8A8B90012A978 /* BasicTextView.swift in Sources */,
 				914F228A21499ACC00ED58E6 /* PincodeViewController.swift in Sources */,
+				E2F0EF7921F7DD8C00F11AD1 /* TokenInfoViewController.swift in Sources */,
 				E27BF78321D1447A00951061 /* PlasmaContract.swift in Sources */,
 				E2A8DB0321F1FA480031AC58 /* EtherCoordinator.swift in Sources */,
 				E27BF77C21D1447A00951061 /* ArrayExtension.swift in Sources */,
@@ -1978,6 +1982,7 @@
 				E27BF77921D1447A00951061 /* PlasmaCode.swift in Sources */,
 				E2B45A4B21761F4000F38E50 /* ContactsViewController.swift in Sources */,
 				91B6A7C62143660B0033A045 /* AppController.swift in Sources */,
+				E2F0EF7A21F7DD9600F11AD1 /* TokenInfoCell.swift in Sources */,
 				E27BF78721D1447A00951061 /* PlasmaUTXOs.swift in Sources */,
 				E2C110C021E7DB130012A978 /* ImportType.swift in Sources */,
 				E2A8DBB921F6A96F0031AC58 /* ViewExtension.swift in Sources */,
@@ -1993,6 +1998,7 @@
 				9197F321214403A400C358AA /* SettingsViewController.swift in Sources */,
 				E2A8DB9721F616A40031AC58 /* Ether.swift in Sources */,
 				E2C1106021E507260012A978 /* WalletsService.swift in Sources */,
+				E2F0EF7821F7DD6000F11AD1 /* DismissAnimator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,13 +14,19 @@ class AddContactController: BasicViewController {
 
     @IBOutlet weak var enterButton: BasicBlueButton!
     @IBOutlet var textViews: [BasicTextView]!
-    @IBOutlet weak var qrCodeButton: UIButton!
+    @IBOutlet weak var qrCodeButton: ScanButton!
     @IBOutlet weak var nameTextView: BasicTextView!
     @IBOutlet weak var addressTextView: BasicTextView!
     @IBOutlet weak var tapToQR: UILabel!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var backgroundView: UIView!
     
     let alerts = Alerts()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.mainSetup()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,17 +34,35 @@ class AddContactController: BasicViewController {
     }
     
     func mainSetup() {
-        self.navigationController?.navigationBar.isHidden = false
-        self.title = "Add Contact"
+        self.navigationController?.navigationBar.isHidden = true
         enterButton.isEnabled = false
         updateEnterButtonAlpha()
         
-        self.view.backgroundColor = Colors.firstMain
-        self.contentView.backgroundColor = Colors.firstMain
-        self.tapToQR.textColor = Colors.secondMain
-        self.qrCodeButton.setImage(UIImage(named: "qr"), for: .normal)
+        view.backgroundColor = UIColor.clear
+        view.isOpaque = false
+        self.contentView.backgroundColor = Colors.background
+        self.contentView.alpha = 1
+        self.contentView.layer.cornerRadius = 20
+        self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
+        self.contentView.layer.borderWidth = 1
+        self.tapToQR.textColor = Colors.textLightGray
+        self.qrCodeButton.setImage(UIImage(named: "photo"), for: .normal)
         self.nameTextView.delegate = self
         self.addressTextView.delegate = self
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(self.dismissView))
+        tap.cancelsTouchesInView = false
+        backgroundView.addGestureRecognizer(tap)
+        
+        let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(self.dismissKeyboard))
+        dismissKeyboard.cancelsTouchesInView = false
+        self.contentView.addGestureRecognizer(dismissKeyboard)
+    }
+    
+    @objc func dismissView() {
+        self.dismiss(animated: true, completion: nil)
     }
 
     lazy var readerVC: QRCodeReaderViewController = {
@@ -71,15 +95,19 @@ class AddContactController: BasicViewController {
         self.addContact(address: address, name: name)
 
     }
-
+    
+    @IBAction func closeAction(_ sender: UIButton) {
+        self.dismissView()
+    }
+    
     private func addContact(address: String, name: String) {
         let contact = Contact(address: address, name: name)
         do {
             try contact.saveContact()
-            self.navigationController?.popViewController(animated: true)
+            self.dismissView()
         } catch let error {
             alerts.showErrorAlert(for: self, error: error) {
-                self.navigationController?.popViewController(animated: true)
+                self.dismissView()
             }
         }
     }
@@ -127,12 +155,12 @@ extension AddContactController: QRCodeReaderViewControllerDelegate {
             enterButton.isEnabled = true
             enterButton.alpha = 1
         }
-        dismiss(animated: true, completion: nil)
+        reader.dismiss(animated: true, completion: nil)
     }
 
     func readerDidCancel(_ reader: QRCodeReaderViewController) {
         reader.stopScanning()
-        dismiss(animated: true, completion: nil)
+        reader.dismiss(animated: true, completion: nil)
     }
 
 }

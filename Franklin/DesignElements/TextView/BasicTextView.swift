@@ -14,9 +14,10 @@ class BasicTextView: UITextView {
         super.awakeFromNib()
         self.layer.cornerRadius = Constants.cornerRadius
         self.clipsToBounds = true
-        
         self.backgroundColor = Colors.background
-        self.textColor = Colors.textDarkGray
+        self.textColor = Colors.mainBlue
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Colors.otherLightGray.cgColor
         self.textAlignment = .left
     }
 }
