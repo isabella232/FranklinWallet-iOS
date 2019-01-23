@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate {
+class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate, AddContactDelegate {
 
-    @IBOutlet weak var contactsTableView: BasicTableView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    //@IBOutlet weak var contactsTableView: BasicTableView!
     @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var addContactButton: BasicBlueButton!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -21,6 +22,10 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     let contactsService = ContactsService()
     let alerts = Alerts()
     let interactor = Interactor()
+    
+    private let reuseIdentifier = "ContactCell"
+    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    private let itemsPerRow: CGFloat = 3
     
     var searchActive : Bool = false
 
@@ -48,14 +53,16 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     }
 
     func setupTableView() {
-        self.contactsTableView.delegate = self
-        self.contactsTableView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
+        //self.contactsTableView.delegate = self
+        //self.contactsTableView.dataSource = self
         let footerView = UIView()
         footerView.backgroundColor = Colors.firstMain
-        self.contactsTableView.tableFooterView = footerView
+        //self.contactsTableView.tableFooterView = footerView
         
         let nibSearch = UINib.init(nibName: "ContactCell", bundle: nil)
-        self.contactsTableView.register(nibSearch, forCellReuseIdentifier: "ContactCell")
+        self.collectionView.register(nibSearch, forCellWithReuseIdentifier: reuseIdentifier)
         self.contactsList.removeAll()
     }
 
@@ -73,11 +80,15 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
 //        definesPresentationContext = true
 //        self.searchController.hideKeyboardWhenTappedOutsideSearchBar(for: self)
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.makeHelpLabel(enabled: false)
         self.setGestureForSidebar()
+        getAllContacts()
+    }
+    
+    func hasBeenDismissed() {
         getAllContacts()
     }
 
@@ -97,6 +108,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     @IBAction func addContact(_ sender: Any) {
         self.searchBar.endEditing(true)
         let addContactController = AddContactController()
+        addContactController.delegate = self
         addContactController.modalPresentationStyle = .overCurrentContext
         self.present(addContactController, animated: true, completion: nil)
     }
@@ -110,7 +122,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     func emptyContactsList() {
         contactsList = []
         DispatchQueue.main.async { [weak self] in
-            self?.contactsTableView.reloadData()
+            self?.collectionView?.reloadData()
         }
     }
     
@@ -120,67 +132,95 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
             if list.count == 0 && self?.searchBar.text == "" {
                 self?.makeHelpLabel(enabled: true)
             }
-            self?.contactsTableView.reloadData()
+            self?.collectionView?.reloadData()
         }
     }
 }
 
-extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ContactsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         if contactsList.isEmpty {
             return 0
         } else {
             return contactsList.count
         }
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.rows.heights.contacts
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if !contactsList.isEmpty {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell",
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ContactCell",
                                                            for: indexPath) as? ContactCell else {
-                                                            return UITableViewCell()
+                                                            return UICollectionViewCell()
             }
             cell.configure(with: contactsList[indexPath.row])
             return cell
         } else {
-            return UITableViewCell()
-        }
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let contact = contactsList[indexPath.row]
-//        let tokenController = TokenViewController(destinationAddress: contact.address)
-//        tokenController.modalPresentationStyle = .overCurrentContext
-//        self.navigationController?.pushViewController(tokenController, animated: true)
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            do {
-                let contact = contactsList[indexPath.row]
-                try contact.deleteContact()
-                let searchText = self.searchBar.text ?? ""
-                if searchText != "" {
-                    self.searchContact(string: searchText)
-                } else {
-                    self.getAllContacts()
-                }
-            } catch let error {
-                alerts.showErrorAlert(for: self, error: error, completion: nil)
-            }
+            return UICollectionViewCell()
         }
     }
 }
+
+//extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        if contactsList.isEmpty {
+//            return 0
+//        } else {
+//            return contactsList.count
+//        }
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return Constants.rows.heights.contacts
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        if !contactsList.isEmpty {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell",
+//                                                           for: indexPath) as? ContactCell else {
+//                                                            return UITableViewCell()
+//            }
+//            cell.configure(with: contactsList[indexPath.row])
+//            return cell
+//        } else {
+//            return UITableViewCell()
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let contact = contactsList[indexPath.row]
+////        let tokenController = TokenViewController(destinationAddress: contact.address)
+////        tokenController.modalPresentationStyle = .overCurrentContext
+////        self.navigationController?.pushViewController(tokenController, animated: true)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//    }
+//
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            do {
+//                let contact = contactsList[indexPath.row]
+//                try contact.deleteContact()
+//                let searchText = self.searchBar.text ?? ""
+//                if searchText != "" {
+//                    self.searchContact(string: searchText)
+//                } else {
+//                    self.getAllContacts()
+//                }
+//            } catch let error {
+//                alerts.showErrorAlert(for: self, error: error, completion: nil)
+//            }
+//        }
+//    }
+//}
 
 //extension ContactsViewController: UISearchControllerDelegate {
 //    func didPresentSearchController(_ searchController: UISearchController) {
@@ -208,7 +248,8 @@ extension ContactsViewController: UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.contactsTableView.setContentOffset(.zero, animated: true)
+        self.collectionView.setContentOffset(.zero, animated: true)
+//        self.contactsTableView.setContentOffset(.zero, animated: true)
         getAllContacts()
     }
 }
@@ -220,5 +261,31 @@ extension ContactsViewController: UIViewControllerTransitioningDelegate {
     
     func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactor.hasStarted ? interactor : nil
+    }
+}
+
+extension ContactsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+        
+        let width = UIScreen.main.bounds.width * 0.8 / 3 - 15
+        
+        return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return sectionInsets.left
     }
 }

@@ -18,7 +18,7 @@ class BasicGreenButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.boldFont, size: Constants.buttonFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -41,7 +41,7 @@ class BasicGreenButton: UIButton {
         self.addConstraints([heightContraint, widthContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.boldFont, size: Constants.buttonFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -78,7 +78,7 @@ class BasicBlueButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.boldFont, size: Constants.buttonFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainBlue
         self.setTitleColor(Colors.textWhite, for: .normal)

@@ -10,6 +10,10 @@ import UIKit
 import QRCodeReader
 import IHKeyboardAvoiding
 
+protocol AddContactDelegate : class {
+    func hasBeenDismissed()
+}
+
 class AddContactController: BasicViewController {
 
     @IBOutlet weak var enterButton: BasicBlueButton!
@@ -22,6 +26,8 @@ class AddContactController: BasicViewController {
     @IBOutlet weak var backgroundView: UIView!
     
     let alerts = Alerts()
+    
+    weak var delegate: AddContactDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +69,7 @@ class AddContactController: BasicViewController {
     
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
+        delegate?.hasBeenDismissed()
     }
 
     lazy var readerVC: QRCodeReaderViewController = {

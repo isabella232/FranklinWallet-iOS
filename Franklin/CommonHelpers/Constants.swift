@@ -15,6 +15,7 @@ public struct Constants {
     static let cornerRadius: CGFloat = 10
     static let font: String = "HelveticaNeue"
     static let boldFont: String = "HelveticaNeue-Bold"
+    static let mediumFont: String = "HelveticaNeue-Medium"
     static let buttonFontSize: CGFloat = 26
     
     static let basicFontSize: CGFloat = 18
