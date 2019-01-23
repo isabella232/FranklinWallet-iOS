@@ -15,5 +15,7 @@ target 'Franklin' do
   pod 'Alamofire'
   pod 'NVActivityIndicatorView'
   pod 'TransitionableTab', '~> 0.2.0'
+  pod 'SwiftyGif'
+  pod 'SideMenu'
 
 end

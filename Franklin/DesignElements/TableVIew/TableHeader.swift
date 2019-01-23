@@ -43,7 +43,7 @@ class TableHeader: UIView {
         if !plasma {
             addButton.setTitle("Add token", for: .normal)
             addButton.setTitleColor(Colors.active, for: .normal)
-            addButton.titleLabel?.font = UIFont(name: Constants.font, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
+            addButton.titleLabel?.font = UIFont(name: Constants.semiboldFont, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
             addButton.frame = CGRect(x: coef*(width-Constants.horizontalConst), y: 0, width: (1-coef)*(width-Constants.horizontalConst), height: height)
             addButton.backgroundColor = Colors.textBlack
             addButton.layer.cornerRadius = height/2

@@ -29,11 +29,13 @@ PODS:
   - scrypt (2.0):
     - CryptoSwift (~> 0.11)
   - secp256k1_swift (1.0.3)
+  - SideMenu (5.0.3)
   - SipHash (1.2.2)
   - StatusBarOverlay (1.9):
     - Alamofire (~> 4.1)
   - SwiftRLP (1.2):
     - BigInt (~> 3.1)
+  - SwiftyGif (4.2.0)
   - TransitionableTab (0.2.0)
   - web3swift (2.0.4):
     - BigInt (~> 3.1)
@@ -53,7 +55,9 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - PromiseKit (~> 6.4.1)
   - QRCodeReader.swift
+  - SideMenu
   - StatusBarOverlay
+  - SwiftyGif
   - TransitionableTab (~> 0.2.0)
   - web3swift
 
@@ -72,9 +76,11 @@ SPEC REPOS:
     - QRCodeReader.swift
     - scrypt
     - secp256k1_swift
+    - SideMenu
     - SipHash
     - StatusBarOverlay
     - SwiftRLP
+    - SwiftyGif
     - TransitionableTab
     - web3swift
 
@@ -92,12 +98,14 @@ SPEC CHECKSUMS:
   QRCodeReader.swift: 96292a5612fbc2fd9a0b26f93fa5164c8d02f59d
   scrypt: 3fe5b1a3b0976f97cd87488673a8f7c65708cc84
   secp256k1_swift: 4fc5c4b2d2c6d21ee8ccb868cdc92da12f38bed9
+  SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
   SipHash: fad90a4683e420c52ef28063063dbbce248ea6d4
   StatusBarOverlay: ce2193d14935dce0c7097ac8f79a7145e87e0c07
   SwiftRLP: 98a02b2210128353ca02e4c2f4d83e2a9796db4f
+  SwiftyGif: a149bf84df23370592f3f075561ae02c8632a314
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
   web3swift: aeb3d08ded961e0562919d4161f5af6ccb0ab30f
 
-PODFILE CHECKSUM: b0cf7de4ad9ab11e8f1f7c8c85631c79c72b8e0e
+PODFILE CHECKSUM: f3f90c2485b44aa550ac0d238df084b17e724156
 
 COCOAPODS: 1.6.0.beta.2

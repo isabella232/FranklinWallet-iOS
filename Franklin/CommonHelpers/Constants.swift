@@ -13,9 +13,14 @@ public struct Constants {
     static let widthCoef: CGFloat = 0.9
     static let horizontalConst: CGFloat = 20
     static let cornerRadius: CGFloat = 10
-    static let font: String = "HelveticaNeue"
-    static let boldFont: String = "HelveticaNeue-Bold"
-    static let mediumFont: String = "HelveticaNeue-Medium"
+    static let franklinSemiboldFont: String = "LibreFranklin-Semibold"
+    static let franklinMediumFont: String = "LibreFranklin-Medium"
+    static let regularFont: String = "SFProText-Regular"
+    static let boldFont: String = "SFProText-Bold"
+    static let semiboldFont: String = "SFProText-Semibold"
+    static let mediumFont: String = "SFProText-Medium"
+    static let lightFont: String = "SFProText-Light"
+    static let heavyFont: String = "SFProText-Heavy"
     static let buttonFontSize: CGFloat = 26
     
     static let basicFontSize: CGFloat = 18
@@ -37,7 +42,7 @@ public struct Constants {
             static let main: CGFloat = 8
         }
         public struct heights {
-            static let main: CGFloat = 50
+            static let main: CGFloat = 60
         }
         public struct widths {
             static let onboarding: CGFloat = 300
@@ -45,7 +50,7 @@ public struct Constants {
     }
     public struct rows {
         public struct heights {
-            static let settings: CGFloat = 60
+            static let settings: CGFloat = 45
             static let contacts: CGFloat = 120
             static let networks: CGFloat = 120
             static let wallets: CGFloat = 120

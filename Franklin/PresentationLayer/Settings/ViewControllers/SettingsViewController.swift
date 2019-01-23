@@ -8,6 +8,7 @@
 
 import UIKit
 import Web3swift
+import SideMenu
 
 class SettingsViewController: BasicViewController {
 

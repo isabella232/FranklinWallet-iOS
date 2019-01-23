@@ -26,7 +26,7 @@ class SettingsCell: UITableViewCell {
         if setting.subtitle == nil {
             heightConstraint.constant = 0
         } else {
-            heightConstraint.constant = 26
+            heightConstraint.constant = 15
         }
         markerIcon.alpha = setting.notification ? 1 : 0
     }

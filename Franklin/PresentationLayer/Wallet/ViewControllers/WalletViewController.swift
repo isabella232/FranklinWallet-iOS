@@ -10,6 +10,7 @@ import UIKit
 import Web3swift
 import EthereumAddress
 import BigInt
+import SideMenu
 
 class WalletViewController: BasicViewController, SWRevealViewControllerDelegate {
 
@@ -36,10 +37,10 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         return refreshControl
     }()
     
-    func setGestureForSidebar() {
-        if self.revealViewController() != nil { self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-    }
+//    func setGestureForSidebar() {
+//        if self.revealViewController() != nil { self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,23 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         self.setupTableView()
         self.setupNet()
         self.additionalSetup()
+        self.setupSideBar()
+    }
+    
+    func setupSideBar() {
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: SettingsViewController())
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        //SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuWidth = 0.85 * UIScreen.main.bounds.width
+        SideMenuManager.default.menuShadowOpacity = 0.5
+        SideMenuManager.default.menuShadowColor = UIColor.black
+        SideMenuManager.default.menuShadowRadius = 100
+        
     }
     
     func additionalSetup() {
@@ -76,12 +94,12 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         super.viewDidAppear(animated)
         self.appearAnimation()
         //self.refreshing(true)
-        self.setGestureForSidebar()
+        //self.setGestureForSidebar()
         self.setTokensList()
     }
     
     func appearAnimation() {
-        UIView.animate(withDuration: 1) { [unowned self] in
+        UIView.animate(withDuration: 0.5) { [unowned self] in
             self.view.alpha = 1
         }
     }
@@ -112,7 +130,8 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
     }
     
     @IBAction func showMenu(_ sender: Any) {
-        self.revealViewController()?.revealToggle(animated: true)
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+        //self.revealViewController()?.revealToggle(animated: true)
     }
 
 //    func unselectAllTokens() {

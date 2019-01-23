@@ -79,11 +79,12 @@ public class AppController {
         return nav
     }
 
-    public func goToApp() -> SWRevealViewController {
-        let frontController:UINavigationController
-        let rearController:UINavigationController
-        let revealController = SWRevealViewController()
-        var mainRevealController = SWRevealViewController()
+    public func goToApp() -> UINavigationController {
+//    public func goToApp() -> SWRevealViewController {
+//        let frontController:UINavigationController
+//        let rearController:UINavigationController
+//        let revealController = SWRevealViewController()
+//        var mainRevealController = SWRevealViewController()
         
         let nav = UINavigationController()
         let tabs = TabBarController()
@@ -115,16 +116,17 @@ public class AppController {
         
         nav.viewControllers = [tabs]
         nav.setNavigationBarHidden(true, animated: false)
-        frontController = nav
-        rearController = UINavigationController(rootViewController: SettingsViewController(nibName: nil, bundle: nil))
+//        frontController = nav
+//        rearController = UINavigationController(rootViewController: SettingsViewController(nibName: nil, bundle: nil))
         
-        revealController.frontViewController = frontController
-        revealController.rearViewController = rearController
-        revealController.delegate = nav as? SWRevealViewControllerDelegate
-        revealController.rearViewRevealWidth = UIScreen.main.bounds.width * 0.8
-        mainRevealController = revealController
-
-        return mainRevealController
+//        revealController.frontViewController = frontController
+//        revealController.rearViewController = rearController
+//        revealController.delegate = nav as? SWRevealViewControllerDelegate
+//        revealController.rearViewRevealWidth = UIScreen.main.bounds.width * 0.85
+//        mainRevealController = revealController
+//
+//        return mainRevealController
+        return nav
     }
     
     private func initPreparations(for wallet: Wallet, on network: Web3Network) {

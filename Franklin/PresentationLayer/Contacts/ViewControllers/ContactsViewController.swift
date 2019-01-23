@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenu
 
 class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate, AddContactDelegate {
 
@@ -37,16 +38,17 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         self.setupTableView()
         self.setupSearchBar()
         self.additionalSetup()
+        self.setupSideBar()
     }
     
     func additionalSetup() {
         self.addContactButton.setTitle("Add contact", for: .normal)
     }
     
-    func setGestureForSidebar() {
-        if self.revealViewController() != nil { self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        }
-    }
+//    func setGestureForSidebar() {
+//        if self.revealViewController() != nil { self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+//        }
+//    }
 
     func setupNavigation() {
         self.navigationController?.navigationBar.isHidden = true
@@ -84,8 +86,23 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.makeHelpLabel(enabled: false)
-        self.setGestureForSidebar()
+        //self.setGestureForSidebar()
         getAllContacts()
+    }
+    
+    func setupSideBar() {
+        let menuLeftNavigationController = UISideMenuNavigationController(rootViewController: SettingsViewController())
+        SideMenuManager.default.menuLeftNavigationController = menuLeftNavigationController
+        
+        //SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.view)
+        
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuWidth = 0.85 * UIScreen.main.bounds.width
+        SideMenuManager.default.menuShadowOpacity = 0.5
+        SideMenuManager.default.menuShadowColor = UIColor.black
+        SideMenuManager.default.menuShadowRadius = 100
     }
     
     func hasBeenDismissed() {
@@ -102,7 +119,8 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     }
     
     @IBAction func showMenu(_ sender: UIButton) {
-        self.revealViewController()?.revealToggle(animated: true)
+        //self.revealViewController()?.revealToggle(animated: true)
+        present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
 
     @IBAction func addContact(_ sender: Any) {
