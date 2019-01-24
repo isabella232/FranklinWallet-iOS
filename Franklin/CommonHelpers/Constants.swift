@@ -9,18 +9,18 @@
 import UIKit
 
 public struct Constants {
-    
+    static let modalViewTag = 1001
     static let widthCoef: CGFloat = 0.9
     static let horizontalConst: CGFloat = 20
     static let cornerRadius: CGFloat = 10
     static let franklinSemiboldFont: String = "LibreFranklin-Semibold"
     static let franklinMediumFont: String = "LibreFranklin-Medium"
-    static let regularFont: String = "SFProText-Regular"
-    static let boldFont: String = "SFProText-Bold"
-    static let semiboldFont: String = "SFProText-Semibold"
-    static let mediumFont: String = "SFProText-Medium"
-    static let lightFont: String = "SFProText-Light"
-    static let heavyFont: String = "SFProText-Heavy"
+    static let regularFont: String = "SFProDisplay-Regular"
+    static let boldFont: String = "SFProDisplay-Bold"
+    static let semiboldFont: String = "SFProDisplay-Semibold"
+    static let mediumFont: String = "SFProDisplay-Medium"
+    static let lightFont: String = "SFProDisplay-Light"
+    static let heavyFont: String = "SFProDisplay-Heavy"
     static let buttonFontSize: CGFloat = 26
     
     static let basicFontSize: CGFloat = 18
@@ -32,6 +32,12 @@ public struct Constants {
     public struct textViews {
         public struct heights {
             static let main: CGFloat = 90
+        }
+    }
+    public struct collectionCell {
+        static let height: CGFloat = 100
+        public struct image {
+            static let cornerRadius: CGFloat = 20
         }
     }
     public struct buttons {

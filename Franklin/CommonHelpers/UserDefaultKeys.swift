@@ -26,6 +26,14 @@ public struct UserDefaultKeys {
         UserDefaults.standard.synchronize()
     }
     
+    public func isBackupReady(for wallet: Wallet) -> Bool {
+        return UserDefaults.standard.bool(forKey: "BackupReadyForWallet\(wallet.address)")
+    }
+    public func setBackupReady(for wallet: Wallet) {
+        UserDefaults.standard.set(true, forKey: "BackupReadyForWallet\(wallet.address)")
+        UserDefaults.standard.synchronize()
+    }
+    
     public let isOnboardingPassed = UserDefaults.standard.bool(forKey: "OnboardingPassed")
     public func setOnboardingPassed() {
         UserDefaults.standard.set(true, forKey: "OnboardingPassed")

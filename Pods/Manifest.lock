@@ -2,6 +2,7 @@ PODS:
   - Alamofire (4.8.1)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
+  - BlockiesSwift (0.1.2)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - CryptoSwift (0.13.1)
@@ -49,6 +50,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BlockiesSwift
   - Crashlytics
   - Fabric
   - IHKeyboardAvoiding
@@ -65,6 +67,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - BigInt
+    - BlockiesSwift
     - Crashlytics
     - CryptoSwift
     - EthereumABI
@@ -87,6 +90,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
+  BlockiesSwift: 22d8d56dd187e6bfd16cb8c8fbd4fd4896c3e65d
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
   EthereumABI: f040f5429e5a4366d028c88b88d9441e137593af
@@ -106,6 +110,6 @@ SPEC CHECKSUMS:
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
   web3swift: aeb3d08ded961e0562919d4161f5af6ccb0ab30f
 
-PODFILE CHECKSUM: f3f90c2485b44aa550ac0d238df084b17e724156
+PODFILE CHECKSUM: 6cc31a67b6e6fa902d9ef9397d08816758321a4e
 
 COCOAPODS: 1.6.0.beta.2

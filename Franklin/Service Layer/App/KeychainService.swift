@@ -198,6 +198,7 @@ public struct KeychainPasswordItem {
 
 // Keychain Configuration
 struct KeychainConfiguration {
+    static let serviceNameForPassphrase = "passphrase"
     static let serviceNameForPincode = "pincode"
     static let serviceNameForPassword = "password"
     static let accessGroup: String? = nil

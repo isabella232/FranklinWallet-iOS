@@ -47,6 +47,7 @@ public class EtherCoordinator {
         }
     }
     
+    // TODO: - need to fix
     func getBalanceInDollars(for token: ERC20Token, withBalance: String) -> String {
         do {
             let rateAndChange = try token.updateRateAndChange()

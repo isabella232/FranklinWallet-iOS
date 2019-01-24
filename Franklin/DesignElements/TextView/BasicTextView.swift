@@ -16,8 +16,8 @@ class BasicTextView: UITextView {
         self.clipsToBounds = true
         self.backgroundColor = Colors.background
         self.textColor = Colors.mainBlue
-        self.layer.borderWidth = 1
-        self.layer.borderColor = Colors.otherLightGray.cgColor
+        self.layer.borderWidth = 2
+        self.layer.borderColor = Colors.mostLightGray.cgColor
         self.textAlignment = .left
     }
 }

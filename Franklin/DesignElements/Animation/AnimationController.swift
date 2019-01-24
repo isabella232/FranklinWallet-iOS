@@ -10,8 +10,6 @@ import UIKit
 
 final class AnimationController {
     
-    static let viewTag = 1001
-    
     func pressButtonStartedAnimation(for sender: UIButton, color: UIColor) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.05,

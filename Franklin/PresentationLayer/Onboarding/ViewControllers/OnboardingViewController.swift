@@ -10,9 +10,6 @@ import UIKit
 import SwiftyGif
 
 class OnboardingViewController: BasicViewController {
-    
-//    let nextBtn = UIButton(frame: CGRect(x: 0, y: 0, width: Constants.buttons.widths.onboarding, height: Constants.buttons.heights.onboarding))
-//    let skipBtn = UIButton(frame: CGRect(x: 0, y: 0, width: Constants.buttons.widths.onboarding, height: Constants.buttons.heights.onboarding))
     weak var animationTimer: Timer?
     let walletsService = WalletsService()
     let appController = AppController()
@@ -160,6 +157,7 @@ class OnboardingViewController: BasicViewController {
         NSLayoutConstraint.activate(constraints)
     }
 
+    //TODO: - think need to make pages with info in future
 //    func createPages() {
 //
 //        let pc = UIPageControl.appearance()
@@ -272,6 +270,7 @@ class OnboardingViewController: BasicViewController {
 //        goToPincode()
 //    }
     
+    // TODO: - need to make it better
     func creatingWallet() {
         DispatchQueue.global().async { [unowned self] in
             do {
@@ -293,6 +292,7 @@ class OnboardingViewController: BasicViewController {
                         self.finishSavingWallet(with: error, needDeleteWallet: wallet)
                     }
                 }
+                // TODO: - nned to add ether
                 //            if !etherAdded {
                 //                do {
                 //                    try self.appController.addEther(for: wallet)
@@ -300,6 +300,12 @@ class OnboardingViewController: BasicViewController {
                 //                    self.finishSavingWallet(with: error, needDeleteWallet: wallet)
                 //                }
                 //            }
+                
+                let passphraseItem = KeychainPasswordItem(service: KeychainConfiguration.serviceNameForPassphrase,
+                                                       account: wallet.address,
+                                                       accessGroup: KeychainConfiguration.accessGroup)
+                try passphraseItem.savePassword(mnemonicFrase)
+                
                 self.finishSavingWallet(with: nil, needDeleteWallet: nil)
             } catch let error {
                 self.finishSavingWallet(with: error, needDeleteWallet: nil)
@@ -331,18 +337,10 @@ class OnboardingViewController: BasicViewController {
         self.continueButton.isUserInteractionEnabled = false
         self.animation()
         self.creatingWallet()
-//        let vc = AppController().walletCreationVC()
-//        vc.view.backgroundColor = Colors.background
-//        let transition = CATransition()
-//        transition.duration = 0.7
-//        transition.type = CATransitionType.push
-//        transition.subtype = CATransitionSubtype.fromRight
-//        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-//        view.window!.layer.add(transition, forKey: kCATransition)
-//        present(vc, animated: false, completion: nil)
     }
     
     @objc func readTerms(sender: UIButton) {
+        //TODO: - need to read terms
         print("Need to open terms")
     }
 
@@ -361,7 +359,6 @@ class OnboardingViewController: BasicViewController {
     }
     
     @objc func fireTimer() {
-        print("Timer fired!")
         animationTimer?.invalidate()
         if walletCreated {
             self.goToApp()
@@ -396,62 +393,44 @@ class OnboardingViewController: BasicViewController {
             }
         }
     }
-    
+
+}
+
+// TODO: - dont forget to uncomment when there will be pages
+//extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+//        let vc = (viewController as? OnboardingContentViewController)!
+//        var index = vc.pageIndex as Int
+//        if index == 0 || index == NSNotFound {
+//            return nil
+//        }
+//        index -= 1
+//        return self.viewControllerAtIndex(index: index)
+//    }
 //
-//    func changeOnboardingButtonStatus(for page: Int) {
-//        switch page {
-//        case 2:
-//            //self.nextBtn.setTitle("LETS GO!", for: .normal)
-//            self.skipBtn.isHidden = true
-//        default:
-//            self.skipBtn.isHidden = false
-//            //self.nextBtn.setTitle("NEXT", for: .normal)
+//    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+//        let vc = (viewController as? OnboardingContentViewController)!
+//        var index = vc.pageIndex as Int
+//        if index == NSNotFound {
+//            return nil
 //        }
-//    }
-
-}
-
-extension OnboardingViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let vc = (viewController as? OnboardingContentViewController)!
-        var index = vc.pageIndex as Int
-        if index == 0 || index == NSNotFound {
-            return nil
-        }
-        index -= 1
-        return self.viewControllerAtIndex(index: index)
-    }
-
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let vc = (viewController as? OnboardingContentViewController)!
-        var index = vc.pageIndex as Int
-        if index == NSNotFound {
-            return nil
-        }
-        index += 1
-        if index == PAGES.count {
-            return nil
-        }
-        return self.viewControllerAtIndex(index: index)
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let vc = pageViewController.viewControllers?.first as? OnboardingContentViewController else {
-            return 0
-        }
-        //changeOnboardingButtonTitle(for: vc.pageIndex)
-        return vc.pageIndex
-
-    }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return PAGES.count
-    }
-
-//    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-//        if let vc = pageViewController.viewControllers?.first as? OnboardingContentViewController {
-//            changeOnboardingButtonStatus(for: vc.pageIndex)
+//        index += 1
+//        if index == PAGES.count {
+//            return nil
 //        }
+//        return self.viewControllerAtIndex(index: index)
 //    }
-
-}
+//
+//    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+//        guard let vc = pageViewController.viewControllers?.first as? OnboardingContentViewController else {
+//            return 0
+//        }
+//        return vc.pageIndex
+//
+//    }
+//
+//    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+//        return PAGES.count
+//    }
+//
+//}

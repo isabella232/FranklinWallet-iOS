@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BlockiesSwift
 
 class ContactCell: UICollectionViewCell {
 
@@ -15,11 +16,16 @@ class ContactCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
     
     func configure(with contact: Contact) {
         self.name.text = contact.name
+        let blockies = Blockies(seed: contact.address, size: 5, scale: 4, color: Colors.mainGreen, bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
+        let img = blockies.createImage()
+        self.photo.image = img
+        photo.layer.cornerRadius = Constants.collectionCell.image.cornerRadius
+        photo.clipsToBounds = true
     }
     
     override func prepareForReuse() {

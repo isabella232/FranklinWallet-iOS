@@ -55,7 +55,6 @@
 		B209150F214A659500C8B408 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B209150D214A659500C8B408 /* PrivateKeyViewController.xib */; };
 		B219DC2C215B77A80035BF94 /* MatterWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219DC2B215B77A80035BF94 /* MatterWalletUITests.swift */; };
 		B219DC34215B786D0035BF94 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219DC33215B786D0035BF94 /* SnapshotHelper.swift */; };
-		E20660A82188BF9A00701068 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E20660A72188BF9A00701068 /* SelectButton.swift */; };
 		E234C79D21E9E93E00F175AF /* TableWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79C21E9E93E00F175AF /* TableWallet.swift */; };
 		E234C79F21EB4BEB00F175AF /* WalletsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */; };
 		E234C7A621EBF62900F175AF /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C7A521EBF62900F175AF /* BasicTableView.swift */; };
@@ -321,7 +320,6 @@
 		CBC201C3B485F2719151925D /* Pods-MatterWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatterWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MatterWallet/Pods-MatterWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		D2A83FAAE20C73BE712E321A /* Pods-MatterWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatterWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatterWallet/Pods-MatterWallet.release.xcconfig"; sourceTree = "<group>"; };
 		D5B44D77536C7320086DD73C /* Pods-Franklin.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Franklin.beta.xcconfig"; path = "Pods/Target Support Files/Pods-Franklin/Pods-Franklin.beta.xcconfig"; sourceTree = "<group>"; };
-		E20660A72188BF9A00701068 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		E234C79C21E9E93E00F175AF /* TableWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableWallet.swift; sourceTree = "<group>"; };
 		E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCoordinator.swift; sourceTree = "<group>"; };
 		E234C7A521EBF62900F175AF /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
@@ -961,7 +959,6 @@
 				9197F2EC2143B92B00C358AA /* WalletViewController.xib */,
 				9197F2F12143B9D600C358AA /* TokenCell.xib */,
 				9197F2F02143B9D600C358AA /* TokenCell.swift */,
-				E20660A72188BF9A00701068 /* SelectButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2009,6 +2006,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Franklin/Pods-Franklin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/BlockiesSwift/BlockiesSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/EthereumABI/EthereumABI.framework",
 				"${BUILT_PRODUCTS_DIR}/EthereumAddress/EthereumAddress.framework",
@@ -2032,6 +2030,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlockiesSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EthereumABI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EthereumAddress.framework",
@@ -2104,7 +2103,6 @@
 				914F22A3214AA8DB00ED58E6 /* EnterPincodeFromCases.swift in Sources */,
 				E27BF77F21D1447A00951061 /* PlasmaStringExtension.swift in Sources */,
 				E2C1108721E507340012A978 /* CurrentNetwork.swift in Sources */,
-				E20660A82188BF9A00701068 /* SelectButton.swift in Sources */,
 				E2A8DAF821F1F6A00031AC58 /* Contact.swift in Sources */,
 				E2C1105A21E507260012A978 /* BiometricsService.swift in Sources */,
 				E2A8DAFD21F1F6A00031AC58 /* Wallet.swift in Sources */,

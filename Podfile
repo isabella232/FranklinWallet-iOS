@@ -17,5 +17,6 @@ target 'Franklin' do
   pod 'TransitionableTab', '~> 0.2.0'
   pod 'SwiftyGif'
   pod 'SideMenu'
+  pod 'BlockiesSwift'
 
 end

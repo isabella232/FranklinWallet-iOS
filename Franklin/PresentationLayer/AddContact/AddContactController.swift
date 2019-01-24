@@ -11,7 +11,7 @@ import QRCodeReader
 import IHKeyboardAvoiding
 
 protocol AddContactDelegate : class {
-    func hasBeenDismissed()
+    func addContactHasBeenDismissed()
 }
 
 class AddContactController: BasicViewController {
@@ -33,7 +33,7 @@ class AddContactController: BasicViewController {
         super.viewDidLoad()
         self.mainSetup()
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         KeyboardAvoiding.avoidingView = self.contentView
@@ -48,7 +48,7 @@ class AddContactController: BasicViewController {
         view.isOpaque = false
         self.contentView.backgroundColor = Colors.background
         self.contentView.alpha = 1
-        self.contentView.layer.cornerRadius = 20
+        self.contentView.layer.cornerRadius = 30
         self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
         self.contentView.layer.borderWidth = 1
         self.tapToQR.textColor = Colors.textLightGray
@@ -69,7 +69,7 @@ class AddContactController: BasicViewController {
     
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.hasBeenDismissed()
+        delegate?.addContactHasBeenDismissed()
     }
 
     lazy var readerVC: QRCodeReaderViewController = {
@@ -154,7 +154,6 @@ extension AddContactController: UITextViewDelegate {
 }
 
 extension AddContactController: QRCodeReaderViewControllerDelegate {
-
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
         reader.stopScanning()
         addressTextView.text = result.value
@@ -169,5 +168,4 @@ extension AddContactController: QRCodeReaderViewControllerDelegate {
         reader.stopScanning()
         reader.dismiss(animated: true, completion: nil)
     }
-
 }
