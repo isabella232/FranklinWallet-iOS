@@ -51,7 +51,6 @@ class AddContactController: BasicViewController {
         self.contentView.layer.cornerRadius = 30
         self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
         self.contentView.layer.borderWidth = 1
-        self.tapToQR.textColor = Colors.textLightGray
         self.qrCodeButton.setImage(UIImage(named: "photo"), for: .normal)
         self.nameTextView.delegate = self
         self.addressTextView.delegate = self
