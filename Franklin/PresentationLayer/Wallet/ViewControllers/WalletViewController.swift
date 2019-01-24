@@ -12,7 +12,7 @@ import EthereumAddress
 import BigInt
 import SideMenu
 
-class WalletViewController: BasicViewController, SWRevealViewControllerDelegate {
+class WalletViewController: BasicViewController, SWRevealViewControllerDelegate, PublicKeyDelegate {
 
     @IBOutlet weak var netLabel: UILabel!
     @IBOutlet weak var walletTableView: BasicTableView!
@@ -26,6 +26,8 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
     private let alerts = Alerts()
     private let plasmaCoordinator = PlasmaCoordinator()
     private let etherCoordinator = EtherCoordinator()
+    
+    let topViewForModalAnimation = UIView(frame: UIScreen.main.bounds)
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -48,6 +50,16 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         self.setupNet()
         self.additionalSetup()
         self.setupSideBar()
+        self.additionalSetup()
+    }
+    
+    func additionalSetup() {
+        self.sendMoneyButton.setTitle("Write cheque", for: .normal)
+        self.topViewForModalAnimation.backgroundColor = .black
+        self.topViewForModalAnimation.alpha = 0
+        self.topViewForModalAnimation.tag = Constants.modalViewTag
+        self.topViewForModalAnimation.isUserInteractionEnabled = false
+        self.view.addSubview(topViewForModalAnimation)
     }
     
     func setupSideBar() {
@@ -61,10 +73,6 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         SideMenuManager.default.menuShadowOpacity = 0.5
         SideMenuManager.default.menuShadowColor = UIColor.black
         SideMenuManager.default.menuShadowRadius = 100
-    }
-    
-    func additionalSetup() {
-        self.sendMoneyButton.setTitle("Write cheque", for: .normal)
     }
     
     func setupNet() {
@@ -221,6 +229,24 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate 
         let searchTokenController = SearchTokenViewController(for: wallet)
         self.navigationController?.pushViewController(searchTokenController, animated: true)
     }
+    
+    func publicKeyViewHasBeenDismissed() {
+        DispatchQueue.main.async { [unowned self] in
+            UIView.animate(withDuration: 0.5, animations: {
+                for view in self.view.subviews where view.tag == Constants.modalViewTag {
+                    view.alpha = 0
+                }
+            })
+        }
+    }
+    
+    func showPublicKeyHasAppeared() {
+        DispatchQueue.main.async { [unowned self] in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.topViewForModalAnimation.alpha = 0.1
+            })
+        }
+    }
 
 }
 
@@ -292,6 +318,12 @@ extension WalletViewController: TokenCellDelegate {
         guard let indexPathTapped = self.walletTableView.indexPath(for: sender) else {
             return
         }
-        let token = self.tokensArray[indexPathTapped.row].token
+        let wallet = self.tokensArray[indexPathTapped.row].inWallet
+        self.showPublicKeyHasAppeared()
+        let publicKeyController = PublicKeyViewController(for: wallet)
+        publicKeyController.delegate = self
+        publicKeyController.modalPresentationStyle = .overCurrentContext
+        publicKeyController.view.layer.speed = 0.5
+        self.present(publicKeyController, animated: true, completion: nil)
     }
 }

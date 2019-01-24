@@ -101,6 +101,39 @@ class BasicBlueButton: UIButton {
     }
 }
 
+class BasicWhiteButton: UIButton {
+    
+    let animation = AnimationController()
+    
+    override func awakeFromNib() {
+        let height: CGFloat = Constants.buttons.heights.main
+        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
+        self.addConstraints([heightContraint])
+        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.clipsToBounds = true
+        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        self.titleLabel?.font = font
+        self.backgroundColor = Colors.textWhite
+        self.setTitleColor(Colors.mainBlue, for: .normal)
+        self.layer.borderWidth = 1
+        self.layer.borderColor = Colors.mainBlue.cgColor
+        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
+        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchDragOutside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpOutside)
+    }
+    
+    @objc func buttonTouchedDown(_ sender: UIButton) {
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.textWhite)
+    }
+    
+    @objc func buttonTouchedUp(_ sender: UIButton) {
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.textWhite)
+    }
+}
+
 class ScanButton: UIButton {
     
     let animation = AnimationController()

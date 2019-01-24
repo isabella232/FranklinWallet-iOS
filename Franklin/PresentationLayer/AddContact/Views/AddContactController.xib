@@ -175,9 +175,12 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="86K-a6-O7Q" firstAttribute="top" secondItem="022-ho-akE" secondAttribute="bottom" id="16h-Yn-4Dq"/>
+                <constraint firstAttribute="trailing" secondItem="86K-a6-O7Q" secondAttribute="trailing" constant="-1" id="1fs-2m-dSi"/>
+                <constraint firstItem="86K-a6-O7Q" firstAttribute="leading" secondItem="c4Q-Yz-4eA" secondAttribute="leading" constant="-1" id="5iW-iR-cWM"/>
                 <constraint firstItem="ZIt-H8-6RG" firstAttribute="top" secondItem="BYc-cz-y5O" secondAttribute="bottom" id="87M-p7-JYx"/>
                 <constraint firstAttribute="trailing" secondItem="BYc-cz-y5O" secondAttribute="trailing" id="EsL-cC-T09"/>
                 <constraint firstAttribute="trailing" secondItem="86K-a6-O7Q" secondAttribute="trailing" constant="-1" id="Fsi-Uf-Mjl"/>
+                <constraint firstItem="86K-a6-O7Q" firstAttribute="bottom" secondItem="kF2-7l-UJo" secondAttribute="bottom" id="RhF-1I-7Gc"/>
                 <constraint firstItem="ZIt-H8-6RG" firstAttribute="top" secondItem="kF2-7l-UJo" secondAttribute="top" constant="25" id="SVW-7a-7yX"/>
                 <constraint firstItem="86K-a6-O7Q" firstAttribute="bottom" secondItem="kF2-7l-UJo" secondAttribute="bottom" id="Uec-A3-o9F"/>
                 <constraint firstItem="BYc-cz-y5O" firstAttribute="leading" secondItem="c4Q-Yz-4eA" secondAttribute="leading" id="bff-Ic-Y0M"/>

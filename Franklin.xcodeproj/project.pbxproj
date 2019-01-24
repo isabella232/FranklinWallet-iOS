@@ -213,6 +213,8 @@
 		E2F0EFDF21F8BD1500F11AD1 /* librefranklin-italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFCD21F8BD1500F11AD1 /* librefranklin-italic.ttf */; };
 		E2F0EFE821F8CAF000F11AD1 /* loading.gif in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFE721F8CAF000F11AD1 /* loading.gif */; };
 		E2F0EFEA21F8F1C000F11AD1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */; };
+		E2F0EFEE21F9519500F11AD1 /* PublicKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EFEC21F9519400F11AD1 /* PublicKeyViewController.swift */; };
+		E2F0EFEF21F9519500F11AD1 /* PublicKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFED21F9519400F11AD1 /* PublicKeyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -489,6 +491,8 @@
 		E2F0EFCD21F8BD1500F11AD1 /* librefranklin-italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "librefranklin-italic.ttf"; sourceTree = "<group>"; };
 		E2F0EFE721F8CAF000F11AD1 /* loading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading.gif; sourceTree = "<group>"; };
 		E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		E2F0EFEC21F9519400F11AD1 /* PublicKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyViewController.swift; sourceTree = "<group>"; };
+		E2F0EFED21F9519400F11AD1 /* PublicKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicKeyViewController.xib; sourceTree = "<group>"; };
 		F1EAA67A3BA7548BCFC82F33 /* Pods-DiveLane.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiveLane.beta.xcconfig"; path = "Pods/Target Support Files/Pods-DiveLane/Pods-DiveLane.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -737,6 +741,7 @@
 			children = (
 				E2C1109921E566D40012A978 /* Token */,
 				E2C1109E21E567070012A978 /* old */,
+				E2F0EFEB21F9513C00F11AD1 /* PublicKey */,
 				E2B45A622176379A00F38E50 /* AddContact */,
 				E2C1109C21E566F50012A978 /* Contacts */,
 				E234C7A021EB5F8500F175AF /* PrivateKey */,
@@ -1239,8 +1244,8 @@
 		E2B45A622176379A00F38E50 /* AddContact */ = {
 			isa = PBXGroup;
 			children = (
-				E2B45A5F2176379100F38E50 /* AddContactController.xib */,
-				E2B45A5E2176379100F38E50 /* AddContactController.swift */,
+				E2F0EFF121F9525500F11AD1 /* ViewControllers */,
+				E2F0EFF021F9524F00F11AD1 /* Views */,
 			);
 			path = AddContact;
 			sourceTree = "<group>";
@@ -1773,6 +1778,47 @@
 			path = Gifs;
 			sourceTree = "<group>";
 		};
+		E2F0EFEB21F9513C00F11AD1 /* PublicKey */ = {
+			isa = PBXGroup;
+			children = (
+				E2F0EFF321F9526F00F11AD1 /* ViewControllers */,
+				E2F0EFF221F9526500F11AD1 /* Views */,
+			);
+			path = PublicKey;
+			sourceTree = "<group>";
+		};
+		E2F0EFF021F9524F00F11AD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2B45A5F2176379100F38E50 /* AddContactController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2F0EFF121F9525500F11AD1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2B45A5E2176379100F38E50 /* AddContactController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E2F0EFF221F9526500F11AD1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2F0EFED21F9519400F11AD1 /* PublicKeyViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2F0EFF321F9526F00F11AD1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2F0EFEC21F9519400F11AD1 /* PublicKeyViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1892,6 +1938,7 @@
 				E2C110BA21E67D1D0012A978 /* WalletCreationViewController.xib in Resources */,
 				91F6E94521B534D20022CF61 /* Web3Swift.js in Resources */,
 				E2F0EFA521F8BA2700F11AD1 /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				E2F0EFEF21F9519500F11AD1 /* PublicKeyViewController.xib in Resources */,
 				E2F0EFDD21F8BD1500F11AD1 /* librefranklin-bold.ttf in Resources */,
 				E2F0EFDF21F8BD1500F11AD1 /* librefranklin-italic.ttf in Resources */,
 				E2F0EFA021F8BA2700F11AD1 /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -2161,6 +2208,7 @@
 				E2C1105D21E507260012A978 /* NetworkErrors.swift in Sources */,
 				E2C1106C21E507260012A978 /* Colors.swift in Sources */,
 				E2D451C621EE292700218872 /* BasicViewController.swift in Sources */,
+				E2F0EFEE21F9519500F11AD1 /* PublicKeyViewController.swift in Sources */,
 				E2C1108121E507340012A978 /* FloatExtension.swift in Sources */,
 				E2C59074215258B800FF53D3 /* TableTokens.swift in Sources */,
 				914F22952149A24C00ED58E6 /* PincodeCreationStatus.swift in Sources */,
