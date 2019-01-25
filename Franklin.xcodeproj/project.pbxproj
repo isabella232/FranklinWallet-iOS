@@ -215,6 +215,9 @@
 		E2F0EFEA21F8F1C000F11AD1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */; };
 		E2F0EFEE21F9519500F11AD1 /* PublicKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EFEC21F9519400F11AD1 /* PublicKeyViewController.swift */; };
 		E2F0EFEF21F9519500F11AD1 /* PublicKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F0EFED21F9519400F11AD1 /* PublicKeyViewController.xib */; };
+		E2F686A821F9DEF600BD3D14 /* SendMoneyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F686A621F9DEF600BD3D14 /* SendMoneyController.swift */; };
+		E2F686A921F9DEF600BD3D14 /* SendMoneyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F686A721F9DEF600BD3D14 /* SendMoneyController.xib */; };
+		E2F686AC21F9E0C600BD3D14 /* BasicTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F686AB21F9E0C600BD3D14 /* BasicTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -493,6 +496,9 @@
 		E2F0EFE921F8F1C000F11AD1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		E2F0EFEC21F9519400F11AD1 /* PublicKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicKeyViewController.swift; sourceTree = "<group>"; };
 		E2F0EFED21F9519400F11AD1 /* PublicKeyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PublicKeyViewController.xib; sourceTree = "<group>"; };
+		E2F686A621F9DEF600BD3D14 /* SendMoneyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyController.swift; sourceTree = "<group>"; };
+		E2F686A721F9DEF600BD3D14 /* SendMoneyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMoneyController.xib; sourceTree = "<group>"; };
+		E2F686AB21F9E0C600BD3D14 /* BasicTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextField.swift; sourceTree = "<group>"; };
 		F1EAA67A3BA7548BCFC82F33 /* Pods-DiveLane.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DiveLane.beta.xcconfig"; path = "Pods/Target Support Files/Pods-DiveLane/Pods-DiveLane.beta.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -739,19 +745,13 @@
 		B2091518214BA5D800C8B408 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E2C1109921E566D40012A978 /* Token */,
-				E2C1109E21E567070012A978 /* old */,
+				E2F686A421F9DE5A00BD3D14 /* NeedToBe */,
+				E2F686A521F9DE9B00BD3D14 /* SendMoney */,
 				E2F0EFEB21F9513C00F11AD1 /* PublicKey */,
 				E2B45A622176379A00F38E50 /* AddContact */,
 				E2C1109C21E566F50012A978 /* Contacts */,
-				E234C7A021EB5F8500F175AF /* PrivateKey */,
-				E234C7A421EBF3C900F175AF /* Networks */,
-				E2A8DBBA21F780280031AC58 /* WalletsList */,
 				E2C1109D21E566FB0012A978 /* Settings */,
-				E2C110D021E90D6A0012A978 /* TokensSearch */,
 				9197F2EA2143B7A700C358AA /* Wallet */,
-				E2C110C121E7DB730012A978 /* Pincode */,
-				E2C1109821E566B60012A978 /* WalletCreation */,
 				E2C1109721E566AD0012A978 /* Onboarding */,
 			);
 			path = PresentationLayer;
@@ -1452,6 +1452,7 @@
 		E2C110A721E61EDE0012A978 /* DesignElements */ = {
 			isa = PBXGroup;
 			children = (
+				E2F686AA21F9E0B500BD3D14 /* TextField */,
 				E2F0EFE621F8CACA00F11AD1 /* Gifs */,
 				E2F0EF7F21F8B9F700F11AD1 /* Fonts */,
 				E2F0EF6B21F7C2E500F11AD1 /* TabBarController */,
@@ -1819,6 +1820,38 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		E2F686A421F9DE5A00BD3D14 /* NeedToBe */ = {
+			isa = PBXGroup;
+			children = (
+				E2C1109821E566B60012A978 /* WalletCreation */,
+				E2C110C121E7DB730012A978 /* Pincode */,
+				E2C110D021E90D6A0012A978 /* TokensSearch */,
+				E234C7A421EBF3C900F175AF /* Networks */,
+				E2A8DBBA21F780280031AC58 /* WalletsList */,
+				E234C7A021EB5F8500F175AF /* PrivateKey */,
+				E2C1109E21E567070012A978 /* old */,
+				E2C1109921E566D40012A978 /* Token */,
+			);
+			path = NeedToBe;
+			sourceTree = "<group>";
+		};
+		E2F686A521F9DE9B00BD3D14 /* SendMoney */ = {
+			isa = PBXGroup;
+			children = (
+				E2F686A621F9DEF600BD3D14 /* SendMoneyController.swift */,
+				E2F686A721F9DEF600BD3D14 /* SendMoneyController.xib */,
+			);
+			path = SendMoney;
+			sourceTree = "<group>";
+		};
+		E2F686AA21F9E0B500BD3D14 /* TextField */ = {
+			isa = PBXGroup;
+			children = (
+				E2F686AB21F9E0C600BD3D14 /* BasicTextField.swift */,
+			);
+			path = TextField;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1957,6 +1990,7 @@
 				9197F3292144043500C358AA /* SettingsCell.xib in Resources */,
 				E2F0EFA621F8BA2700F11AD1 /* SF-Pro-Display-MediumItalic.otf in Resources */,
 				E2F0EFAA21F8BA2700F11AD1 /* SF-Pro-Text-Heavy.otf in Resources */,
+				E2F686A921F9DEF600BD3D14 /* SendMoneyController.xib in Resources */,
 				E2F0EFB821F8BA2700F11AD1 /* SF-Pro-Display-Bold.otf in Resources */,
 				E2F0EF7E21F7FCC700F11AD1 /* ContactCell.xib in Resources */,
 				9197F2EE2143B92B00C358AA /* WalletViewController.xib in Resources */,
@@ -2224,6 +2258,7 @@
 				E2C1108321E507340012A978 /* SearchControllerExtension.swift in Sources */,
 				E2C110C821E8A86C0012A978 /* BasicButtons.swift in Sources */,
 				9197F3282144043500C358AA /* SettingsCell.swift in Sources */,
+				E2F686A821F9DEF600BD3D14 /* SendMoneyController.swift in Sources */,
 				E2C110CE21E8A8D90012A978 /* TableHeader.swift in Sources */,
 				E234C7A621EBF62900F175AF /* BasicTableView.swift in Sources */,
 				E2A8DAF721F1F6A00031AC58 /* ContactsCD.xcdatamodeld in Sources */,
@@ -2238,6 +2273,7 @@
 				E27BF77A21D1447A00951061 /* PlasmaConstants.swift in Sources */,
 				9197F2F22143B9D600C358AA /* TokenCell.swift in Sources */,
 				E234C7AC21ECCC1800F175AF /* AnimationController.swift in Sources */,
+				E2F686AC21F9E0C600BD3D14 /* BasicTextField.swift in Sources */,
 				E2C1106321E507260012A978 /* ABIs.swift in Sources */,
 				E2C1109521E557FE0012A978 /* EIP681Router.swift in Sources */,
 				E2C110CC21E8A8B90012A978 /* BasicTextView.swift in Sources */,

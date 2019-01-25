@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate, AddContactDelegate {
+class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate, ModalViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var helpLabel: UILabel!
@@ -93,7 +93,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         SideMenuManager.default.menuShadowRadius = 100
     }
     
-    func addContactHasBeenDismissed() {
+    func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.5, animations: {
                 for view in self.view.subviews where view.tag == Constants.modalViewTag {
@@ -104,7 +104,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         getAllContacts()
     }
     
-    func addContactHasAppeared() {
+    func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.5, animations: {
                 self.topViewForModalAnimation.alpha = 0.1
@@ -127,7 +127,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
 
     @IBAction func addContact(_ sender: Any) {
         self.searchBar.endEditing(true)
-        self.addContactHasAppeared()
+        self.modalViewAppeared()
         let addContactController = AddContactController()
         addContactController.delegate = self
         addContactController.modalPresentationStyle = .overCurrentContext

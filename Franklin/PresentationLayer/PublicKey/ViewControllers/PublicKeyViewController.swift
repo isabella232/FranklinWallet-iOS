@@ -9,10 +9,6 @@
 import UIKit
 import Web3swift
 
-protocol PublicKeyDelegate : class {
-    func publicKeyViewHasBeenDismissed()
-}
-
 class PublicKeyViewController: BasicViewController {
     
     @IBOutlet weak var shareAddress: BasicBlueButton!
@@ -26,7 +22,7 @@ class PublicKeyViewController: BasicViewController {
     
     let alerts = Alerts()
     
-    weak var delegate: PublicKeyDelegate?
+    weak var delegate: ModalViewDelegate?
     
     var pk: String = "" {
         didSet {
@@ -99,7 +95,7 @@ class PublicKeyViewController: BasicViewController {
     
     @objc func dismissView() {
         self.dismiss(animated: true, completion: nil)
-        delegate?.publicKeyViewHasBeenDismissed()
+        delegate?.modalViewBeenDismissed()
     }
     
     @IBAction func closeAction(_ sender: UIButton) {

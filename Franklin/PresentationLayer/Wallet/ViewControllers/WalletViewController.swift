@@ -12,9 +12,8 @@ import EthereumAddress
 import BigInt
 import SideMenu
 
-class WalletViewController: BasicViewController, SWRevealViewControllerDelegate, PublicKeyDelegate {
+class WalletViewController: BasicViewController, SWRevealViewControllerDelegate, ModalViewDelegate {
 
-    @IBOutlet weak var netLabel: UILabel!
     @IBOutlet weak var walletTableView: BasicTableView!
     @IBOutlet weak var sendMoneyButton: BasicBlueButton!
     @IBOutlet weak var scanQrButton: ScanButton!
@@ -47,7 +46,6 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         self.tabBarController?.tabBar.selectedItem?.title = nil
         self.setupNavigation()
         self.setupTableView()
-        self.setupNet()
         self.additionalSetup()
         self.setupSideBar()
         self.additionalSetup()
@@ -73,10 +71,6 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         SideMenuManager.default.menuShadowOpacity = 0.5
         SideMenuManager.default.menuShadowColor = UIColor.black
         SideMenuManager.default.menuShadowRadius = 100
-    }
-    
-    func setupNet() {
-        self.netLabel.text = "Connected to \(CurrentNetwork.currentNetwork.name.capitalized)"
     }
 
     func setupTableView() {
@@ -221,16 +215,16 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         }
     }
 
-    func didPressAdd(sender: UIButton) {
-        guard let wallet = CurrentWallet.currentWallet else {
-            self.alerts.showErrorAlert(for: self, error: "Can't select wallet", completion: nil)
-            return
-        }
-        let searchTokenController = SearchTokenViewController(for: wallet)
-        self.navigationController?.pushViewController(searchTokenController, animated: true)
-    }
+//    func didPressAdd(sender: UIButton) {
+//        guard let wallet = CurrentWallet.currentWallet else {
+//            self.alerts.showErrorAlert(for: self, error: "Can't select wallet", completion: nil)
+//            return
+//        }
+//        let searchTokenController = SearchTokenViewController(for: wallet)
+//        self.navigationController?.pushViewController(searchTokenController, animated: true)
+//    }
     
-    func publicKeyViewHasBeenDismissed() {
+    func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.5, animations: {
                 for view in self.view.subviews where view.tag == Constants.modalViewTag {
@@ -240,14 +234,23 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         }
     }
     
-    func showPublicKeyHasAppeared() {
+    func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.5, animations: {
                 self.topViewForModalAnimation.alpha = 0.1
             })
         }
     }
-
+    
+    @IBAction func writeCheque(_ sender: UIButton) {
+        self.modalViewAppeared()
+        let sendMoneyVC = SendMoneyController()
+        sendMoneyVC.delegate = self
+        sendMoneyVC.modalPresentationStyle = .overCurrentContext
+        sendMoneyVC.view.layer.speed = 0.5
+        self.present(sendMoneyVC, animated: true, completion: nil)
+    }
+    
 }
 
 extension WalletViewController: UITableViewDelegate, UITableViewDataSource {
@@ -319,7 +322,7 @@ extension WalletViewController: TokenCellDelegate {
             return
         }
         let wallet = self.tokensArray[indexPathTapped.row].inWallet
-        self.showPublicKeyHasAppeared()
+        self.modalViewAppeared()
         let publicKeyController = PublicKeyViewController(for: wallet)
         publicKeyController.delegate = self
         publicKeyController.modalPresentationStyle = .overCurrentContext

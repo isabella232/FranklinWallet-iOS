@@ -17,7 +17,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WalletViewController" customModule="Franklin_dev" customModuleProvider="target">
             <connections>
-                <outlet property="netLabel" destination="q3w-V9-BVQ" id="YXc-aG-vze"/>
                 <outlet property="scanQrButton" destination="yRA-Np-TwH" id="ybF-MD-AFY"/>
                 <outlet property="sendMoneyButton" destination="amZ-Py-VCG" id="xOQ-3g-2sX"/>
                 <outlet property="view" destination="LUp-ao-XXN" id="Zfs-5h-OsT"/>
@@ -37,12 +36,6 @@
                         <outlet property="delegate" destination="-1" id="CqB-E8-dwZ"/>
                     </connections>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAINNET" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3w-V9-BVQ">
-                    <rect key="frame" x="155" y="36.5" width="65" height="17"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rb0-dq-Wdw">
                     <rect key="frame" x="10" y="30" width="30" height="30"/>
                     <constraints>
@@ -75,6 +68,9 @@
                             <state key="normal" title="Write cheque">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="writeCheque:" destination="-1" eventType="touchUpInside" id="iDb-42-7C1"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>
@@ -82,14 +78,11 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="rb0-dq-Wdw" firstAttribute="top" secondItem="iPF-hr-DoE" secondAttribute="top" constant="10" id="1g8-9F-bHn"/>
-                <constraint firstItem="khk-pc-SNg" firstAttribute="top" secondItem="q3w-V9-BVQ" secondAttribute="bottom" constant="10" id="84G-U8-obj"/>
                 <constraint firstItem="iPF-hr-DoE" firstAttribute="trailing" secondItem="QDe-ca-gsZ" secondAttribute="trailing" constant="20" id="8fg-qo-Vd7"/>
-                <constraint firstItem="q3w-V9-BVQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iPF-hr-DoE" secondAttribute="leading" constant="10" id="A85-rc-PBT"/>
                 <constraint firstItem="iPF-hr-DoE" firstAttribute="trailing" secondItem="khk-pc-SNg" secondAttribute="trailing" id="IgP-rW-3wG"/>
                 <constraint firstItem="rb0-dq-Wdw" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" constant="10" id="U0t-su-4pe"/>
                 <constraint firstItem="QDe-ca-gsZ" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" constant="20" id="V27-4l-eW4"/>
-                <constraint firstItem="q3w-V9-BVQ" firstAttribute="centerX" secondItem="iPF-hr-DoE" secondAttribute="centerX" id="YEQ-B0-8vG"/>
-                <constraint firstItem="rb0-dq-Wdw" firstAttribute="centerY" secondItem="q3w-V9-BVQ" secondAttribute="centerY" id="cFM-bA-nUN"/>
+                <constraint firstItem="khk-pc-SNg" firstAttribute="top" secondItem="iPF-hr-DoE" secondAttribute="top" constant="43.5" id="VYV-ay-B6F"/>
                 <constraint firstItem="khk-pc-SNg" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" id="g7x-Q7-D0u"/>
                 <constraint firstItem="iPF-hr-DoE" firstAttribute="bottom" secondItem="QDe-ca-gsZ" secondAttribute="bottom" constant="30" id="peW-PH-R19"/>
                 <constraint firstItem="QDe-ca-gsZ" firstAttribute="top" secondItem="khk-pc-SNg" secondAttribute="bottom" constant="10" id="q8p-4J-dBj"/>
