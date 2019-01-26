@@ -131,6 +131,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.updateTokensBalances {
             self.reloadDataInTable {
+                self.refreshControl.endRefreshing()
             }
         }
     }
