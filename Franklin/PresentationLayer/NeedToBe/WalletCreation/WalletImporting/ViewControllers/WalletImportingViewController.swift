@@ -200,7 +200,7 @@ extension WalletImportingViewController {
             keyboardHeight = keyboardSize.height
             
             // so increase contentView's height by keyboard height
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 self.contentHeight.constant += self.keyboardHeight
             })
             
@@ -217,7 +217,7 @@ extension WalletImportingViewController {
             }
             
             // set new offset for scroll view
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 // scroll to the position above keyboard 10 points
                 self.scrollView.contentOffset = CGPoint(x: self.lastOffset.x, y: collapseSpace + 10)
             })
@@ -225,7 +225,7 @@ extension WalletImportingViewController {
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.250) {
             self.contentHeight.constant -= self.keyboardHeight
             
             self.scrollView.contentOffset = self.lastOffset

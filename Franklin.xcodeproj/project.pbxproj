@@ -157,6 +157,11 @@
 		E2D451C621EE292700218872 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451C521EE292700218872 /* BasicViewController.swift */; };
 		E2D451D721EE331600218872 /* BasicSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451D621EE331600218872 /* BasicSegmentedControl.swift */; };
 		E2D451DD21EE980B00218872 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451DC21EE980B00218872 /* DoubleExtension.swift */; };
+		E2EB2C0321FBC5A200F2864D /* TransactionsHistoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF9D214BB2890023FC18 /* TransactionsHistoryState.swift */; };
+		E2EB2C0421FBC5A200F2864D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF99214BAEDB0023FC18 /* TransactionCell.swift */; };
+		E2EB2C0521FBC5A200F2864D /* TransactionsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF94214BAD730023FC18 /* TransactionsHistoryViewController.swift */; };
+		E2EB2C0621FBC5C200F2864D /* TransactionsHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B271CF95214BAD730023FC18 /* TransactionsHistoryViewController.xib */; };
+		E2EB2C0721FBC5C200F2864D /* TransactionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B271CF9A214BAEDB0023FC18 /* TransactionCell.xib */; };
 		E2F0EF6D21F7C2F500F11AD1 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F0EF6C21F7C2F500F11AD1 /* TabBarController.swift */; };
 		E2F0EF7821F7DD6000F11AD1 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A2D2174D1CC00F38E50 /* DismissAnimator.swift */; };
 		E2F0EF7921F7DD8C00F11AD1 /* TokenInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A412174D2B400F38E50 /* TokenInfoViewController.swift */; };
@@ -619,7 +624,6 @@
 		9197F30C2143EF3300C358AA /* Transactions */ = {
 			isa = PBXGroup;
 			children = (
-				B271CF9D214BB2890023FC18 /* TransactionsHistoryState.swift */,
 			);
 			path = Transactions;
 			sourceTree = "<group>";
@@ -708,7 +712,6 @@
 				91F6E93D21B5333A0022CF61 /* Browser */,
 				E2B45A402174D2B400F38E50 /* TokenInfo */,
 				E2DCA6582193238400F94FBA /* TransactionInfo */,
-				B271CF98214BADD00023FC18 /* TransactionsHistory */,
 				9197F30A2143C3A900C358AA /* Sending */,
 				9197F2FD2143BF9800C358AA /* QR */,
 			);
@@ -746,6 +749,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F686A421F9DE5A00BD3D14 /* NeedToBe */,
+				B271CF98214BADD00023FC18 /* TransactionsHistory */,
 				E2F686A521F9DE9B00BD3D14 /* SendMoney */,
 				E2F0EFEB21F9513C00F11AD1 /* PublicKey */,
 				E2B45A622176379A00F38E50 /* AddContact */,
@@ -778,9 +782,6 @@
 		B271CF91214BAD080023FC18 /* Transactions History */ = {
 			isa = PBXGroup;
 			children = (
-				B271CF95214BAD730023FC18 /* TransactionsHistoryViewController.xib */,
-				B271CF9A214BAEDB0023FC18 /* TransactionCell.xib */,
-				B271CF99214BAEDB0023FC18 /* TransactionCell.swift */,
 			);
 			path = "Transactions History";
 			sourceTree = "<group>";
@@ -788,7 +789,9 @@
 		B271CF98214BADD00023FC18 /* TransactionsHistory */ = {
 			isa = PBXGroup;
 			children = (
-				B271CF94214BAD730023FC18 /* TransactionsHistoryViewController.swift */,
+				E2F686B121FB909B00BD3D14 /* Models */,
+				E2F686B021FB909600BD3D14 /* Views */,
+				E2F686AF21FB908E00BD3D14 /* ViewControllers */,
 			);
 			path = TransactionsHistory;
 			sourceTree = "<group>";
@@ -1838,8 +1841,8 @@
 		E2F686A521F9DE9B00BD3D14 /* SendMoney */ = {
 			isa = PBXGroup;
 			children = (
-				E2F686A621F9DEF600BD3D14 /* SendMoneyController.swift */,
-				E2F686A721F9DEF600BD3D14 /* SendMoneyController.xib */,
+				E2F686AE21FB905300BD3D14 /* Views */,
+				E2F686AD21FB904000BD3D14 /* ViewControllers */,
 			);
 			path = SendMoney;
 			sourceTree = "<group>";
@@ -1850,6 +1853,48 @@
 				E2F686AB21F9E0C600BD3D14 /* BasicTextField.swift */,
 			);
 			path = TextField;
+			sourceTree = "<group>";
+		};
+		E2F686AD21FB904000BD3D14 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2F686A621F9DEF600BD3D14 /* SendMoneyController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E2F686AE21FB905300BD3D14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2F686A721F9DEF600BD3D14 /* SendMoneyController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2F686AF21FB908E00BD3D14 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B271CF94214BAD730023FC18 /* TransactionsHistoryViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E2F686B021FB909600BD3D14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B271CF95214BAD730023FC18 /* TransactionsHistoryViewController.xib */,
+				B271CF9A214BAEDB0023FC18 /* TransactionCell.xib */,
+				B271CF99214BAEDB0023FC18 /* TransactionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2F686B121FB909B00BD3D14 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B271CF9D214BB2890023FC18 /* TransactionsHistoryState.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1968,6 +2013,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EB2C0621FBC5C200F2864D /* TransactionsHistoryViewController.xib in Resources */,
+				E2EB2C0721FBC5C200F2864D /* TransactionCell.xib in Resources */,
 				E2C110BA21E67D1D0012A978 /* WalletCreationViewController.xib in Resources */,
 				91F6E94521B534D20022CF61 /* Web3Swift.js in Resources */,
 				E2F0EFA521F8BA2700F11AD1 /* SF-Pro-Display-ThinItalic.otf in Resources */,
@@ -2179,6 +2226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2EB2C0321FBC5A200F2864D /* TransactionsHistoryState.swift in Sources */,
+				E2EB2C0421FBC5A200F2864D /* TransactionCell.swift in Sources */,
+				E2EB2C0521FBC5A200F2864D /* TransactionsHistoryViewController.swift in Sources */,
 				E2C1106621E507260012A978 /* UserDefaultKeys.swift in Sources */,
 				9197F3332144228B00C358AA /* NetworksCell.swift in Sources */,
 				914F22A3214AA8DB00ED58E6 /* EnterPincodeFromCases.swift in Sources */,

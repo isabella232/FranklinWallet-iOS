@@ -91,7 +91,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     }
     
     func appearAnimation() {
-        UIView.animate(withDuration: 0.5) { [unowned self] in
+        UIView.animate(withDuration: 0.250) { [unowned self] in
             self.view.alpha = 1
         }
     }
@@ -226,7 +226,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 for view in self.view.subviews where view.tag == Constants.modalViewTag {
                     view.alpha = 0
                 }
@@ -236,7 +236,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 self.topViewForModalAnimation.alpha = 0.1
             })
         }

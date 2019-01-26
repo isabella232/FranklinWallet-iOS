@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LongPressDelegate: class {
-    func didLongPressCell(transaction: ETHTransactionModel?)
+    func didLongPressCell(transaction: ETHTransaction?)
 }
 
 class TransactionCell: UITableViewCell {
@@ -20,12 +20,11 @@ class TransactionCell: UITableViewCell {
 
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var transactionTypeLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var transactionTypeImageView: UIImageView!
 
     weak var longPressDelegate: LongPressDelegate?
-    private var transaction: ETHTransactionModel?
+    private var transaction: ETHTransaction?
 
     lazy var dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -38,21 +37,28 @@ class TransactionCell: UITableViewCell {
         addGestureRecognizer(longPressGesture())
     }
 
-    func configureCell(withModel model: ETHTransactionModel, andCurrentWallet currentWalet: WalletModel) {
+    func configureCell(with model: ETHTransaction, wallet: Wallet) {
         transaction = model
-        amountLabel.text = model.amount + " " + (model.token?.symbol.uppercased() ?? "ETH")
-        if model.from.lowercased() == currentWalet.address.lowercased() {
+        amountLabel.text = "$ \(model.amount)"
+        if model.from.lowercased() == wallet.address.lowercased() {
             //Sent
-            transactionTypeLabel.text = "Sent"
-            addressLabel.text = "To:" + model.to.hideExtraSymbolsInAddress()
-            transactionTypeImageView?.image = #imageLiteral(resourceName: "sent")
-        } else if model.to.lowercased() == currentWalet.address.lowercased() {
+            if model.isPending {
+                transactionTypeImageView?.image = UIImage(named: "to")
+            } else {
+                transactionTypeImageView?.image = UIImage(named: "pending")
+            }
+            addressLabel.text = "To " + model.to.hideExtraSymbolsInAddress()
+            timeLabel.text = dateFormatter.string(from: model.date)
+        } else if model.to.lowercased() == wallet.address.lowercased() {
             //Received
-            transactionTypeLabel.text = "Received"
-            addressLabel.text = "From:" + model.from.hideExtraSymbolsInAddress()
-            transactionTypeImageView.image = #imageLiteral(resourceName: "received")
+            if model.isPending {
+                transactionTypeImageView?.image = UIImage(named: "pending")
+            } else {
+                transactionTypeImageView?.image = UIImage(named: "from")
+            }
+            addressLabel.text = "From " + model.from.hideExtraSymbolsInAddress()
+            timeLabel.text = "Tap to view or cancel"
         }
-        timeLabel.text = dateFormatter.string(from: model.date)
     }
 
     func longPressGesture() -> UILongPressGestureRecognizer {

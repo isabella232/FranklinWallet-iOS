@@ -22,7 +22,7 @@ class SendMoneyController: BasicViewController {
         case search = 2
     }
     
-    enum sendingScreenStatus {
+    enum SendingScreenStatus {
         case start
         case searching
         case confirm
@@ -55,7 +55,7 @@ class SendMoneyController: BasicViewController {
     var contactsList: [Contact] = []
     let contactsService = ContactsService()
     var chosenContact: Contact?
-    var screenStatus: sendingScreenStatus = .start
+    var screenStatus: SendingScreenStatus = .start
     
     private let reuseIdentifier = "ContactCell"
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -140,7 +140,7 @@ class SendMoneyController: BasicViewController {
     
     func showStart(animated: Bool) {
         self.screenStatus = .start
-        UIView.animate(withDuration: animated ? 0.3 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 1
@@ -148,8 +148,9 @@ class SendMoneyController: BasicViewController {
             self.collectionView.isUserInteractionEnabled = false
             self.collectionView.isHidden = true
             self.mainButton.setTitle("Other app...", for: .normal)
-            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
-            self.mainButton.backgroundColor = .white
+            self.mainButton.changeColorOn(background: Colors.textWhite, text: Colors.mainBlue)
+//            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
+//            self.mainButton.backgroundColor = .white
             self.mainButton.layer.borderWidth = 1
             self.searchStackView.frame.origin.y = self.searchStackOrigin
             self.searchTextField.alpha = 1
@@ -166,7 +167,7 @@ class SendMoneyController: BasicViewController {
     @objc func showSearch(animated: Bool) {
         self.screenStatus = .searching
         self.chosenContact = nil
-        UIView.animate(withDuration: 0.1) { [unowned self] in
+        UIView.animate(withDuration: 0.250) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
@@ -174,8 +175,9 @@ class SendMoneyController: BasicViewController {
             self.collectionView.isUserInteractionEnabled = true
             self.collectionView.isHidden = false
             self.mainButton.setTitle("Back", for: .normal)
-            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
-            self.mainButton.backgroundColor = .white
+            self.mainButton.changeColorOn(background: Colors.textWhite, text: Colors.mainBlue)
+//            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
+//            self.mainButton.backgroundColor = .white
             self.mainButton.layer.borderWidth = 1
             self.searchTextField.alpha = 1
             self.searchTextField.isUserInteractionEnabled = true
@@ -184,7 +186,7 @@ class SendMoneyController: BasicViewController {
             self.separatorView.alpha = 0
             self.sendToContactLabel.alpha = 1
         }
-        UIView.animate(withDuration: 0.3) { [unowned self] in
+        UIView.animate(withDuration: 0.250) { [unowned self] in
             self.searchStackView.frame.origin.y = self.amountStackView.frame.origin.y
         }
     }
@@ -201,17 +203,20 @@ class SendMoneyController: BasicViewController {
         self.contactName.text = contact.name
         self.contactAddress.text = contact.address
         
-        UIView.animate(withDuration: animated ? 0.3 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
             self.collectionView.alpha = 0
             self.collectionView.isUserInteractionEnabled = false
             self.collectionView.isHidden = true
+            
             self.mainButton.setTitle("Send to \(contact.name)", for: .normal)
-            self.mainButton.setTitleColor(.white, for: .normal)
-            self.mainButton.backgroundColor = Colors.orange
+//            self.mainButton.setTitleColor(.white, for: .normal)
+//            self.mainButton.backgroundColor = Colors.orange
             self.mainButton.layer.borderWidth = 0
+            self.mainButton.changeColorOn(background: Colors.orange, text: Colors.textWhite)
+            
             self.searchStackView.frame.origin.y = self.searchStackOrigin
             self.searchTextField.alpha = 0
             self.searchTextField.isUserInteractionEnabled = false
@@ -224,7 +229,7 @@ class SendMoneyController: BasicViewController {
     
     @objc func showSending(animated: Bool) {
         self.screenStatus = .sending
-        UIView.animate(withDuration: animated ? 0.3 : 0, animations: { [unowned self] in
+        UIView.animate(withDuration: animated ? 0.250 : 0, animations: { [unowned self] in
             self.titleLabel.text = "Sending..."
             self.sendingGif.alpha = 1
             self.sendToContactLabel.alpha = 0
@@ -251,17 +256,19 @@ class SendMoneyController: BasicViewController {
     
     @objc func showReady(animated: Bool) {
         self.screenStatus = .ready
-        UIView.animate(withDuration: animated ? 0.5 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
             self.readyIcon.alpha = 1
             self.readyIcon.transform = CGAffineTransform(scaleX: 3, y: 3)
         }
-        UIView.animate(withDuration: animated ? 0.3 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
             self.titleLabel.text = "Sent!"
             self.titleLabel.textColor = Colors.mainGreen
             self.sendingGif.alpha = 0
             self.mainButton.alpha = 1
             self.mainButton.setTitle("Close", for: .normal)
-            self.mainButton.backgroundColor = Colors.mainBlue
+//            self.mainButton.backgroundColor = Colors.mainBlue
+            
+            self.mainButton.changeColorOn(background: Colors.mainBlue, text: Colors.textWhite)
         }
     }
     

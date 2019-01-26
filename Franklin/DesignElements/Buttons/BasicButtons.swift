@@ -105,6 +105,8 @@ class BasicWhiteButton: UIButton {
     
     let animation = AnimationController()
     
+    var currentBackgroundColor: UIColor?
+    
     override func awakeFromNib() {
         let height: CGFloat = Constants.buttons.heights.main
         let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
@@ -125,12 +127,50 @@ class BasicWhiteButton: UIButton {
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpOutside)
     }
     
+    func changeColorOn(background color: UIColor, text: UIColor) {
+        self.backgroundColor = color
+        self.setTitleColor(text, for: .normal)
+        self.currentBackgroundColor = color
+    }
+    
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender, color: Colors.textWhite)
+        animation.pressButtonStartedAnimation(for: sender, color: self.currentBackgroundColor!)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender, color: Colors.textWhite)
+        animation.pressButtonCanceledAnimation(for: sender, color: self.currentBackgroundColor!)
+    }
+}
+
+class BasicOrangeButton: UIButton {
+    
+    let animation = AnimationController()
+    
+    override func awakeFromNib() {
+        let height: CGFloat = Constants.buttons.heights.main
+        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
+        self.addConstraints([heightContraint])
+        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.clipsToBounds = true
+        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        self.titleLabel?.font = font
+        self.backgroundColor = Colors.orange
+        self.setTitleColor(Colors.textWhite, for: .normal)
+        self.layer.borderWidth = 0
+        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
+        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchDragOutside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpInside)
+        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpOutside)
+    }
+    
+    @objc func buttonTouchedDown(_ sender: UIButton) {
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.orange)
+    }
+    
+    @objc func buttonTouchedUp(_ sender: UIButton) {
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.orange)
     }
 }
 

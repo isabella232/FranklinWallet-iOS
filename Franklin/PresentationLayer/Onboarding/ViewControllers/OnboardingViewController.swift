@@ -366,7 +366,7 @@ class OnboardingViewController: BasicViewController {
     }
     
     func animateIndicator() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.250) {
             self.continueButton.alpha = 0
             self.link.alpha = 0
             self.bottomInfo.alpha = 0
@@ -377,7 +377,7 @@ class OnboardingViewController: BasicViewController {
     
     func goToApp() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.250) {
                 self.view.alpha = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let tabViewController = self.appController.goToApp()

@@ -107,11 +107,11 @@ class PrivateKeyViewController: BasicViewController {
 
         DispatchQueue.main.async { [weak self] in
             self?.hideCopiedLabel(true)
-            UIView.animate(withDuration: 1.0,
+            UIView.animate(withDuration: 0.250,
                            animations: {
                             self?.hideCopiedLabel(false)
             }, completion: { _ in
-                UIView.animate(withDuration: 2.0, animations: {
+                UIView.animate(withDuration: 0.250, animations: {
                     self?.hideCopiedLabel(true)
                 })
             })

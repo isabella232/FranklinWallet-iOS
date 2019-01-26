@@ -93,9 +93,13 @@ public class AppController {
                                         withController: WalletViewController(nibName: nil, bundle: nil),
                                         tag: 1)
         let nav2 = navigationController(withTitle: nil,
+                                        withImage: UIImage(named: "transactions_white"),
+                                        withController: TransactionsHistoryViewController(nibName: nil, bundle: nil),
+                                        tag: 2)
+        let nav3 = navigationController(withTitle: nil,
                                         withImage: UIImage(named: "contacts_white"),
                                         withController: ContactsViewController(nibName: nil, bundle: nil),
-                                        tag: 2)
+                                        tag: 3)
 //        let nav2 = navigationController(withTitle: "Transactions History",
 //                                        withImage: UIImage(named: "transactions_gray"),
 //                                        withController: TransactionsHistoryViewController(),
@@ -112,7 +116,7 @@ public class AppController {
         tabs.tabBar.tintColor = Colors.mainBlue
         tabs.tabBar.unselectedItemTintColor = Colors.otherLightGray
         
-        tabs.viewControllers = [nav1, nav2]
+        tabs.viewControllers = [nav1, nav2, nav3]
         
         nav.viewControllers = [tabs]
         nav.setNavigationBarHidden(true, animated: false)

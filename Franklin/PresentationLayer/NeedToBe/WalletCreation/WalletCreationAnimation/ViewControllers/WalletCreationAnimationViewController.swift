@@ -41,7 +41,7 @@ class WalletCreationAnimationViewController: UIViewController {
     }
     
     func animation() {
-        UIView.animate(withDuration: 1) {
+        UIView.animate(withDuration: 0.250) {
             self.view.alpha = 1
         }
         self.animationTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
@@ -64,14 +64,14 @@ class WalletCreationAnimationViewController: UIViewController {
     
     func goToApp() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 1) {
+            UIView.animate(withDuration: 0.250) {
                 self.indicator.stopAnimating()
                 self.view.alpha = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let tabViewController = self.appController.goToApp()
                     tabViewController.view.backgroundColor = Colors.background
                     let transition = CATransition()
-                    transition.duration = 0.7
+                    transition.duration = 0.5
                     transition.type = CATransitionType.push
                     transition.subtype = CATransitionSubtype.fromRight
                     transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)

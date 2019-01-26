@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class ContactsViewController: BasicViewController, SWRevealViewControllerDelegate, ModalViewDelegate {
+class ContactsViewController: BasicViewController, ModalViewDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var helpLabel: UILabel!
@@ -59,7 +59,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         let footerView = UIView()
-        footerView.backgroundColor = Colors.firstMain
+        footerView.backgroundColor = Colors.background
         
         let nibSearch = UINib.init(nibName: "ContactCell", bundle: nil)
         self.collectionView.register(nibSearch, forCellWithReuseIdentifier: reuseIdentifier)
@@ -95,7 +95,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 for view in self.view.subviews where view.tag == Constants.modalViewTag {
                     view.alpha = 0
                 }
@@ -106,7 +106,7 @@ class ContactsViewController: BasicViewController, SWRevealViewControllerDelegat
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.250, animations: {
                 self.topViewForModalAnimation.alpha = 0.1
             })
         }
