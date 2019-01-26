@@ -328,6 +328,6 @@ extension WalletViewController: TokenCellDelegate {
         publicKeyController.delegate = self
         publicKeyController.modalPresentationStyle = .overCurrentContext
         publicKeyController.view.layer.speed = 0.5
-        self.present(publicKeyController, animated: true, completion: nil)
+        self.tabBarController?.present(publicKeyController, animated: true, completion: nil)
     }
 }
