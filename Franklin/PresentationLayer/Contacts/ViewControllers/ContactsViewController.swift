@@ -132,7 +132,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         addContactController.delegate = self
         addContactController.modalPresentationStyle = .overCurrentContext
         addContactController.view.layer.speed = 0.5
-        self.present(addContactController, animated: true, completion: nil)
+        self.tabBarController?.present(addContactController, animated: true, completion: nil)
     }
     
     func makeHelpLabel(enabled: Bool) {

@@ -43,9 +43,9 @@ class TransactionCell: UITableViewCell {
         if model.from.lowercased() == wallet.address.lowercased() {
             //Sent
             if model.isPending {
-                transactionTypeImageView?.image = UIImage(named: "to")
-            } else {
                 transactionTypeImageView?.image = UIImage(named: "pending")
+            } else {
+                transactionTypeImageView?.image = UIImage(named: "to")
             }
             addressLabel.text = "To " + model.to.hideExtraSymbolsInAddress()
             timeLabel.text = dateFormatter.string(from: model.date)

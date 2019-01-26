@@ -18,7 +18,7 @@ class BasicGreenButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -41,7 +41,7 @@ class BasicGreenButton: UIButton {
         self.addConstraints([heightContraint, widthContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -78,7 +78,7 @@ class BasicBlueButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainBlue
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -113,7 +113,7 @@ class BasicWhiteButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
         self.backgroundColor = Colors.textWhite
         self.setTitleColor(Colors.mainBlue, for: .normal)
@@ -152,7 +152,7 @@ class BasicOrangeButton: UIButton {
         self.addConstraints([heightContraint])
         self.layer.cornerRadius = Constants.buttons.cornerRadius.main
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.mediumFont, size: Constants.buttonFontSize)!
+        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
         self.backgroundColor = Colors.orange
         self.setTitleColor(Colors.textWhite, for: .normal)

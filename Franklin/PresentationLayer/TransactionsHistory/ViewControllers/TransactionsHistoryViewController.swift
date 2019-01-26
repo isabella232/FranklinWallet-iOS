@@ -53,8 +53,8 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
         self.setupSideBar()
         self.additionalSetup()
         
-        self.txsMock()
-        //CurrentWallet.currentWallet = Wallet(address: "0x832a630B949575b87C0E3C00f624f773D9B160f4", data: Data(), name: "dfad", isHD: true)
+        //self.txsMock()
+        CurrentWallet.currentWallet = Wallet(address: "0x832a630B949575b87C0E3C00f624f773D9B160f4", data: Data(), name: "dfad", isHD: true)
     }
     
     func txsMock() {
@@ -68,8 +68,8 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.global().async { [unowned self] in
-            self.reloadTableView()
-            //self.uploadTransactions()
+            //self.reloadTableView()
+            self.uploadTransactions()
         }
     }
 

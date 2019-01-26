@@ -248,7 +248,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         sendMoneyVC.delegate = self
         sendMoneyVC.modalPresentationStyle = .overCurrentContext
         sendMoneyVC.view.layer.speed = 0.5
-        self.present(sendMoneyVC, animated: true, completion: nil)
+        self.tabBarController?.present(sendMoneyVC, animated: true, completion: nil)
     }
     
 }
