@@ -26,9 +26,17 @@ extension UIView {
                 return item
             }
         }
-        
         return nib.last as! A
-        
     }
-    
+}
+
+extension UIView {
+    public func blurView() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
+    }
 }

@@ -72,7 +72,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="8xa-yA-lxu" secondAttribute="height" multiplier="1:1" id="VPt-Jy-Xs9"/>
                                                 </constraints>
-                                                <state key="normal" image="info-1"/>
+                                                <state key="normal" image="info"/>
                                                 <connections>
                                                     <action selector="infoTapped:" destination="EZ4-kc-IjB" eventType="touchUpInside" id="R8I-Yd-SuD"/>
                                                 </connections>
@@ -167,6 +167,6 @@
     </objects>
     <resources>
         <image name="card" width="397" height="250"/>
-        <image name="info-1" width="34" height="34"/>
+        <image name="info" width="16" height="16"/>
     </resources>
 </document>

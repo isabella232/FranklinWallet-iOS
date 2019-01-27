@@ -12,7 +12,7 @@ import EthereumAddress
 import BigInt
 import SideMenu
 
-class WalletViewController: BasicViewController, SWRevealViewControllerDelegate, ModalViewDelegate {
+class WalletViewController: BasicViewController, ModalViewDelegate {
 
     @IBOutlet weak var walletTableView: BasicTableView!
     @IBOutlet weak var sendMoneyButton: BasicBlueButton!
@@ -53,11 +53,11 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     
     func additionalSetup() {
         self.sendMoneyButton.setTitle("Write cheque", for: .normal)
-        self.topViewForModalAnimation.backgroundColor = .black
+        self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
         self.topViewForModalAnimation.tag = Constants.modalViewTag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
-        self.view.addSubview(topViewForModalAnimation)
+        self.tabBarController?.view.addSubview(topViewForModalAnimation)
     }
     
     func setupSideBar() {
@@ -70,7 +70,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
         SideMenuManager.default.menuWidth = 0.85 * UIScreen.main.bounds.width
         SideMenuManager.default.menuShadowOpacity = 0.5
         SideMenuManager.default.menuShadowColor = UIColor.black
-        SideMenuManager.default.menuShadowRadius = 100
+        SideMenuManager.default.menuShadowRadius = 5
     }
 
     func setupTableView() {
@@ -228,9 +228,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.250, animations: {
-                for view in self.view.subviews where view.tag == Constants.modalViewTag {
-                    view.alpha = 0
-                }
+                self.topViewForModalAnimation.alpha = 0
             })
         }
     }
@@ -238,7 +236,7 @@ class WalletViewController: BasicViewController, SWRevealViewControllerDelegate,
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.250, animations: {
-                self.topViewForModalAnimation.alpha = 0.1
+                self.topViewForModalAnimation.alpha = 0.5
             })
         }
     }
@@ -329,5 +327,15 @@ extension WalletViewController: TokenCellDelegate {
         publicKeyController.modalPresentationStyle = .overCurrentContext
         publicKeyController.view.layer.speed = 0.5
         self.tabBarController?.present(publicKeyController, animated: true, completion: nil)
+    }
+}
+
+extension WalletViewController: UISideMenuNavigationControllerDelegate {
+    func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
+        modalViewAppeared()
+    }
+    
+    func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        modalViewBeenDismissed()
     }
 }

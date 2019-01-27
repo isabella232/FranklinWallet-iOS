@@ -31,11 +31,11 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     }
     
     func additionalSetup() {
-        self.topViewForModalAnimation.backgroundColor = .black
+        self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
         self.topViewForModalAnimation.tag = Constants.modalViewTag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
-        self.view.addSubview(topViewForModalAnimation)
+        self.tabBarController?.view.addSubview(topViewForModalAnimation)
     }
 
     lazy var dateFormatter: DateFormatter = {
@@ -53,8 +53,8 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
         self.setupSideBar()
         self.additionalSetup()
         
-        //self.txsMock()
-        CurrentWallet.currentWallet = Wallet(address: "0x832a630B949575b87C0E3C00f624f773D9B160f4", data: Data(), name: "dfad", isHD: true)
+        self.txsMock()
+        //CurrentWallet.currentWallet = Wallet(address: "0x832a630B949575b87C0E3C00f624f773D9B160f4", data: Data(), name: "dfad", isHD: true)
     }
     
     func txsMock() {
@@ -68,8 +68,8 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DispatchQueue.global().async { [unowned self] in
-            //self.reloadTableView()
-            self.uploadTransactions()
+            self.reloadTableView()
+            //self.uploadTransactions()
         }
     }
 
@@ -95,15 +95,13 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
         SideMenuManager.default.menuWidth = 0.85 * UIScreen.main.bounds.width
         SideMenuManager.default.menuShadowOpacity = 0.5
         SideMenuManager.default.menuShadowColor = UIColor.black
-        SideMenuManager.default.menuShadowRadius = 100
+        SideMenuManager.default.menuShadowRadius = 5
     }
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.250, animations: {
-                for view in self.view.subviews where view.tag == Constants.modalViewTag {
-                    view.alpha = 0
-                }
+                self.topViewForModalAnimation.alpha = 0
             })
         }
         uploadTransactions()
@@ -112,7 +110,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
             UIView.animate(withDuration: 0.250, animations: {
-                self.topViewForModalAnimation.alpha = 0.1
+                self.topViewForModalAnimation.alpha = 0.5
             })
         }
     }
@@ -282,5 +280,15 @@ extension TransactionsHistoryViewController: LongPressDelegate {
             topController = topController?.presentedViewController
         }
         return topController
+    }
+}
+
+extension TransactionsHistoryViewController: UISideMenuNavigationControllerDelegate {
+    func sideMenuWillAppear(menu: UISideMenuNavigationController, animated: Bool) {
+        modalViewAppeared()
+    }
+    
+    func sideMenuWillDisappear(menu: UISideMenuNavigationController, animated: Bool) {
+        modalViewBeenDismissed()
     }
 }

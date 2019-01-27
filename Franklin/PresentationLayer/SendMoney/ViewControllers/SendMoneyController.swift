@@ -149,6 +149,7 @@ class SendMoneyController: BasicViewController {
             self.collectionView.isHidden = true
             self.mainButton.setTitle("Other app...", for: .normal)
             self.mainButton.changeColorOn(background: Colors.textWhite, text: Colors.mainBlue)
+            self.mainButton.setImage(UIImage(named: "share-blue"), for: .normal)
 //            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
 //            self.mainButton.backgroundColor = .white
             self.mainButton.layer.borderWidth = 1
@@ -176,6 +177,7 @@ class SendMoneyController: BasicViewController {
             self.collectionView.isHidden = false
             self.mainButton.setTitle("Back", for: .normal)
             self.mainButton.changeColorOn(background: Colors.textWhite, text: Colors.mainBlue)
+            self.mainButton.setImage(UIImage(named: "left-blue"), for: .normal)
 //            self.mainButton.setTitleColor(Colors.mainBlue, for: .normal)
 //            self.mainButton.backgroundColor = .white
             self.mainButton.layer.borderWidth = 1
@@ -212,6 +214,7 @@ class SendMoneyController: BasicViewController {
             self.collectionView.isHidden = true
             
             self.mainButton.setTitle("Send to \(contact.name)", for: .normal)
+            self.mainButton.setImage(UIImage(named: "send-white"), for: .normal)
 //            self.mainButton.setTitleColor(.white, for: .normal)
 //            self.mainButton.backgroundColor = Colors.orange
             self.mainButton.layer.borderWidth = 0
@@ -266,7 +269,8 @@ class SendMoneyController: BasicViewController {
             self.sendingGif.alpha = 0
             self.mainButton.alpha = 1
             self.mainButton.setTitle("Close", for: .normal)
-//            self.mainButton.backgroundColor = Colors.mainBlue
+            self.mainButton.setImage(nil, for: .normal)
+            //            self.mainButton.backgroundColor = Colors.mainBlue
             
             self.mainButton.changeColorOn(background: Colors.mainBlue, text: Colors.textWhite)
         }

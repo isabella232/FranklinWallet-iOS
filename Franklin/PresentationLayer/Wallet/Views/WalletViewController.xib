@@ -65,7 +65,9 @@
                                 <constraint firstAttribute="height" constant="50" id="Liv-KA-b0X"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
-                            <state key="normal" title="Write cheque">
+                            <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="Write cheque" image="writing-tool">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -94,5 +96,6 @@
     <resources>
         <image name="menuicon" width="21" height="16"/>
         <image name="photo" width="96" height="96"/>
+        <image name="writing-tool" width="24" height="24"/>
     </resources>
 </document>
