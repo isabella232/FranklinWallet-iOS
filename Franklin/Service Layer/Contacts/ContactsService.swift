@@ -79,7 +79,7 @@ extension ContactsService: IContactsStorage {
     
     public func getContactsList(for searchingString: String) throws -> [Contact] {
         let requestContact: NSFetchRequest<ContactModel> = ContactModel.fetchRequest()
-        requestContact.predicate = NSPredicate(format: "address CONTAINS[c] %@ || name CONTAINS[c] %@",
+        requestContact.predicate = NSPredicate(format: "name CONTAINS[c] %@",
                                                searchingString,
                                                searchingString)
         do {

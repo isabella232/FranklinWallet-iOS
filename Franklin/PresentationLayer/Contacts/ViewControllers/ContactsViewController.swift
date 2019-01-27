@@ -14,7 +14,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var helpLabel: UILabel!
     @IBOutlet weak var addContactButton: BasicBlueButton!
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchTextField: BasicTextField!
     
     var contactsList: [Contact] = []
     var filteredContactsList: [Contact] = []
@@ -37,7 +37,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         self.hideKeyboardWhenTappedAround()
         self.setupNavigation()
         self.setupTableView()
-        self.setupSearchBar()
+        self.setupSearch()
         self.additionalSetup()
         self.setupSideBar()
     }
@@ -66,8 +66,8 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         self.contactsList.removeAll()
     }
 
-    func setupSearchBar() {
-        searchBar.delegate = self
+    func setupSearch() {
+        searchTextField.delegate = self
         definesPresentationContext = true
     }
     
@@ -124,7 +124,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     }
 
     @IBAction func addContact(_ sender: Any) {
-        self.searchBar.endEditing(true)
+        self.searchTextField.endEditing(true)
         self.modalViewAppeared()
         let addContactController = AddContactController()
         addContactController.delegate = self
@@ -149,11 +149,19 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     func updateContactsList(with list: [Contact]) {
         DispatchQueue.main.async { [weak self] in
             self?.contactsList = list
-            if list.count == 0 && self?.searchBar.text == "" {
+            if list.count == 0 && self?.searchTextField.text == "" {
                 self?.makeHelpLabel(enabled: true)
             }
             self?.collectionView?.reloadData()
         }
+    }
+    
+    func searchContact(string: String) {
+        guard let list = try? ContactsService().getFullContactsList(for: string) else {
+            self.emptyContactsList()
+            return
+        }
+        self.updateContactsList(with: list)
     }
 }
 
@@ -185,40 +193,20 @@ extension ContactsViewController: UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-extension ContactsViewController: UISearchBarDelegate {
-
-    func searchContact(string: String) {
-        guard let list = try? ContactsService().getFullContactsList(for: string) else {
-            self.emptyContactsList()
-            return
-        }
-        self.updateContactsList(with: list)
-    }
-
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+extension ContactsViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = (textField.text ?? "") as NSString
+        let newText = currentText.replacingCharacters(in: range, with: string) as String
+        if newText == "" {
             getAllContacts()
         } else {
-            let contact = searchText
+            let contact = newText
             searchContact(string: contact)
         }
-    }
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.collectionView.setContentOffset(.zero, animated: true)
-        getAllContacts()
+        return true
     }
 }
-
-//extension ContactsViewController: UIViewControllerTransitioningDelegate {
-//    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-//        return DismissAnimator()
-//    }
-//
-//    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-//        return interactor.hasStarted ? interactor : nil
-//    }
-//}
 
 extension ContactsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,

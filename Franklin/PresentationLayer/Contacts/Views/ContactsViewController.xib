@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
         <array key="librefranklin-semibold.ttf">
             <string>LibreFranklin-SemiBold</string>
         </array>
@@ -20,7 +23,7 @@
                 <outlet property="addContactButton" destination="rZs-6I-w5i" id="6Dn-qU-dP1"/>
                 <outlet property="collectionView" destination="gZc-jg-Soc" id="P8K-bV-Aiu"/>
                 <outlet property="helpLabel" destination="f0m-LF-rrX" id="fHe-1W-tRY"/>
-                <outlet property="searchBar" destination="dHb-LC-A7p" id="OOH-ah-fPv"/>
+                <outlet property="searchTextField" destination="sAc-Ei-VFq" id="t5Z-rL-jaS"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,20 +33,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBh-M9-TID">
-                    <rect key="frame" x="20" y="50" width="335" height="44"/>
+                    <rect key="frame" x="20" y="50" width="335" height="42"/>
                     <fontDescription key="fontDescription" name="LibreFranklin-SemiBold" family="Libre Franklin" pointSize="36"/>
                     <color key="textColor" red="0.27450980390000002" green="0.49803921569999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Contact name" translatesAutoresizingMaskIntoConstraints="NO" id="dHb-LC-A7p">
-                    <rect key="frame" x="37.5" y="114" width="300" height="56"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="wvl-e9-QVN"/>
-                    </constraints>
-                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                </searchBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-jg-Soc">
-                    <rect key="frame" x="37.5" y="180" width="300" height="387"/>
+                    <rect key="frame" x="37.5" y="201" width="300" height="366"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Qw-dE-OWW">
                         <size key="itemSize" width="50" height="50"/>
@@ -85,23 +81,32 @@
                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="NDf-MU-sSs"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAc-Ei-VFq" customClass="BasicTextField" customModule="Franklin_dev" customModuleProvider="target">
+                    <rect key="frame" x="37.5" y="117" width="300" height="59"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="59" id="Kqo-UH-cbK"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="22"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="light" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                </textField>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BBh-M9-TID" secondAttribute="trailing" constant="20" id="8vJ-aH-8Dp"/>
+                <constraint firstItem="sAc-Ei-VFq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8yr-nb-mOa"/>
                 <constraint firstItem="BBh-M9-TID" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="Fiv-Us-DmC"/>
+                <constraint firstItem="sAc-Ei-VFq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="KcJ-mE-IWc"/>
                 <constraint firstItem="f0m-LF-rrX" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="OCB-j7-ILc"/>
                 <constraint firstItem="f0m-LF-rrX" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="QC8-jN-Who"/>
-                <constraint firstItem="dHb-LC-A7p" firstAttribute="top" secondItem="BBh-M9-TID" secondAttribute="bottom" constant="20" id="Qvh-Um-1ag"/>
-                <constraint firstItem="dHb-LC-A7p" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="RcK-A2-tMK"/>
                 <constraint firstItem="gZc-jg-Soc" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="X2c-HY-ox3"/>
-                <constraint firstItem="gZc-jg-Soc" firstAttribute="top" secondItem="dHb-LC-A7p" secondAttribute="bottom" constant="10" id="Xnp-Sl-Qv1"/>
                 <constraint firstItem="QYc-oH-GL0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ZTL-B9-Vih"/>
+                <constraint firstItem="gZc-jg-Soc" firstAttribute="top" secondItem="sAc-Ei-VFq" secondAttribute="bottom" constant="25" id="aDz-YE-1v3"/>
                 <constraint firstItem="BBh-M9-TID" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="adm-jx-6j6"/>
                 <constraint firstItem="rZs-6I-w5i" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="lNh-PP-XkH"/>
                 <constraint firstItem="gZc-jg-Soc" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="mK5-Qj-OBK"/>
+                <constraint firstItem="sAc-Ei-VFq" firstAttribute="top" secondItem="BBh-M9-TID" secondAttribute="bottom" constant="25" id="nDp-Vq-YFx"/>
                 <constraint firstItem="rZs-6I-w5i" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="nyf-WN-mki"/>
-                <constraint firstItem="dHb-LC-A7p" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="p22-Mg-feG"/>
                 <constraint firstItem="f0m-LF-rrX" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="qjI-N7-2P5"/>
                 <constraint firstItem="QYc-oH-GL0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="rXF-Qs-dSm"/>
                 <constraint firstItem="rZs-6I-w5i" firstAttribute="top" secondItem="gZc-jg-Soc" secondAttribute="bottom" constant="20" id="wI6-BV-Q0a"/>
