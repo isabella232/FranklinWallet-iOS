@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsHistoryViewController" customModule="DiveLane" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsHistoryViewController" customModule="Franklin_dev" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="1v0-2Z-m9X" id="weW-q2-Wlc"/>
                 <outlet property="transactionsTypeSegmentedControl" destination="2QD-ja-FLv" id="I4y-u2-45F"/>
@@ -27,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1v0-2Z-m9X">
-                    <rect key="frame" x="0.0" y="158" width="375" height="489"/>
+                    <rect key="frame" x="0.0" y="158" width="375" height="509"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2QD-ja-FLv">
@@ -67,7 +68,7 @@
                 <constraint firstItem="tLb-oQ-tLY" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="780-yq-X12"/>
                 <constraint firstItem="1v0-2Z-m9X" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Eq5-Bh-XCX"/>
                 <constraint firstItem="1v0-2Z-m9X" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="IZZ-aK-chy"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1v0-2Z-m9X" secondAttribute="bottom" constant="20" id="KIi-MP-i6Q"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1v0-2Z-m9X" secondAttribute="bottom" id="KIi-MP-i6Q"/>
                 <constraint firstItem="tLb-oQ-tLY" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="MEl-SD-0za"/>
                 <constraint firstItem="nzT-Xk-IIZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="SNf-Or-3Wc"/>
                 <constraint firstItem="1v0-2Z-m9X" firstAttribute="top" secondItem="2QD-ja-FLv" secondAttribute="bottom" constant="16" id="Set-cZ-Fpg"/>
