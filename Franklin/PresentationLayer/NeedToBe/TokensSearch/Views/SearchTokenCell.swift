@@ -25,20 +25,20 @@ class SearchTokenCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bottomBackgroundView.backgroundColor = Colors.firstMain
-        self.topBackgroundView.backgroundColor = Colors.secondMain
+        self.bottomBackgroundView.backgroundColor = Colors.mainBlue
+        self.topBackgroundView.backgroundColor = Colors.textWhite
         self.topBackgroundView.layer.cornerRadius = 10
-        self.title.textColor = Colors.textFirst
+        self.title.textColor = Colors.textBlack
         self.title.font = UIFont(name: Constants.regularFont, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
-        self.addressLabel.textColor = Colors.textFirst
+        self.addressLabel.textColor = Colors.textBlack
         self.addressLabel.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
-        self.rate.textColor = Colors.active
+        self.rate.textColor = Colors.mainGreen
         self.rate.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
-        self.usdRate.textColor = Colors.textSecond
+        self.usdRate.textColor = Colors.textDarkGray
         self.usdRate.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
-        self.hoursStat.textColor = Colors.textSecond
+        self.hoursStat.textColor = Colors.textDarkGray
         self.hoursStat.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
-        self.hoursStatProc.textColor = Colors.textSecond
+        self.hoursStatProc.textColor = Colors.textDarkGray
         self.hoursStatProc.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
         self.addedIcon.image = UIImage(named: "added")
         
@@ -51,7 +51,7 @@ class SearchTokenCell: UITableViewCell {
         self.title.text = title
         self.rate.text = (token.rate != nil) ? ("$" + String(token.rate!)) : "-"
         self.hoursStatProc.text = (token.change24 != nil) ? (String(token.change24!) + "%") : "-"
-        self.hoursStatProc.textColor = (token.change24 ?? 0.0) < 0.0 ? Colors.negative : Colors.positive
+        self.hoursStatProc.textColor = (token.change24 ?? 0.0) < 0.0 ? Colors.mainGreen : Colors.orange
         
         addressLabel.text = token.address.hideExtraSymbolsInAddress()
         addedIcon.alpha = isAdded ? 1.0 : 0.0

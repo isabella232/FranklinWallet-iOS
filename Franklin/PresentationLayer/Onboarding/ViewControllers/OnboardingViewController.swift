@@ -366,7 +366,7 @@ class OnboardingViewController: BasicViewController {
     }
     
     func animateIndicator() {
-        UIView.animate(withDuration: 0.250) {
+        UIView.animate(withDuration: Constants.animationDuration) {
             self.continueButton.alpha = 0
             self.link.alpha = 0
             self.bottomInfo.alpha = 0
@@ -377,13 +377,13 @@ class OnboardingViewController: BasicViewController {
     
     func goToApp() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250) {
+            UIView.animate(withDuration: Constants.animationDuration) {
                 self.view.alpha = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let tabViewController = self.appController.goToApp()
                     tabViewController.view.backgroundColor = Colors.background
                     let transition = CATransition()
-                    transition.duration = 0.5
+                    transition.duration = Constants.animationDuration
                     transition.type = CATransitionType.push
                     transition.subtype = CATransitionSubtype.fromRight
                     transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)

@@ -15,12 +15,12 @@ class OnboardingContentViewController: UIViewController {
     func setViews() {
 
         let titleAttr = [
-            NSAttributedString.Key.foregroundColor: Colors.secondMain,
+            NSAttributedString.Key.foregroundColor: Colors.textWhite,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: Constants.basicFontSize, weight: .bold)
         ]
 
         let subtitleAttr = [
-            NSAttributedString.Key.foregroundColor: Colors.secondMain,
+            NSAttributedString.Key.foregroundColor: Colors.textWhite,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: Constants.basicFontSize, weight: .light)
         ]
 

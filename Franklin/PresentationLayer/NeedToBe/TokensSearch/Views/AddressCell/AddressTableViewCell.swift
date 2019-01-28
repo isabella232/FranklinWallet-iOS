@@ -19,7 +19,7 @@ class AddressTableViewCell: UITableViewCell {
         
         self.selectionStyle = .none
         
-        backView.backgroundColor = Colors.firstMain
+        backView.backgroundColor = Colors.background
         
         let height: CGFloat = 30
         let heightPasteContraint = NSLayoutConstraint(item: paste, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
@@ -27,9 +27,9 @@ class AddressTableViewCell: UITableViewCell {
         paste.layer.cornerRadius = height / 2
         paste.clipsToBounds = true
         let font = UIFont(name: Constants.boldFont, size: Constants.basicFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.basicFontSize)
-        paste.backgroundColor = Colors.secondMain
+        paste.backgroundColor = Colors.background
         paste.titleLabel?.font = font
-        paste.setTitleColor(Colors.firstMain, for: .normal)
+        paste.setTitleColor(Colors.textDarkGray, for: .normal)
         
         qr.setBackgroundImage(UIImage(named: "qr"), for: .normal)
         let heightQRContraint = NSLayoutConstraint(item: qr, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)

@@ -25,12 +25,12 @@ class WalletCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bottomBackgroundView.backgroundColor = Colors.firstMain
-        self.topBackgroundView.backgroundColor = Colors.secondMain
+        self.bottomBackgroundView.backgroundColor = Colors.background
+        self.topBackgroundView.backgroundColor = Colors.background
         self.topBackgroundView.layer.cornerRadius = 10
-        self.walletName.textColor = Colors.textFirst
-        self.walletAddress.textColor = Colors.textSecond
-        self.walletBalance.textColor = Colors.textFirst
+        self.walletName.textColor = Colors.textDarkGray
+        self.walletAddress.textColor = Colors.textLightGray
+        self.walletBalance.textColor = Colors.textDarkGray
         self.infoButton.setImage(UIImage(named: "info"), for: .normal)
         self.selectedWalletIcon.image = UIImage(named: "added")
     }

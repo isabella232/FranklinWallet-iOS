@@ -9,6 +9,8 @@
 import UIKit
 
 public struct Constants {
+    static let animationDuration: TimeInterval = 0.25
+    static let modalViewSpeed: Float = 0.5
     static let modalViewTag = 1001
     static let widthCoef: CGFloat = 0.9
     static let horizontalConst: CGFloat = 20
@@ -66,6 +68,7 @@ public struct Constants {
     }
     public struct headers {
         public struct heights {
+            static let txHistory: CGFloat = 46
             static let wallets: CGFloat = 30
             static let tokens: CGFloat = 30
         }

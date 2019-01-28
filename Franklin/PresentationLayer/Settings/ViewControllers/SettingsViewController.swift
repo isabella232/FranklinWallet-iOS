@@ -38,7 +38,7 @@ class SettingsViewController: BasicViewController {
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         let footerView = UIView()
-        footerView.backgroundColor = Colors.firstMain
+        footerView.backgroundColor = Colors.background
         settingsTableView.tableFooterView = footerView
         settingsTableView.register(nibToken, forCellReuseIdentifier: "SettingsCell")
         mainSettings.removeAll()

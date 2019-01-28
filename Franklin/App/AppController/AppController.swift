@@ -52,32 +52,32 @@ public class AppController {
         return nav
     }
     
-    public func createPincodeController() -> UINavigationController {
-        let vc = CreatePincodeViewController()
-        let nav = navigationController(withTitle: "Create Pincode",
-                                       withImage: nil,
-                                       withController: vc,
-                                       tag: 0)
-        return nav
-    }
+//    public func createPincodeController() -> UINavigationController {
+//        let vc = CreatePincodeViewController()
+//        let nav = navigationController(withTitle: "Create Pincode",
+//                                       withImage: nil,
+//                                       withController: vc,
+//                                       tag: 0)
+//        return nav
+//    }
     
-    public func walletCreationVC() -> UINavigationController {
-        let vc = WalletCreationAnimationViewController()
-        let nav = navigationController(withTitle: "Creating wallet",
-                                       withImage: nil,
-                                       withController: vc,
-                                       tag: 0)
-        return nav
-    }
+//    public func walletCreationVC() -> UINavigationController {
+//        let vc = WalletCreationAnimationViewController()
+//        let nav = navigationController(withTitle: "Creating wallet",
+//                                       withImage: nil,
+//                                       withController: vc,
+//                                       tag: 0)
+//        return nav
+//    }
 
-    public func addWalletController() -> UINavigationController {
-        let vc = AddWalletViewController(isNavigationBarNeeded: false)
-        let nav = navigationController(withTitle: "Add Wallet",
-                                       withImage: nil,
-                                       withController: vc,
-                                       tag: 0)
-        return nav
-    }
+//    public func addWalletController() -> UINavigationController {
+//        let vc = AddWalletViewController(isNavigationBarNeeded: false)
+//        let nav = navigationController(withTitle: "Add Wallet",
+//                                       withImage: nil,
+//                                       withController: vc,
+//                                       tag: 0)
+//        return nav
+//    }
 
     public func goToApp() -> UINavigationController {
 //    public func goToApp() -> SWRevealViewController {

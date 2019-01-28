@@ -105,7 +105,7 @@ class SendMoneyController: BasicViewController {
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
         let footerView = UIView()
-        footerView.backgroundColor = Colors.firstMain
+        footerView.backgroundColor = Colors.background
         
         let nibSearch = UINib.init(nibName: "ContactCell", bundle: nil)
         self.collectionView.register(nibSearch, forCellWithReuseIdentifier: reuseIdentifier)
@@ -168,7 +168,7 @@ class SendMoneyController: BasicViewController {
     @objc func showSearch(animated: Bool) {
         self.screenStatus = .searching
         self.chosenContact = nil
-        UIView.animate(withDuration: 0.250) { [unowned self] in
+        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
@@ -188,7 +188,7 @@ class SendMoneyController: BasicViewController {
             self.separatorView.alpha = 0
             self.sendToContactLabel.alpha = 1
         }
-        UIView.animate(withDuration: 0.250) { [unowned self] in
+        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
             self.searchStackView.frame.origin.y = self.amountStackView.frame.origin.y
         }
     }
@@ -205,7 +205,7 @@ class SendMoneyController: BasicViewController {
         self.contactName.text = contact.name
         self.contactAddress.text = contact.address
         
-        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
@@ -232,7 +232,7 @@ class SendMoneyController: BasicViewController {
     
     @objc func showSending(animated: Bool) {
         self.screenStatus = .sending
-        UIView.animate(withDuration: animated ? 0.250 : 0, animations: { [unowned self] in
+        UIView.animate(withDuration: animated ? Constants.animationDuration : 0, animations: { [unowned self] in
             self.titleLabel.text = "Sending..."
             self.sendingGif.alpha = 1
             self.sendToContactLabel.alpha = 0
@@ -259,11 +259,11 @@ class SendMoneyController: BasicViewController {
     
     @objc func showReady(animated: Bool) {
         self.screenStatus = .ready
-        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
             self.readyIcon.alpha = 1
             self.readyIcon.transform = CGAffineTransform(scaleX: 3, y: 3)
         }
-        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Sent!"
             self.titleLabel.textColor = Colors.mainGreen
             self.sendingGif.alpha = 0

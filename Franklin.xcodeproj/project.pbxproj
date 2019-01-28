@@ -105,7 +105,6 @@
 		E2A8DBA021F676780031AC58 /* TextViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8DB9F21F676780031AC58 /* TextViewExtension.swift */; };
 		E2A8DBA321F676E80031AC58 /* WalletCreationAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8DBA121F676E80031AC58 /* WalletCreationAnimationViewController.swift */; };
 		E2A8DBA421F676E80031AC58 /* WalletCreationAnimationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2A8DBA221F676E80031AC58 /* WalletCreationAnimationViewController.xib */; };
-		E2A8DBB321F693A00031AC58 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A8DBB221F6939F0031AC58 /* SWRevealViewController.m */; };
 		E2A8DBB921F6A96F0031AC58 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A8DBB821F6A96F0031AC58 /* ViewExtension.swift */; };
 		E2B45A2E2174D1CD00F38E50 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A2C2174D1CC00F38E50 /* Interactor.swift */; };
 		E2B45A4B21761F4000F38E50 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B45A4921761F4000F38E50 /* ContactsViewController.swift */; };
@@ -380,9 +379,6 @@
 		E2A8DB9F21F676780031AC58 /* TextViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewExtension.swift; sourceTree = "<group>"; };
 		E2A8DBA121F676E80031AC58 /* WalletCreationAnimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCreationAnimationViewController.swift; sourceTree = "<group>"; };
 		E2A8DBA221F676E80031AC58 /* WalletCreationAnimationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletCreationAnimationViewController.xib; sourceTree = "<group>"; };
-		E2A8DBB021F6939D0031AC58 /* Franklin-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Franklin-Bridging-Header.h"; sourceTree = "<group>"; };
-		E2A8DBB121F6939F0031AC58 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		E2A8DBB221F6939F0031AC58 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		E2A8DBB821F6A96F0031AC58 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		E2B45A2C2174D1CC00F38E50 /* Interactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		E2B45A2D2174D1CC00F38E50 /* DismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
@@ -1148,16 +1144,6 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		E2A8DBAF21F693680031AC58 /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E2A8DBB121F6939F0031AC58 /* SWRevealViewController.h */,
-				E2A8DBB221F6939F0031AC58 /* SWRevealViewController.m */,
-				E2A8DBB021F6939D0031AC58 /* Franklin-Bridging-Header.h */,
-			);
-			path = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		E2A8DBBA21F780280031AC58 /* WalletsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1459,7 +1445,6 @@
 				E2F0EFE621F8CACA00F11AD1 /* Gifs */,
 				E2F0EF7F21F8B9F700F11AD1 /* Fonts */,
 				E2F0EF6B21F7C2E500F11AD1 /* TabBarController */,
-				E2A8DBAF21F693680031AC58 /* SWRevealViewController */,
 				E2D451D821EE350C00218872 /* NavigationController */,
 				E2D451D521EE330400218872 /* SegmenterControl */,
 				E2D451D421EE304F00218872 /* Alerts */,
@@ -2284,7 +2269,6 @@
 				B20914FE214A564500C8B408 /* WalletsViewController.swift in Sources */,
 				E2C1109421E557FE0012A978 /* EIP681.swift in Sources */,
 				E2A8DBA321F676E80031AC58 /* WalletCreationAnimationViewController.swift in Sources */,
-				E2A8DBB321F693A00031AC58 /* SWRevealViewController.m in Sources */,
 				E2A8DAFA21F1F6A00031AC58 /* Web3Network.swift in Sources */,
 				E27BF76F21D1447A00951061 /* SignedTransaction.swift in Sources */,
 				E2A8DB0421F1FA480031AC58 /* PlasmaCoordinator.swift in Sources */,
@@ -2568,6 +2552,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5UH69GW6GE;
+				IBSC_MODULE = "$(PRODUCT_MODULE_NAME)";
 				INFOPLIST_FILE = "$(SRCROOT)/Franklin/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2577,7 +2562,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = inc.matter.Franklin;
 				PRODUCT_NAME = "Franklin-dev";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Franklin/DesignElements/SWRevealViewController/Franklin-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2603,10 +2587,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = inc.matter.Franklin;
-				PRODUCT_NAME = "Franklin-dev";
+				PRODUCT_NAME = Franklin;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Franklin/DesignElements/SWRevealViewController/Franklin-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -2677,6 +2660,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5UH69GW6GE;
+				IBSC_MODULE = "$(PRODUCT_MODULE_NAME)";
 				INFOPLIST_FILE = "$(SRCROOT)/Franklin/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2685,10 +2669,9 @@
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = inc.matter.Franklin;
-				PRODUCT_NAME = "Franklin-dev";
+				PRODUCT_NAME = "Franklin-beta";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Franklin/DesignElements/SWRevealViewController/Franklin-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

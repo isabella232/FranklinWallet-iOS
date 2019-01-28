@@ -91,7 +91,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     }
     
     func appearAnimation() {
-        UIView.animate(withDuration: 0.250) { [unowned self] in
+        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
             self.view.alpha = 1
         }
     }
@@ -122,11 +122,11 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
     }
 
-    func enterPincode(for transaction: PlasmaTransaction) {
-        //need to wallet.getPassword
-        let enterPincode = EnterPincodeViewController(for: .transaction, data: transaction)
-        self.navigationController?.pushViewController(enterPincode, animated: true)
-    }
+//    func enterPincode(for transaction: PlasmaTransaction) {
+//        //need to wallet.getPassword
+//        let enterPincode = EnterPincodeViewController(for: .transaction, data: transaction)
+//        self.navigationController?.pushViewController(enterPincode, animated: true)
+//    }
 
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         self.updateTokensBalances {
@@ -227,7 +227,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -235,7 +235,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0.5
             })
         }
@@ -246,7 +246,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         let sendMoneyVC = SendMoneyController()
         sendMoneyVC.delegate = self
         sendMoneyVC.modalPresentationStyle = .overCurrentContext
-        sendMoneyVC.view.layer.speed = 0.5
+        sendMoneyVC.view.layer.speed = Constants.modalViewSpeed
         self.tabBarController?.present(sendMoneyVC, animated: true, completion: nil)
     }
     
@@ -325,7 +325,7 @@ extension WalletViewController: TokenCellDelegate {
         let publicKeyController = PublicKeyViewController(for: wallet)
         publicKeyController.delegate = self
         publicKeyController.modalPresentationStyle = .overCurrentContext
-        publicKeyController.view.layer.speed = 0.5
+        publicKeyController.view.layer.speed = Constants.modalViewSpeed
         self.tabBarController?.present(publicKeyController, animated: true, completion: nil)
     }
 }

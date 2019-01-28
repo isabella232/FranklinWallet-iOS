@@ -58,7 +58,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     }
     
     func txsMock() {
-        self.transactions = [[ETHTransaction(transactionHash: "123", from: (CurrentWallet.currentWallet?.address)!, to: "Bob", amount: "123.12", date: dateFormatter.date(from: "June 10, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false)], [ETHTransaction(transactionHash: "123", from: "Ann", to: (CurrentWallet.currentWallet?.address)!, amount: "12", date: dateFormatter.date(from: "June 09, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false)], [ETHTransaction(transactionHash: "123", from: (CurrentWallet.currentWallet?.address)!, to: "0x0kxdmklfamdlkfm13r214dsfsd12rfsd", amount: "1", date: dateFormatter.date(from: "June 07, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: true)]]
+        self.transactions = [[ETHTransaction(transactionHash: "123", from: (CurrentWallet.currentWallet?.address)!, to: "Bob", amount: "123.12", date: dateFormatter.date(from: "June 10, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false)], [ETHTransaction(transactionHash: "123", from: "Mike", to: (CurrentWallet.currentWallet?.address)!, amount: "12", date: dateFormatter.date(from: "June 09, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false), ETHTransaction(transactionHash: "123", from: "Ann", to: (CurrentWallet.currentWallet?.address)!, amount: "12", date: dateFormatter.date(from: "June 09, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false), ETHTransaction(transactionHash: "123", from: "Joe", to: (CurrentWallet.currentWallet?.address)!, amount: "12", date: dateFormatter.date(from: "June 09, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: false)], [ETHTransaction(transactionHash: "123", from: (CurrentWallet.currentWallet?.address)!, to: "0x0kxdmklfamdlkfm13r214dsfsd12rfsd", amount: "1", date: dateFormatter.date(from: "June 07, 2018")!, data: nil, token: Franklin(), networkId: 1, isPending: true)]]
     }
     
     func setupNavigation() {
@@ -100,7 +100,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -109,7 +109,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0.5
             })
         }
@@ -215,6 +215,11 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
 }
 
 extension TransactionsHistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.headers.heights.txHistory
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return transactions.count
     }
@@ -224,13 +229,13 @@ extension TransactionsHistoryViewController: UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 46))
-        let label = UILabel(frame: CGRect(x: 20, y: 7, width: UIScreen.main.bounds.width, height: 22))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: Constants.headers.heights.txHistory))
+        let label = UILabel(frame: CGRect(x: 20, y: Constants.headers.heights.txHistory/4, width: UIScreen.main.bounds.width, height: Constants.headers.heights.txHistory/2))
         label.text = dateFormatter.string(from: transactions[section][0].date)
-        label.font = UIFont(name: Constants.semiboldFont, size: 20)!
+        label.font = UIFont(name: Constants.semiboldFont, size: Constants.basicFontSize)!
         view.backgroundColor = UIColor.white
         view.addSubview(label)
-        let separator = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 1))
+        let separator = UIView(frame: CGRect(x: 0, y: Constants.headers.heights.txHistory - 1, width: UIScreen.main.bounds.width, height: 1))
         separator.backgroundColor = Colors.mostLightGray
         view.addSubview(separator)
         return view

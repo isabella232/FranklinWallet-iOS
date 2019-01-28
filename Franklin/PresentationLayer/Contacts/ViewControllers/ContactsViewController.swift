@@ -95,7 +95,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -104,7 +104,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: 0.250, animations: {
+            UIView.animate(withDuration: Constants.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0.5
             })
         }
@@ -129,7 +129,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         let addContactController = AddContactController()
         addContactController.delegate = self
         addContactController.modalPresentationStyle = .overCurrentContext
-        addContactController.view.layer.speed = 0.5
+        addContactController.view.layer.speed = Constants.modalViewSpeed
         self.tabBarController?.present(addContactController, animated: true, completion: nil)
     }
     

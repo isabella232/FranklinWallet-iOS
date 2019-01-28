@@ -18,12 +18,12 @@ class ContactTableCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bottomBackgroundView.backgroundColor = Colors.firstMain
-        self.topBackgroundView.backgroundColor = Colors.secondMain
+        self.bottomBackgroundView.backgroundColor = Colors.background
+        self.topBackgroundView.backgroundColor = Colors.background
         self.topBackgroundView.layer.cornerRadius = 10
-        self.contactName.textColor = Colors.textFirst
+        self.contactName.textColor = Colors.textDarkGray
         self.contactName.font = UIFont(name: Constants.regularFont, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
-        self.contactAddress.textColor = Colors.textSecond
+        self.contactAddress.textColor = Colors.textLightGray
         
         self.contactAddress.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
     }

@@ -19,12 +19,12 @@ class NetworksCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.bottomBackgroundView.backgroundColor = Colors.firstMain
-        self.topBackgroundView.backgroundColor = Colors.secondMain
+        self.bottomBackgroundView.backgroundColor = Colors.background
+        self.topBackgroundView.backgroundColor = Colors.background
         self.topBackgroundView.layer.cornerRadius = 10
-        self.networkLabel.textColor = Colors.textFirst
-        self.networkLabel.textColor = Colors.textSecond
-        self.idLabel.textColor = Colors.textFirst
+        self.networkLabel.textColor = Colors.textDarkGray
+        self.networkLabel.textColor = Colors.textLightGray
+        self.idLabel.textColor = Colors.textDarkGray
         self.selectedIcon.image = UIImage(named: "added")
     }
 

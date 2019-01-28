@@ -115,7 +115,7 @@ class BasicWhiteButton: UIButton {
         self.clipsToBounds = true
         let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize)!
         self.titleLabel?.font = font
-        self.backgroundColor = Colors.textWhite
+        self.backgroundColor = Colors.background
         self.setTitleColor(Colors.mainBlue, for: .normal)
         self.layer.borderWidth = 1
         self.layer.borderColor = Colors.mainBlue.cgColor
@@ -134,11 +134,11 @@ class BasicWhiteButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender, color: self.currentBackgroundColor!)
+        animation.pressButtonStartedAnimation(for: sender, color: self.currentBackgroundColor ?? Colors.background)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender, color: self.currentBackgroundColor!)
+        animation.pressButtonCanceledAnimation(for: sender, color: self.currentBackgroundColor ?? Colors.background)
     }
 }
 
