@@ -11,13 +11,14 @@ import BigInt
 import PromiseKit
 private typealias PromiseResult = PromiseKit.Result
 import CoreData
+import EthereumAddress
 
 protocol IContactsService {
     func getFullContactsList(for searchString: String) throws -> [Contact]
 }
 
 protocol IContactsStorage {
-    func getContact(address: String) throws -> Contact
+    func getContact(address: EthereumAddress) throws -> Contact
     func getAllContacts() throws -> [Contact]
     func getContactsList(for searchingString: String) throws -> [Contact]
 }
@@ -51,9 +52,10 @@ public class ContactsService: IContactsService {
 }
 
 extension ContactsService: IContactsStorage {
-    public func getContact(address: String) throws -> Contact {
+    public func getContact(address: EthereumAddress) throws -> Contact {
+        let addressString = address.address
         let requestContact: NSFetchRequest<ContactModel> = ContactModel.fetchRequest()
-        requestContact.predicate = NSPredicate(format: "address = %@", address)
+        requestContact.predicate = NSPredicate(format: "address = %@", addressString)
         do {
             let results = try ContainerCD.context.fetch(requestContact)
             guard let result = results.first else {

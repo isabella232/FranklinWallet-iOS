@@ -24,6 +24,7 @@ public struct Constants {
     static let lightFont: String = "SFProDisplay-Light"
     static let heavyFont: String = "SFProDisplay-Heavy"
     static let buttonFontSize: CGFloat = 26
+    static let textFieldFontSize: CGFloat = 22
     
     static let basicFontSize: CGFloat = 18
     static let smallFontSize: CGFloat = 14
@@ -34,6 +35,11 @@ public struct Constants {
     public struct textViews {
         public struct heights {
             static let main: CGFloat = 90
+        }
+    }
+    public struct textFields {
+        public struct heights {
+            static let main: CGFloat = 59
         }
     }
     public struct collectionCell {

@@ -55,6 +55,10 @@
 		B209150F214A659500C8B408 /* PrivateKeyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B209150D214A659500C8B408 /* PrivateKeyViewController.xib */; };
 		B219DC2C215B77A80035BF94 /* MatterWalletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219DC2B215B77A80035BF94 /* MatterWalletUITests.swift */; };
 		B219DC34215B786D0035BF94 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B219DC33215B786D0035BF94 /* SnapshotHelper.swift */; };
+		E2215AC021FF44A700FC79AB /* AcceptChequeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2215ABE21FF44A600FC79AB /* AcceptChequeController.swift */; };
+		E2215AC121FF44A700FC79AB /* AcceptChequeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2215ABF21FF44A600FC79AB /* AcceptChequeController.xib */; };
+		E2215AC421FF4B1400FC79AB /* AcceptChequeFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2215AC221FF4B1400FC79AB /* AcceptChequeFormController.swift */; };
+		E2215AC521FF4B1400FC79AB /* AcceptChequeFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2215AC321FF4B1400FC79AB /* AcceptChequeFormController.xib */; };
 		E234C79D21E9E93E00F175AF /* TableWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79C21E9E93E00F175AF /* TableWallet.swift */; };
 		E234C79F21EB4BEB00F175AF /* WalletsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */; };
 		E234C7A621EBF62900F175AF /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C7A521EBF62900F175AF /* BasicTableView.swift */; };
@@ -329,6 +333,10 @@
 		CBC201C3B485F2719151925D /* Pods-MatterWallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatterWallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MatterWallet/Pods-MatterWallet.debug.xcconfig"; sourceTree = "<group>"; };
 		D2A83FAAE20C73BE712E321A /* Pods-MatterWallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatterWallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatterWallet/Pods-MatterWallet.release.xcconfig"; sourceTree = "<group>"; };
 		D5B44D77536C7320086DD73C /* Pods-Franklin.beta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Franklin.beta.xcconfig"; path = "Pods/Target Support Files/Pods-Franklin/Pods-Franklin.beta.xcconfig"; sourceTree = "<group>"; };
+		E2215ABE21FF44A600FC79AB /* AcceptChequeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptChequeController.swift; sourceTree = "<group>"; };
+		E2215ABF21FF44A600FC79AB /* AcceptChequeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptChequeController.xib; sourceTree = "<group>"; };
+		E2215AC221FF4B1400FC79AB /* AcceptChequeFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptChequeFormController.swift; sourceTree = "<group>"; };
+		E2215AC321FF4B1400FC79AB /* AcceptChequeFormController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptChequeFormController.xib; sourceTree = "<group>"; };
 		E234C79C21E9E93E00F175AF /* TableWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableWallet.swift; sourceTree = "<group>"; };
 		E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCoordinator.swift; sourceTree = "<group>"; };
 		E234C7A521EBF62900F175AF /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
@@ -745,6 +753,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F686A421F9DE5A00BD3D14 /* NeedToBe */,
+				E2215ABA21FF43CD00FC79AB /* AcceptCheque */,
 				B271CF98214BADD00023FC18 /* TransactionsHistory */,
 				E2F686A521F9DE9B00BD3D14 /* SendMoney */,
 				E2F0EFEB21F9513C00F11AD1 /* PublicKey */,
@@ -820,6 +829,33 @@
 				B2E668DE2151238200C3CC2D /* Enumerations.swift */,
 			);
 			path = Sending;
+			sourceTree = "<group>";
+		};
+		E2215ABA21FF43CD00FC79AB /* AcceptCheque */ = {
+			isa = PBXGroup;
+			children = (
+				E2215ABD21FF444100FC79AB /* Views */,
+				E2215ABC21FF443500FC79AB /* ViewControllers */,
+			);
+			path = AcceptCheque;
+			sourceTree = "<group>";
+		};
+		E2215ABC21FF443500FC79AB /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2215AC221FF4B1400FC79AB /* AcceptChequeFormController.swift */,
+				E2215ABE21FF44A600FC79AB /* AcceptChequeController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		E2215ABD21FF444100FC79AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2215ABF21FF44A600FC79AB /* AcceptChequeController.xib */,
+				E2215AC321FF4B1400FC79AB /* AcceptChequeFormController.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E234C7A021EB5F8500F175AF /* PrivateKey */ = {
@@ -2024,6 +2060,7 @@
 				E2F0EFAA21F8BA2700F11AD1 /* SF-Pro-Text-Heavy.otf in Resources */,
 				E2F686A921F9DEF600BD3D14 /* SendMoneyController.xib in Resources */,
 				E2F0EFB821F8BA2700F11AD1 /* SF-Pro-Display-Bold.otf in Resources */,
+				E2215AC121FF44A700FC79AB /* AcceptChequeController.xib in Resources */,
 				E2F0EF7E21F7FCC700F11AD1 /* ContactCell.xib in Resources */,
 				9197F2EE2143B92B00C358AA /* WalletViewController.xib in Resources */,
 				B2091507214A5AD000C8B408 /* WalletCell.xib in Resources */,
@@ -2061,6 +2098,7 @@
 				E2F0EFBA21F8BA2700F11AD1 /* SF-Pro-Text-Light.otf in Resources */,
 				914F22A1214A783E00ED58E6 /* EnterPincodeViewController.xib in Resources */,
 				E2F0EFDC21F8BD1500F11AD1 /* librefranklin-thinitalic.ttf in Resources */,
+				E2215AC521FF4B1400FC79AB /* AcceptChequeFormController.xib in Resources */,
 				E2F0EFD821F8BD1500F11AD1 /* librefranklin-extrabolditalic.ttf in Resources */,
 				E2F0EF9F21F8BA2700F11AD1 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
 				E2A8DBA421F676E80031AC58 /* WalletCreationAnimationViewController.xib in Resources */,
@@ -2229,6 +2267,7 @@
 				E27BF78521D1447A00951061 /* PlasmaWeb3ServiceConvenient.swift in Sources */,
 				E27BF78421D1447A00951061 /* PlasmaContractMethods.swift in Sources */,
 				E2C1106421E507260012A978 /* URLs.swift in Sources */,
+				E2215AC421FF4B1400FC79AB /* AcceptChequeFormController.swift in Sources */,
 				E2C1106121E507260012A978 /* TokensService.swift in Sources */,
 				E27BF78621D1447A00951061 /* PlasmaWeb3Service.swift in Sources */,
 				E27BF77B21D1447A00951061 /* BigIntExtension.swift in Sources */,
@@ -2309,6 +2348,7 @@
 				E234C7AC21ECCC1800F175AF /* AnimationController.swift in Sources */,
 				E2F686AC21F9E0C600BD3D14 /* BasicTextField.swift in Sources */,
 				E2C1106321E507260012A978 /* ABIs.swift in Sources */,
+				E2215AC021FF44A700FC79AB /* AcceptChequeController.swift in Sources */,
 				E2C1109521E557FE0012A978 /* EIP681Router.swift in Sources */,
 				E2C110CC21E8A8B90012A978 /* BasicTextView.swift in Sources */,
 				914F228A21499ACC00ED58E6 /* PincodeViewController.swift in Sources */,

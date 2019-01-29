@@ -27,7 +27,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendMoneyController" customModule="Franklin_dev" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SendMoneyController" customModule="Franklin" customModuleProvider="target">
             <connections>
                 <outlet property="amountLabel" destination="h7J-vs-M6e" id="HrF-Hv-q5x"/>
                 <outlet property="amountStackView" destination="uYS-5y-hVw" id="rMw-D3-GXD"/>
@@ -96,12 +96,13 @@
                             <color key="textColor" red="0.27450980390000002" green="0.49803921569999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4H-rt-isT" customClass="BasicWhiteButton" customModule="Franklin_dev" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4H-rt-isT" customClass="BasicWhiteButton" customModule="Franklin" customModuleProvider="target">
                             <rect key="frame" x="41.666666666666657" y="713" width="332.66666666666674" height="50"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="U8B-MD-uiy"/>
                             </constraints>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -122,7 +123,7 @@
                                     <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount in USD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgy-Eq-eB8" customClass="BasicTextField" customModule="Franklin_dev" customModuleProvider="target">
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount in USD" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vgy-Eq-eB8" customClass="BasicTextField" customModule="Franklin" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="36.333333333333343" width="332.66666666666669" height="59"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="59" id="gmh-UN-Vbf"/>
@@ -163,7 +164,7 @@
                                             <color key="textColor" red="0.4431372549" green="0.4431372549" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-2T-fhX" customClass="BasicTextField" customModule="Franklin_dev" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search by name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oBb-2T-fhX" customClass="BasicTextField" customModule="Franklin" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="36.333333333333371" width="332.66666666666669" height="59"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="59" id="dff-cx-qYx"/>
@@ -280,10 +281,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Op7-LO-Qqi">
-                    <rect key="frame" x="-1" y="832" width="416" height="30"/>
+                    <rect key="frame" x="-1" y="832" width="416" height="64"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="aX4-Q8-8L8"/>
+                        <constraint firstAttribute="height" constant="64" id="Cpw-uv-yGK"/>
                     </constraints>
                 </view>
             </subviews>
@@ -297,7 +298,7 @@
                 <constraint firstItem="cEW-fv-k5h" firstAttribute="bottom" secondItem="2hx-Eu-a6f" secondAttribute="bottom" id="awP-5q-IJF"/>
                 <constraint firstItem="2hx-Eu-a6f" firstAttribute="top" secondItem="cEW-fv-k5h" secondAttribute="top" constant="25" id="iHM-k2-hNs"/>
                 <constraint firstItem="2hx-Eu-a6f" firstAttribute="top" secondItem="tXO-f0-PcV" secondAttribute="bottom" id="j8v-qq-X4c"/>
-                <constraint firstItem="Op7-LO-Qqi" firstAttribute="bottom" secondItem="cEW-fv-k5h" secondAttribute="bottom" id="lR2-H3-fAL"/>
+                <constraint firstItem="Op7-LO-Qqi" firstAttribute="top" secondItem="cEW-fv-k5h" secondAttribute="bottom" constant="-30" id="lR2-H3-fAL"/>
                 <constraint firstItem="2hx-Eu-a6f" firstAttribute="leading" secondItem="b0J-PN-wbi" secondAttribute="leading" constant="-1" id="pGQ-Rj-NX7"/>
                 <constraint firstAttribute="trailing" secondItem="2hx-Eu-a6f" secondAttribute="trailing" constant="-1" id="tNr-m1-8if"/>
                 <constraint firstItem="tXO-f0-PcV" firstAttribute="leading" secondItem="cEW-fv-k5h" secondAttribute="leading" id="yoB-4i-iEW"/>

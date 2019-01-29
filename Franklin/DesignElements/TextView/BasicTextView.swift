@@ -19,5 +19,6 @@ class BasicTextView: UITextView {
         self.layer.borderWidth = 2
         self.layer.borderColor = Colors.mostLightGray.cgColor
         self.textAlignment = .left
+        self.font = UIFont(name: Constants.regularFont, size: Constants.textFieldFontSize) ?? UIFont.systemFont(ofSize: Constants.textFieldFontSize)
     }
 }

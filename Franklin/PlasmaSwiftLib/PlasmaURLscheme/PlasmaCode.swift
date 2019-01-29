@@ -19,22 +19,25 @@ public struct PlasmaCode {
         public var type: ABI.Element.ParameterType
         public var value: AnyObject
     }
-    /// Plasma Transaction type
-    public var txType: PlasmaTransaction.TransactionType
-    /// Target address
-    public var targetAddress: EthereumAddress
-    /// Network chainID
-    public var chainID: BigUInt?
-    /// Plasma Transaction amount
-    public var amount: String?
+    
+    /// Plasma network
+    public var network: String
+    /// Cheque number
+    public var chequeNumber: String
+    /// From address
+    public var address: EthereumAddress
+    /// Amount cheque
+    public var amount: String
     
     /// Creates PlasmaCode object
     ///
     /// - Parameters:
-    ///   - targetAddress: target address
-    ///   - numberOfTxInBlock: Plasma transaction type
-    public init(_ targetAddress: EthereumAddress, txType: PlasmaTransaction.TransactionType = .split) {
-        self.txType = txType
-        self.targetAddress = targetAddress
+    ///   - network: plasma network
+    ///   - chequeNumber = cheque number
+    public init(network: String, chequeNumber: String, address: EthereumAddress, amount: String) {
+        self.network = network
+        self.chequeNumber = chequeNumber
+        self.address = address
+        self.amount = amount
     }
 }

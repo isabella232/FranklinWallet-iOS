@@ -22,30 +22,31 @@ public class AppController {
 
     convenience init(
             window: UIWindow,
-            launchOptions: [UIApplication.LaunchOptionsKey: Any]?,
             url: URL?) {
         self.init()
-        start(in: window, launchOptions: launchOptions, url: url)
+        start(in: window, url: url)
     }
 
-    private func start(in window: UIWindow, launchOptions: [UIApplication.LaunchOptionsKey: Any]?, url: URL?) {
-        if let launchOptions = launchOptions {
-            if let url = launchOptions[UIApplication.LaunchOptionsKey.url] as? URL {
-                navigateViaDeepLink(url: url, in: window)
-            } else {
-                startAsUsual(in: window)
-            }
-        } else if let url = url {
+    private func start(in window: UIWindow, url: URL?) {
+        if let url = url {
             navigateViaDeepLink(url: url, in: window)
         } else {
             startAsUsual(in: window)
         }
-
     }
     
     public func onboardingController() -> UINavigationController {
         let vc = OnboardingViewController()
         let nav = navigationController(withTitle: "Onboarding",
+                                       withImage: nil,
+                                       withController: vc,
+                                       tag: 0)
+        return nav
+    }
+    
+    public func acceptChequeController(cheque: PlasmaCode) -> UINavigationController {
+        let vc = AcceptChequeController(cheque: cheque)
+        let nav = navigationController(withTitle: "Accept cheque",
                                        withImage: nil,
                                        withController: vc,
                                        tag: 0)
@@ -307,18 +308,23 @@ public class AppController {
     
     private func navigateViaDeepLink(url: URL, in window: UIWindow) {
         if url.absoluteString.hasPrefix("ethereum:") {
-            guard let parsed = Web3.EIP681CodeParser.parse(url.absoluteString) else { return }
-            switch parsed.isPayRequest {
-            case false:
-                //Custom transaction
-                routerEIP681.sendCustomTransaction(parsed: parsed, usingWindow: window)
-            case true:
-                //Regular sending of ETH
-                routerEIP681.sendETHTransaction(parsed: parsed, usingWindow: window)
-            }
+            // TODO :- ether deeplink
+//            guard let parsed = Web3.EIP681CodeParser.parse(url.absoluteString) else { return }
+//            switch parsed.isPayRequest {
+//            case false:
+//                //Custom transaction
+//                routerEIP681.sendCustomTransaction(parsed: parsed, usingWindow: window)
+//            case true:
+//                //Regular sending of ETH
+//                routerEIP681.sendETHTransaction(parsed: parsed, usingWindow: window)
+//            }
         } else if url.absoluteString.hasPrefix("plasma:") {
-            guard let parsed = PlasmaParser.parse(url.absoluteString) else { return }
-            plasmaRouter.sendCustomTransaction(parsed: parsed, usingWindow: window)
+            if let parsed = PlasmaParser.parse(url.absoluteString) {
+                let vc = self.acceptChequeController(cheque: parsed)
+                self.createRootViewController(vc, in: window)
+            } else {
+                startAsUsual(in: window)
+            }
         }
     }
 }

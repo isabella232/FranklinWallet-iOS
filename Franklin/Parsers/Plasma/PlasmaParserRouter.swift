@@ -12,32 +12,36 @@ import BigInt
 
 public final class PlasmaRouter {
     
-    public func sendCustomTransaction(parsed: PlasmaCode, usingWindow window: UIWindow) {
-        switch parsed.txType {
-        case .split:
-            splitTransaction(parsed: parsed, usingWindow: window)
-        default:
-            print("Something goes wrong")
-        }
-    }
+//    public func sendCustomTransaction(parsed: PlasmaCode, usingWindow window: UIWindow) {
+//        switch parsed.txType {
+//        case .split:
+//            splitTransaction(parsed: parsed, usingWindow: window)
+//        default:
+//            print("Something goes wrong")
+//        }
+//    }
+//
+//    public func splitTransaction(parsed: PlasmaCode, usingWindow window: UIWindow) {
+//        print("yay")
+//        guard let amount = parsed.amount else {return}
+//        let targetAddress = parsed.targetAddress
+//        guard let chainId = parsed.chainID else {return}
+//        switch chainId {
+//        case 1:
+//            CurrentNetwork.currentNetwork = Web3Network(network: .Mainnet)
+//        case 4:
+//            CurrentNetwork.currentNetwork = Web3Network(network: .Rinkeby)
+//        default:
+//            print("wrong network")
+//            return
+//        }
+//        let controller = TokenViewController(amount: amount, destinationAddress: targetAddress.address, isFromDeepLink: true)
+//        showController(controller, window: window)
+//    }
     
-    public func splitTransaction(parsed: PlasmaCode, usingWindow window: UIWindow) {
-        print("yay")
-        guard let amount = parsed.amount else {return}
-        let targetAddress = parsed.targetAddress
-        guard let chainId = parsed.chainID else {return}
-        switch chainId {
-        case 1:
-            CurrentNetwork.currentNetwork = Web3Network(network: .Mainnet)
-        case 4:
-            CurrentNetwork.currentNetwork = Web3Network(network: .Rinkeby)
-        default:
-            print("wrong network")
-            return
-        }
-        let controller = TokenViewController(amount: amount, destinationAddress: targetAddress.address, isFromDeepLink: true)
-        showController(controller, window: window)
-        
+    public func showAcceptCheque(parsed: PlasmaCode, in window: UIWindow) {
+        let acceptChequeVC = AppController().acceptChequeController(cheque: parsed)
+        showController(acceptChequeVC, window: window)
     }
     
     private func showController(_ controller: UIViewController, window: UIWindow) {

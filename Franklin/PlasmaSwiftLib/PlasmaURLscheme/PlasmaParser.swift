@@ -38,53 +38,82 @@ public struct PlasmaParser {
     ///
     /// - Parameter string: String to parse
     /// - Returns: PlasmaCode optional
+    /// - Example: plasma://franklin.network/cheque/1
     public static func parse(_ string: String) -> PlasmaCode? {
-        guard string.hasPrefix("plasma:") else {return nil}
-        let striped = string.components(separatedBy: "plasma:")
+        guard string.hasPrefix("plasma://") else {return nil}
+        let striped = string.components(separatedBy: "plasma://")
         guard striped.count == 2 else {return nil}
         guard let encoding = striped[1].removingPercentEncoding else {return nil}
         guard let matcher = try? NSRegularExpression(pattern: addressRegex, options: NSRegularExpression.Options.dotMatchesLineSeparators) else {return nil}
         let match = matcher.matches(in: encoding, options: NSRegularExpression.MatchingOptions.anchored, range: encoding.fullNSRange)
         guard match.count == 1 else {return nil}
         guard match[0].numberOfRanges == 5 else {return nil}
-        var addressString: String?
-        var tail: String?
+        var networkString: String?
+        var tailString: String?
         
-        if  let addressRange = Range(match[0].range(at: 2), in: encoding) {
-            addressString = String(encoding[addressRange])
+        if let networkRange = Range(match[0].range(at: 2), in: encoding) {
+            networkString = String(encoding[networkRange])
         }
-        if  let tailRange = Range(match[0].range(at: 4), in: encoding) {
-            tail = String(encoding[tailRange])
+        if let tailRange = Range(match[0].range(at: 4), in: encoding) {
+            tailString = String(encoding[tailRange])
         }
-        guard let address = addressString else {return nil}
-        let targetAddress = plasmaParser.setTargetAddress(address: address)
         
-        var code = PlasmaCode(targetAddress)
-        if tail == nil {
-            return code
-        }
-        guard let components = URLComponents(string: tail!) else {return code}
-        if components.path == "split" {
-            code.txType = .split
-        } else if components.path == "fund" {
-            code.txType = .fund
-        }
-        guard let queryItems = components.queryItems else {return code}
+        guard let tail = tailString else {return nil}
+        
+        guard let network = networkString else {return nil}
+        
+        guard let components = URLComponents(string: tail) else {return nil}
+        guard let queryItems = components.queryItems else {return nil}
+        var number: String = ""
+        var from: String = ""
+        var amount: String = ""
         for comp in queryItems {
             switch comp.name {
-            case "chainId":
+            case "number":
                 guard let value = comp.value else {return nil}
-                guard let val = BigUInt(value) else {return nil}
-                code.chainID = val
-            case "value":
+                number = value
+            case "from":
                 guard let value = comp.value else {return nil}
-                code.amount = value
+                from = value
+            case "amount":
+                guard let value = comp.value else {return nil}
+                amount = value
             default:
                 continue
             }
         }
+        guard let address = EthereumAddress(from) else {return nil}
+        let code = PlasmaCode(network: network, chequeNumber: number, address: address, amount: amount)
         
-        print(code)
         return code
+//        let targetAddress = plasmaParser.setTargetAddress(address: address)
+//
+//        var code = PlasmaCode(targetAddress)
+//        if tail == nil {
+//            return code
+//        }
+//        guard let components = URLComponents(string: tail!) else {return code}
+//        if components.path == "split" {
+//            code.txType = .split
+//        } else if components.path == "fund" {
+//            code.txType = .fund
+//        }
+//        guard let queryItems = components.queryItems else {return code}
+//        for comp in queryItems {
+//            switch comp.name {
+//            case "chainId":
+//                guard let value = comp.value else {return nil}
+//                guard let val = BigUInt(value) else {return nil}
+//                code.chainID = val
+//            case "value":
+//                guard let value = comp.value else {return nil}
+//                code.amount = value
+//            default:
+//                continue
+//            }
+//        }
+//
+//        print(code)
+//        return code
     }
 }

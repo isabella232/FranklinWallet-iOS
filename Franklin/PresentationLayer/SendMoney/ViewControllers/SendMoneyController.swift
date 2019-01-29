@@ -140,7 +140,7 @@ class SendMoneyController: BasicViewController {
     
     func showStart(animated: Bool) {
         self.screenStatus = .start
-        UIView.animate(withDuration: animated ? 0.250 : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 1
