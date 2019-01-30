@@ -58,7 +58,10 @@ class SendMoneyController: BasicViewController {
     var screenStatus: SendingScreenStatus = .start
     
     private let reuseIdentifier = "ContactCell"
-    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    private let sectionInsets = UIEdgeInsets(top: 0,
+                                             left: 0,
+                                             bottom: 0,
+                                             right: 0)
     private let itemsPerRow: CGFloat = 3
     
     weak var animationTimer: Timer?
@@ -119,9 +122,9 @@ class SendMoneyController: BasicViewController {
         view.isOpaque = false
         self.contentView.backgroundColor = Colors.background
         self.contentView.alpha = 1
-        self.contentView.layer.cornerRadius = 30
-        self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
-        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.cornerRadius = Constants.ModalView.ContentView.cornerRadius
+        self.contentView.layer.borderColor = Constants.ModalView.ContentView.borderColor
+        self.contentView.layer.borderWidth = Constants.ModalView.ContentView.borderWidth
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(self.dismissView))
@@ -140,7 +143,8 @@ class SendMoneyController: BasicViewController {
     
     func showStart(animated: Bool) {
         self.screenStatus = .start
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 1
@@ -168,7 +172,7 @@ class SendMoneyController: BasicViewController {
     @objc func showSearch(animated: Bool) {
         self.screenStatus = .searching
         self.chosenContact = nil
-        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
+        UIView.animate(withDuration: Constants.ModalView.animationDuration) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
@@ -188,7 +192,7 @@ class SendMoneyController: BasicViewController {
             self.separatorView.alpha = 0
             self.sendToContactLabel.alpha = 1
         }
-        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
+        UIView.animate(withDuration: Constants.ModalView.animationDuration) { [unowned self] in
             self.searchStackView.frame.origin.y = self.amountStackView.frame.origin.y
         }
     }
@@ -197,15 +201,21 @@ class SendMoneyController: BasicViewController {
         self.screenStatus = .confirm
         self.chosenContact = contact
         
-        let blockies = Blockies(seed: contact.address, size: 5, scale: 4, color: Colors.mainGreen, bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
+        let blockies = Blockies(seed: contact.address,
+                                size: 5,
+                                scale: 4,
+                                color: Colors.mainGreen,
+                                bgColor: Colors.mostLightGray,
+                                spotColor: Colors.mainBlue)
         let img = blockies.createImage()
         self.contactImage.image = img
-        self.contactImage.layer.cornerRadius = Constants.collectionCell.image.cornerRadius
+        self.contactImage.layer.cornerRadius = Constants.CollectionCell.Image.cornerRadius
         self.contactImage.clipsToBounds = true
         self.contactName.text = contact.name
         self.contactAddress.text = contact.address
         
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Send money"
             self.sendingGif.alpha = 0
             self.shareLabel.alpha = 0
@@ -232,7 +242,8 @@ class SendMoneyController: BasicViewController {
     
     @objc func showSending(animated: Bool) {
         self.screenStatus = .sending
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0, animations: { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0, animations: { [unowned self] in
             self.titleLabel.text = "Sending..."
             self.sendingGif.alpha = 1
             self.sendToContactLabel.alpha = 0
@@ -259,11 +270,13 @@ class SendMoneyController: BasicViewController {
     
     @objc func showReady(animated: Bool) {
         self.screenStatus = .ready
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.readyIcon.alpha = 1
             self.readyIcon.transform = CGAffineTransform(scaleX: 3, y: 3)
         }
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Sent!"
             self.titleLabel.textColor = Colors.mainGreen
             self.sendingGif.alpha = 0
@@ -398,10 +411,9 @@ extension SendMoneyController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let width = UIScreen.main.bounds.width * 0.8 / 3 - 15
-        
-        return CGSize(width: width, height: Constants.collectionCell.height)
+        let width = UIScreen.main.bounds.width * Constants.CollectionView.widthCoeff - 15
+
+        return CGSize(width: width, height: Constants.CollectionCell.height)
     }
     
     func collectionView(_ collectionView: UICollectionView,

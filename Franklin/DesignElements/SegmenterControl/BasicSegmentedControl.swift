@@ -11,14 +11,11 @@ class SegmentedControl: UISegmentedControl {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let height: CGFloat = Constants.segmentedControlls.heights.wallets
-        let width: CGFloat = Constants.widthCoef * UIScreen.main.bounds.width
-        self.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        let font = UIFont(name: Constants.boldFont, size: Constants.basicFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.basicFontSize)
+        let font = UIFont(name: Constants.Fonts.bold, size: Constants.SegmentedControl.maximumFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.SegmentedControl.maximumFontSize)
         self.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         self.tintColor = Colors.textWhite
         self.backgroundColor = Colors.mainBlue
-        self.layer.cornerRadius = height/2
+        self.layer.cornerRadius = self.frame.height/2
         self.clipsToBounds = true
         self.layer.borderWidth = 1.0
         self.layer.borderColor = Colors.mainBlue.cgColor

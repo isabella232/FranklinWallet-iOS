@@ -15,7 +15,6 @@ public class AppController {
     private let etherscanService = ContractsService()
     private let walletsService = WalletsService()
     private let routerEIP681 = EIP681Router()
-    private let plasmaRouter = PlasmaRouter()
     private let userDefaultKeys = UserDefaultKeys()
     private let tokensService = TokensService()
     private let networksService = NetworksService()

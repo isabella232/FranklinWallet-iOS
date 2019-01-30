@@ -37,7 +37,7 @@ class AcceptChequeController: BasicViewController, ModalViewDelegate {
         super.viewWillAppear(animated)
         self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
-        self.topViewForModalAnimation.tag = Constants.modalViewTag
+        self.topViewForModalAnimation.tag = Constants.ModalView.ShadowView.tag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
         self.view.addSubview(topViewForModalAnimation)
         
@@ -50,13 +50,13 @@ class AcceptChequeController: BasicViewController, ModalViewDelegate {
         let acceptChequeForm = AcceptChequeFormController(cheque: cheque)
         acceptChequeForm.delegate = self
         acceptChequeForm.modalPresentationStyle = .overCurrentContext
-        acceptChequeForm.view.layer.speed = Constants.modalViewSpeed
+        acceptChequeForm.view.layer.speed = Constants.ModalView.animationSpeed
         self.present(acceptChequeForm, animated: true, completion: nil)
     }
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
                 self.titleLabel.alpha = 0
                 self.goToApp()
@@ -66,13 +66,13 @@ class AcceptChequeController: BasicViewController, ModalViewDelegate {
     
     func goToApp() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration) {
+            UIView.animate(withDuration: Constants.Main.animationDuration) {
                 self.view.alpha = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let tabViewController = self.appController.goToApp()
                     tabViewController.view.backgroundColor = Colors.background
                     let transition = CATransition()
-                    transition.duration = Constants.animationDuration
+                    transition.duration = Constants.Main.animationDuration
                     transition.type = CATransitionType.push
                     transition.subtype = CATransitionSubtype.fromRight
                     transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
@@ -85,8 +85,8 @@ class AcceptChequeController: BasicViewController, ModalViewDelegate {
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
-                self.topViewForModalAnimation.alpha = 0.5
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
+                self.topViewForModalAnimation.alpha = Constants.ModalView.ShadowView.alpha
                 self.titleLabel.alpha = 1.0
             })
         }

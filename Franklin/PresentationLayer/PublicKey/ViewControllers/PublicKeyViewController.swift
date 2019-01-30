@@ -57,9 +57,9 @@ class PublicKeyViewController: BasicViewController {
         view.isOpaque = false
         self.contentView.backgroundColor = Colors.background
         self.contentView.alpha = 1
-        self.contentView.layer.cornerRadius = 30
-        self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
-        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.cornerRadius = Constants.ModalView.ContentView.cornerRadius
+        self.contentView.layer.borderColor = Constants.ModalView.ContentView.borderColor
+        self.contentView.layer.borderWidth = Constants.ModalView.ContentView.borderWidth
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(self.dismissView))

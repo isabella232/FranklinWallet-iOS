@@ -29,6 +29,18 @@ class TokenCell: UITableViewCell {
     @IBOutlet weak var infoButton: UIButton!
     
     weak var delegate: TokenCellDelegate?
+    
+    override func awakeFromNib() {self.balance.font = UIFont(name: Constants.TokenCell.Balance.font, size: Constants.TokenCell.Balance.size)
+        self.balance.textColor = Constants.TokenCell.Balance.color
+        self.balanceLabel.font = UIFont(name: Constants.TokenCell.BalanceLabel.font, size: Constants.TokenCell.BalanceLabel.size)
+        self.balanceLabel.textColor = Constants.TokenCell.BalanceLabel.color
+        self.title.font = UIFont(name: Constants.TokenCell.Title.font, size: Constants.TokenCell.Title.size)
+        self.title.textColor = Constants.TokenCell.Title.color
+        self.accountNumber.font = UIFont(name: Constants.TokenCell.AccountNumber.font, size: Constants.TokenCell.AccountNumber.size)
+        self.accountNumber.textColor = Constants.TokenCell.AccountNumber.color
+        self.accountNumberLabel.font = UIFont(name: Constants.TokenCell.AccountNumberLabel.font, size: Constants.TokenCell.AccountNumberLabel.size)
+        self.accountNumberLabel.textColor = Constants.TokenCell.AccountNumberLabel.color
+    }
 
     func configure(token: TableToken) {
         let balance = token.token.isFranklin() ? ("$ " + (token.token.balance ?? "-")) : (token.token.balance ?? "-")

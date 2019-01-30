@@ -13,17 +13,14 @@ class BasicGreenButton: UIButton {
     let animation = AnimationController()
     
     override func awakeFromNib() {
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        self.addConstraints([heightContraint])
-        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.layer.cornerRadius = Constants.Button.cornerRadius
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
-        self.layer.borderWidth = Constants.buttons.borderWidth.main
-        //self.layer.borderColor = Colors.firstMain.cgColor
+        self.layer.borderWidth = Constants.Button.borderWidth
+        self.layer.borderColor = Colors.background.cgColor
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
@@ -34,18 +31,13 @@ class BasicGreenButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        let width: CGFloat = 0.8 * UIScreen.main.bounds.width
-        let widthContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: width)
-        self.addConstraints([heightContraint, widthContraint])
-        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.layer.cornerRadius = Constants.Button.cornerRadius
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainGreen
         self.setTitleColor(Colors.textWhite, for: .normal)
-        self.layer.borderWidth = Constants.buttons.borderWidth.main
+        self.layer.borderWidth = Constants.Button.borderWidth
         //self.layer.borderColor = Colors.firstMain.cgColor
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
@@ -73,17 +65,14 @@ class BasicBlueButton: UIButton {
     let animation = AnimationController()
     
     override func awakeFromNib() {
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        self.addConstraints([heightContraint])
-        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.layer.cornerRadius = Constants.Button.cornerRadius
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.mainBlue
         self.setTitleColor(Colors.textWhite, for: .normal)
-        self.layer.borderWidth = Constants.buttons.borderWidth.main
-        //self.layer.borderColor = Colors.firstMain.cgColor
+        self.layer.borderWidth = Constants.Button.borderWidth
+        self.layer.borderColor = Colors.background.cgColor
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
@@ -108,12 +97,9 @@ class BasicWhiteButton: UIButton {
     var currentBackgroundColor: UIColor?
     
     override func awakeFromNib() {
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        self.addConstraints([heightContraint])
-        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.layer.cornerRadius = Constants.Button.cornerRadius
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.background
         self.setTitleColor(Colors.mainBlue, for: .normal)
@@ -147,12 +133,9 @@ class BasicOrangeButton: UIButton {
     let animation = AnimationController()
     
     override func awakeFromNib() {
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        self.addConstraints([heightContraint])
-        self.layer.cornerRadius = Constants.buttons.cornerRadius.main
+        self.layer.cornerRadius = Constants.Button.cornerRadius
         self.clipsToBounds = true
-        let font = UIFont(name: Constants.regularFont, size: Constants.buttonFontSize) ?? UIFont.systemFont(ofSize: Constants.buttonFontSize)
+        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
         self.titleLabel?.font = font
         self.backgroundColor = Colors.orange
         self.setTitleColor(Colors.textWhite, for: .normal)
@@ -179,11 +162,6 @@ class ScanButton: UIButton {
     let animation = AnimationController()
     
     override func awakeFromNib() {
-        let height: CGFloat = Constants.buttons.heights.main
-        let heightContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: height)
-        let width: CGFloat = Constants.buttons.heights.main
-        let widthContraint = NSLayoutConstraint(item: self, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: width)
-        self.addConstraints([heightContraint, widthContraint])
         self.layer.cornerRadius = 5
         self.clipsToBounds = true
         self.backgroundColor = UIColor.white

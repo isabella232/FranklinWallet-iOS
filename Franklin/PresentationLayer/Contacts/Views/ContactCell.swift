@@ -21,10 +21,14 @@ class ContactCell: UICollectionViewCell {
     
     func configure(with contact: Contact) {
         self.name.text = contact.name
-        let blockies = Blockies(seed: contact.address, size: 5, scale: 4, color: Colors.mainGreen, bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
+        let blockies = Blockies(seed: contact.address,
+                                size: 5,
+                                scale: 4,
+                                color: Colors.mainGreen,
+                                bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
         let img = blockies.createImage()
         self.photo.image = img
-        photo.layer.cornerRadius = Constants.collectionCell.image.cornerRadius
+        photo.layer.cornerRadius = Constants.CollectionCell.Image.cornerRadius
         photo.clipsToBounds = true
     }
     

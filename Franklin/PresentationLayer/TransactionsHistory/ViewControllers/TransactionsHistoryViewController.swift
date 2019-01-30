@@ -33,7 +33,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     func additionalSetup() {
         self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
-        self.topViewForModalAnimation.tag = Constants.modalViewTag
+        self.topViewForModalAnimation.tag = Constants.ModalView.ShadowView.tag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
         self.tabBarController?.view.addSubview(topViewForModalAnimation)
     }
@@ -100,7 +100,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -109,8 +109,8 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
-                self.topViewForModalAnimation.alpha = 0.5
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
+                self.topViewForModalAnimation.alpha = Constants.ModalView.ShadowView.alpha
             })
         }
     }
@@ -217,7 +217,7 @@ class TransactionsHistoryViewController: BasicViewController, ModalViewDelegate 
 extension TransactionsHistoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.headers.heights.txHistory
+        return Constants.Headers.Heights.txHistory
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -229,13 +229,23 @@ extension TransactionsHistoryViewController: UITableViewDelegate, UITableViewDat
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: Constants.headers.heights.txHistory))
-        let label = UILabel(frame: CGRect(x: 20, y: Constants.headers.heights.txHistory/4, width: UIScreen.main.bounds.width, height: Constants.headers.heights.txHistory/2))
+        let view = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: UIScreen.main.bounds.width,
+                                        height: Constants.Headers.Heights.txHistory))
+        let label = UILabel(frame: CGRect(x: 20,
+                                          y: Constants.Headers.Heights.txHistory/4,
+                                          width: UIScreen.main.bounds.width,
+                                          height: Constants.Headers.Heights.txHistory/2))
         label.text = dateFormatter.string(from: transactions[section][0].date)
-        label.font = UIFont(name: Constants.semiboldFont, size: Constants.basicFontSize)!
+        label.font = UIFont(name: Constants.Fonts.semibold,
+                            size: Constants.Headers.maximumFontSize)!
         view.backgroundColor = UIColor.white
         view.addSubview(label)
-        let separator = UIView(frame: CGRect(x: 0, y: Constants.headers.heights.txHistory - 1, width: UIScreen.main.bounds.width, height: 1))
+        let separator = UIView(frame: CGRect(x: 0,
+                                             y: Constants.Headers.Heights.txHistory - 1,
+                                             width: UIScreen.main.bounds.width,
+                                             height: 1))
         separator.backgroundColor = Colors.mostLightGray
         view.addSubview(separator)
         return view

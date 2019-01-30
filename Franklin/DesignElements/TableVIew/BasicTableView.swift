@@ -9,9 +9,7 @@
 import UIKit
 
 class BasicTableView: UITableView {
-
     override func awakeFromNib() {
         self.backgroundColor = Colors.background
     }
-
 }

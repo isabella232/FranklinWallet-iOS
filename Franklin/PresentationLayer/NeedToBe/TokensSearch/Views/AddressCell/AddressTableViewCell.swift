@@ -26,7 +26,7 @@ class AddressTableViewCell: UITableViewCell {
         paste.addConstraint(heightPasteContraint)
         paste.layer.cornerRadius = height / 2
         paste.clipsToBounds = true
-        let font = UIFont(name: Constants.boldFont, size: Constants.basicFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.basicFontSize)
+        let font = UIFont(name: Constants.TableCells.boldFont, size: Constants.TableCells.maximumFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.TableCells.maximumFontSize)
         paste.backgroundColor = Colors.background
         paste.titleLabel?.font = font
         paste.setTitleColor(Colors.textDarkGray, for: .normal)

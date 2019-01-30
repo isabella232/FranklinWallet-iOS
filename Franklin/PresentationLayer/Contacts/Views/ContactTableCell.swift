@@ -20,12 +20,12 @@ class ContactTableCell: UITableViewCell {
         super.awakeFromNib()
         self.bottomBackgroundView.backgroundColor = Colors.background
         self.topBackgroundView.backgroundColor = Colors.background
-        self.topBackgroundView.layer.cornerRadius = 10
+        //self.topBackgroundView.layer.cornerRadius = 10
         self.contactName.textColor = Colors.textDarkGray
-        self.contactName.font = UIFont(name: Constants.regularFont, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
+        self.contactName.font = UIFont(name: Constants.TableContact.font, size: Constants.TableContact.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.TableContact.maximumFontSize)
         self.contactAddress.textColor = Colors.textLightGray
         
-        self.contactAddress.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
+        self.contactAddress.font = UIFont(name: Constants.TableContact.font, size: Constants.TableContact.minimumFontSize) ?? UIFont.systemFont(ofSize: Constants.TableContact.minimumFontSize)
     }
     
     func configure(with contact: Contact) {

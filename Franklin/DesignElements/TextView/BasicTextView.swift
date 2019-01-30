@@ -12,13 +12,16 @@ class BasicTextView: UITextView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = Constants.cornerRadius
+        self.layer.cornerRadius = Constants.TextView.cornerRadius
         self.clipsToBounds = true
         self.backgroundColor = Colors.background
         self.textColor = Colors.mainBlue
         self.layer.borderWidth = 2
         self.layer.borderColor = Colors.mostLightGray.cgColor
         self.textAlignment = .left
-        self.font = UIFont(name: Constants.regularFont, size: Constants.textFieldFontSize) ?? UIFont.systemFont(ofSize: Constants.textFieldFontSize)
+        self.font = UIFont(name: Constants.Fonts.regular,
+                           size: Constants.TextView.maximumFontSize)
+            ?? UIFont.systemFont(ofSize: Constants.TextView.maximumFontSize)
+        //self.updateTextFont()
     }
 }

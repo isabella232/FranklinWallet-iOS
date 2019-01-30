@@ -59,6 +59,8 @@
 		E2215AC121FF44A700FC79AB /* AcceptChequeController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2215ABF21FF44A600FC79AB /* AcceptChequeController.xib */; };
 		E2215AC421FF4B1400FC79AB /* AcceptChequeFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2215AC221FF4B1400FC79AB /* AcceptChequeFormController.swift */; };
 		E2215AC521FF4B1400FC79AB /* AcceptChequeFormController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2215AC321FF4B1400FC79AB /* AcceptChequeFormController.xib */; };
+		E2215AC72201B0C500FC79AB /* FontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2215AC62201B0C400FC79AB /* FontExtension.swift */; };
+		E2215AC92201B0ED00FC79AB /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2215AC82201B0ED00FC79AB /* LabelExtension.swift */; };
 		E234C79D21E9E93E00F175AF /* TableWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79C21E9E93E00F175AF /* TableWallet.swift */; };
 		E234C79F21EB4BEB00F175AF /* WalletsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */; };
 		E234C7A621EBF62900F175AF /* BasicTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E234C7A521EBF62900F175AF /* BasicTableView.swift */; };
@@ -132,7 +134,6 @@
 		E2C1106621E507260012A978 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1103D21E507260012A978 /* UserDefaultKeys.swift */; };
 		E2C1106721E507260012A978 /* CommonErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1103E21E507260012A978 /* CommonErrors.swift */; };
 		E2C1106821E507260012A978 /* Parameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1103F21E507260012A978 /* Parameter.swift */; };
-		E2C1106921E507260012A978 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1104021E507260012A978 /* Result.swift */; };
 		E2C1106A21E507260012A978 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1104121E507260012A978 /* Alerts.swift */; };
 		E2C1106B21E507260012A978 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1104221E507260012A978 /* NavigationController.swift */; };
 		E2C1106C21E507260012A978 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1104321E507260012A978 /* Colors.swift */; };
@@ -142,7 +143,6 @@
 		E2C1108521E507340012A978 /* CurrentWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1107E21E507340012A978 /* CurrentWallet.swift */; };
 		E2C1108621E507340012A978 /* CurrentToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1107F21E507340012A978 /* CurrentToken.swift */; };
 		E2C1108721E507340012A978 /* CurrentNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1108021E507340012A978 /* CurrentNetwork.swift */; };
-		E2C1108B21E5575C0012A978 /* PlasmaParserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1108A21E5575C0012A978 /* PlasmaParserRouter.swift */; };
 		E2C1109221E557FE0012A978 /* ENS.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1108D21E557FD0012A978 /* ENS.swift */; };
 		E2C1109321E557FE0012A978 /* NameHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1108E21E557FD0012A978 /* NameHash.swift */; };
 		E2C1109421E557FE0012A978 /* EIP681.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C1108F21E557FD0012A978 /* EIP681.swift */; };
@@ -337,6 +337,8 @@
 		E2215ABF21FF44A600FC79AB /* AcceptChequeController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptChequeController.xib; sourceTree = "<group>"; };
 		E2215AC221FF4B1400FC79AB /* AcceptChequeFormController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptChequeFormController.swift; sourceTree = "<group>"; };
 		E2215AC321FF4B1400FC79AB /* AcceptChequeFormController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcceptChequeFormController.xib; sourceTree = "<group>"; };
+		E2215AC62201B0C400FC79AB /* FontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontExtension.swift; sourceTree = "<group>"; };
+		E2215AC82201B0ED00FC79AB /* LabelExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
 		E234C79C21E9E93E00F175AF /* TableWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableWallet.swift; sourceTree = "<group>"; };
 		E234C79E21EB4BEB00F175AF /* WalletsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletsCoordinator.swift; sourceTree = "<group>"; };
 		E234C7A521EBF62900F175AF /* BasicTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTableView.swift; sourceTree = "<group>"; };
@@ -418,7 +420,6 @@
 		E2C1103D21E507260012A978 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		E2C1103E21E507260012A978 /* CommonErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonErrors.swift; sourceTree = "<group>"; };
 		E2C1103F21E507260012A978 /* Parameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parameter.swift; sourceTree = "<group>"; };
-		E2C1104021E507260012A978 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		E2C1104121E507260012A978 /* Alerts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		E2C1104221E507260012A978 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		E2C1104321E507260012A978 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -428,7 +429,6 @@
 		E2C1107E21E507340012A978 /* CurrentWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentWallet.swift; sourceTree = "<group>"; };
 		E2C1107F21E507340012A978 /* CurrentToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentToken.swift; sourceTree = "<group>"; };
 		E2C1108021E507340012A978 /* CurrentNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentNetwork.swift; sourceTree = "<group>"; };
-		E2C1108A21E5575C0012A978 /* PlasmaParserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlasmaParserRouter.swift; sourceTree = "<group>"; };
 		E2C1108D21E557FD0012A978 /* ENS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENS.swift; sourceTree = "<group>"; };
 		E2C1108E21E557FD0012A978 /* NameHash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameHash.swift; sourceTree = "<group>"; };
 		E2C1108F21E557FD0012A978 /* EIP681.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EIP681.swift; sourceTree = "<group>"; };
@@ -1357,7 +1357,6 @@
 				E2C1103D21E507260012A978 /* UserDefaultKeys.swift */,
 				E2C1103E21E507260012A978 /* CommonErrors.swift */,
 				E2C1103F21E507260012A978 /* Parameter.swift */,
-				E2C1104021E507260012A978 /* Result.swift */,
 			);
 			path = CommonHelpers;
 			sourceTree = "<group>";
@@ -1367,7 +1366,9 @@
 			children = (
 				E2C1107921E507330012A978 /* FloatExtension.swift */,
 				E2A8DB9F21F676780031AC58 /* TextViewExtension.swift */,
+				E2215AC62201B0C400FC79AB /* FontExtension.swift */,
 				E2A8DBB821F6A96F0031AC58 /* ViewExtension.swift */,
+				E2215AC82201B0ED00FC79AB /* LabelExtension.swift */,
 				E2C1107B21E507330012A978 /* SearchControllerExtension.swift */,
 				E2C1107C21E507330012A978 /* StringExtension.swift */,
 				E2D451DC21EE980B00218872 /* DoubleExtension.swift */,
@@ -1390,17 +1391,8 @@
 			isa = PBXGroup;
 			children = (
 				E2C1108C21E5576C0012A978 /* EIP681 */,
-				E2C1108921E557020012A978 /* Plasma */,
 			);
 			path = Parsers;
-			sourceTree = "<group>";
-		};
-		E2C1108921E557020012A978 /* Plasma */ = {
-			isa = PBXGroup;
-			children = (
-				E2C1108A21E5575C0012A978 /* PlasmaParserRouter.swift */,
-			);
-			path = Plasma;
 			sourceTree = "<group>";
 		};
 		E2C1108C21E5576C0012A978 /* EIP681 */ = {
@@ -2285,6 +2277,7 @@
 				E2C1105921E507260012A978 /* KeychainService.swift in Sources */,
 				E2A8DAFF21F1F6A00031AC58 /* ERC20Token.swift in Sources */,
 				B209150E214A659500C8B408 /* PrivateKeyViewController.swift in Sources */,
+				E2215AC92201B0ED00FC79AB /* LabelExtension.swift in Sources */,
 				E2C110B921E67D1D0012A978 /* WalletCreationViewController.swift in Sources */,
 				E2C1108621E507340012A978 /* CurrentToken.swift in Sources */,
 				9197F2E12143B5EE00C358AA /* OnboardingContent.swift in Sources */,
@@ -2339,9 +2332,7 @@
 				E27BF77621D1447A00951061 /* SimpleContent.swift in Sources */,
 				9197F2DF2143B5B800C358AA /* OnboardingContentViewController.swift in Sources */,
 				E2C1106B21E507260012A978 /* NavigationController.swift in Sources */,
-				E2C1108B21E5575C0012A978 /* PlasmaParserRouter.swift in Sources */,
 				E2C1109621E557FE0012A978 /* EIP681Model.swift in Sources */,
-				E2C1106921E507260012A978 /* Result.swift in Sources */,
 				E2C1106A21E507260012A978 /* Alerts.swift in Sources */,
 				E27BF77A21D1447A00951061 /* PlasmaConstants.swift in Sources */,
 				9197F2F22143B9D600C358AA /* TokenCell.swift in Sources */,
@@ -2354,6 +2345,7 @@
 				914F228A21499ACC00ED58E6 /* PincodeViewController.swift in Sources */,
 				E2F0EF7921F7DD8C00F11AD1 /* TokenInfoViewController.swift in Sources */,
 				E27BF78321D1447A00951061 /* PlasmaContract.swift in Sources */,
+				E2215AC72201B0C500FC79AB /* FontExtension.swift in Sources */,
 				E2A8DB0321F1FA480031AC58 /* EtherCoordinator.swift in Sources */,
 				E27BF77C21D1447A00951061 /* ArrayExtension.swift in Sources */,
 				E27BF78121D1447A00951061 /* PlasmaErrors.swift in Sources */,

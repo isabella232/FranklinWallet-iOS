@@ -21,6 +21,7 @@ public struct Colors {
     static let mainBlue = UIColor(red: 70 / 255, green: 127 / 255, blue: 215 / 255, alpha: 1)
     static let mostLightGray = UIColor(red: 237 / 255, green: 237 / 255, blue: 237 / 255, alpha: 1)
     static let orange = UIColor(red: 242 / 255, green: 133 / 255, blue: 1 / 255, alpha: 1)
+    static let cardGray = UIColor(red: 147 / 255, green: 174 / 255, blue: 200 / 255, alpha: 1)
     
 //    static let lightSelect = UIColor(red: 53 / 255, green: 180 / 255, blue: 211 / 255, alpha: 1)
 //    static let firstMain = UIColor(red: 52 / 255, green: 178 / 255, blue: 210 / 255, alpha: 1)

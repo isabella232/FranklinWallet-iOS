@@ -25,8 +25,12 @@ class OnboardingViewController: BasicViewController {
     var iv = UIImageView()
 
     var pageViewController: UIPageViewController!
-    let continueButton = BasicGreenButton(frame: CGRect(x: 0, y: 0, width: 0.8 * UIScreen.main.bounds.width, height: Constants.buttons.heights.main))
-    let animationImageView = UIImageView(gifImage: UIImage(gifName: "loading.gif"), loopCount: -1)
+    let continueButton = BasicGreenButton(frame: CGRect(x: 0,
+                                                        y: 0,
+                                                        width: Constants.commonWidthCoeff * UIScreen.main.bounds.width,
+                                                        height: Constants.Button.height))
+    let animationImageView = UIImageView(gifImage: UIImage(gifName: "loading.gif"),
+                                         loopCount: -1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,20 +52,20 @@ class OnboardingViewController: BasicViewController {
         prodName.text = "FRANKLIN"
         prodName.textAlignment = .center
         prodName.textColor = Colors.textDarkGray
-        prodName.font = UIFont(name: Constants.franklinSemiboldFont, size: 55) ?? UIFont.boldSystemFont(ofSize: 55)
+        prodName.font = UIFont(name: Constants.Fonts.franklinSemibold, size: 55) ?? UIFont.boldSystemFont(ofSize: 55)
         
         subtitle.textAlignment = .center
         subtitle.text = "SECURE DOLLAR WALLET"
         subtitle.textColor = Colors.textDarkGray
-        subtitle.font = UIFont(name: Constants.franklinMediumFont, size: 22) ?? UIFont.systemFont(ofSize: 22)
+        subtitle.font = UIFont(name: Constants.Fonts.franklinMedium, size: 22) ?? UIFont.systemFont(ofSize: 22)
         
         bottomInfo.textAlignment = .center
         bottomInfo.text = "By clicking 'Continue' you agree to the"
         bottomInfo.textColor = Colors.textDarkGray
-        bottomInfo.font = UIFont(name: Constants.regularFont, size: 16) ?? UIFont.systemFont(ofSize: 16)
+        bottomInfo.font = UIFont(name: Constants.Fonts.regular, size: 16) ?? UIFont.systemFont(ofSize: 16)
         
         let attrs = [
-            NSAttributedString.Key.font : UIFont(name: Constants.regularFont, size: 16) ?? UIFont.systemFont(ofSize: 16),
+            NSAttributedString.Key.font : UIFont(name: Constants.Fonts.regular, size: 16) ?? UIFont.systemFont(ofSize: 16),
             NSAttributedString.Key.foregroundColor : Colors.mainGreen,
             NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
         let buttonTitleString = NSAttributedString(string: "terms and conditions", attributes: attrs)
@@ -70,7 +74,7 @@ class OnboardingViewController: BasicViewController {
         settingUp.textAlignment = .center
         settingUp.text = "Setting up your wallet"
         settingUp.textColor = Colors.textDarkGray
-        settingUp.font = UIFont(name: Constants.regularFont, size: 24) ?? UIFont.systemFont(ofSize: 24)
+        settingUp.font = UIFont(name: Constants.Fonts.regular, size: 24) ?? UIFont.systemFont(ofSize: 24)
         
         animationImageView.frame = CGRect(x: 0, y: 0, width: 0.8*UIScreen.main.bounds.width, height: 257)
         animationImageView.contentMode = .center
@@ -275,8 +279,8 @@ class OnboardingViewController: BasicViewController {
         DispatchQueue.global().async { [unowned self] in
             do {
                 let mnemonicFrase = try self.walletsService.generateMnemonics(bitsOfEntropy: 128)
-                let name = Constants.newWalletName
-                let password = Constants.newWalletPassword
+                let name = Constants.Wallet.newName
+                let password = Constants.Wallet.newPassword
                 let wallet = try self.walletsService.createHDWallet(name: name,
                                                                     password: password,
                                                                     mnemonics: mnemonicFrase)
@@ -344,14 +348,14 @@ class OnboardingViewController: BasicViewController {
         print("Need to open terms")
     }
 
-    func viewControllerAtIndex(index: Int) -> OnboardingContentViewController {
-        if (PAGES.count == 0) || (index >= PAGES.count) {
-            return OnboardingContentViewController()
-        }
-        let vc = OnboardingContentViewController()
-        vc.pageIndex = index
-        return vc
-    }
+//    func viewControllerAtIndex(index: Int) -> OnboardingContentViewController {
+//        if (PAGES.count == 0) || (index >= PAGES.count) {
+//            return OnboardingContentViewController()
+//        }
+//        let vc = OnboardingContentViewController()
+//        vc.pageIndex = index
+//        return vc
+//    }
     
     func animation() {
         self.animationTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: false)
@@ -366,7 +370,7 @@ class OnboardingViewController: BasicViewController {
     }
     
     func animateIndicator() {
-        UIView.animate(withDuration: Constants.animationDuration) {
+        UIView.animate(withDuration: Constants.Main.animationDuration) {
             self.continueButton.alpha = 0
             self.link.alpha = 0
             self.bottomInfo.alpha = 0
@@ -377,13 +381,13 @@ class OnboardingViewController: BasicViewController {
     
     func goToApp() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration) {
+            UIView.animate(withDuration: Constants.Main.animationDuration) {
                 self.view.alpha = 0
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
                     let tabViewController = self.appController.goToApp()
                     tabViewController.view.backgroundColor = Colors.background
                     let transition = CATransition()
-                    transition.duration = Constants.animationDuration
+                    transition.duration = Constants.Main.animationDuration
                     transition.type = CATransitionType.push
                     transition.subtype = CATransitionSubtype.fromRight
                     transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)

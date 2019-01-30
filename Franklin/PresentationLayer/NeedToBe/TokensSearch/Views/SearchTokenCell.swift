@@ -27,19 +27,19 @@ class SearchTokenCell: UITableViewCell {
         super.awakeFromNib()
         self.bottomBackgroundView.backgroundColor = Colors.mainBlue
         self.topBackgroundView.backgroundColor = Colors.textWhite
-        self.topBackgroundView.layer.cornerRadius = 10
+        //self.topBackgroundView.layer.cornerRadius = 10
         self.title.textColor = Colors.textBlack
-        self.title.font = UIFont(name: Constants.regularFont, size: Constants.basicFontSize) ?? UIFont.systemFont(ofSize: Constants.basicFontSize)
+        self.title.font = UIFont(name: Constants.TableCells.regularFont, size: Constants.TableCells.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.TableCells.maximumFontSize)
         self.addressLabel.textColor = Colors.textBlack
-        self.addressLabel.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
+        self.addressLabel.font = UIFont(name: Constants.TableCells.boldFont, size: Constants.TableCells.minimumFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.TableCells.minimumFontSize)
         self.rate.textColor = Colors.mainGreen
-        self.rate.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
+        self.rate.font = UIFont(name: Constants.TableCells.boldFont, size: Constants.TableCells.minimumFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.TableCells.minimumFontSize)
         self.usdRate.textColor = Colors.textDarkGray
-        self.usdRate.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
+        self.usdRate.font = UIFont(name: Constants.TableCells.regularFont, size: Constants.TableCells.minimumFontSize) ?? UIFont.systemFont(ofSize: Constants.TableCells.minimumFontSize)
         self.hoursStat.textColor = Colors.textDarkGray
-        self.hoursStat.font = UIFont(name: Constants.regularFont, size: Constants.smallFontSize) ?? UIFont.systemFont(ofSize: Constants.smallFontSize)
+        self.hoursStat.font = UIFont(name: Constants.TableCells.regularFont, size: Constants.TableCells.minimumFontSize) ?? UIFont.systemFont(ofSize: Constants.TableCells.minimumFontSize)
         self.hoursStatProc.textColor = Colors.textDarkGray
-        self.hoursStatProc.font = UIFont(name: Constants.boldFont, size: Constants.smallFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.smallFontSize)
+        self.hoursStatProc.font = UIFont(name: Constants.TableCells.boldFont, size: Constants.TableCells.minimumFontSize) ?? UIFont.boldSystemFont(ofSize: Constants.TableCells.minimumFontSize)
         self.addedIcon.image = UIImage(named: "added")
         
         self.selectionStyle = .none

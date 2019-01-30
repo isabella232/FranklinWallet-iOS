@@ -25,6 +25,8 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBar.shadowImage = UIImage()
+        self.tabBar.backgroundImage = UIImage()
         self.delegate = self
     }
 }
@@ -32,7 +34,7 @@ class TabBarController: UITabBarController {
 extension TabBarController: TransitionableTab {
     
     func transitionDuration() -> CFTimeInterval {
-        return 0.4
+        return Constants.TabBar.transitionsDuration
     }
     
     func transitionTimingFunction() -> CAMediaTimingFunction {

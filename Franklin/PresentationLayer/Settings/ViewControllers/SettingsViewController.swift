@@ -78,7 +78,7 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.rows.heights.settings
+        return Constants.TableCells.Heights.settings
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

@@ -102,12 +102,17 @@ class AcceptChequeFormController: BasicViewController {
         self.contactAddress.text = self.cheque.address.address
         let blockies = Blockies(seed: cheque.address.address, size: 5, scale: 4, color: Colors.mainGreen, bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
         let img = blockies.createImage()
-        self.contactImage.layer.cornerRadius = Constants.collectionCell.image.cornerRadius
+        self.contactImage.layer.cornerRadius = Constants.TableContact.cornerRadius
         self.contactImage.clipsToBounds = true
         self.contactImage.image = img
-        self.contactNameLabelHeight.constant = name != nil ? 30 : 0
-        self.contactAddress.font = UIFont(name: Constants.regularFont, size: name != nil ? 11 : 18)
-        self.contactAddressHeight.constant = name != nil ? 28 : 60
+        self.contactNameLabelHeight.constant = name != nil ? Constants.TableContact.nameHeight : 0
+        self.contactAddress.font = UIFont(name: Constants.TableContact.font,
+                                          size: name != nil ?
+                                            Constants.TableContact.minimumFontSize :
+                                            Constants.TableContact.maximumFontSize)
+        //self.contactAddress.adjustsFontSizeToFitWidth = true
+        self.contactAddress.fitTextToBounds()
+        self.contactAddressHeight.constant = name != nil ? Constants.TableContact.addressHeight : Constants.TableContact.height
     }
     
     func mainSetup() {
@@ -115,11 +120,11 @@ class AcceptChequeFormController: BasicViewController {
         
         view.backgroundColor = UIColor.clear
         view.isOpaque = false
-        self.contentView.backgroundColor = Colors.background
+        self.contentView.backgroundColor = Constants.ModalView.ContentView.backgroundColor
         self.contentView.alpha = 1
-        self.contentView.layer.cornerRadius = 30
-        self.contentView.layer.borderColor = Colors.otherDarkGray.cgColor
-        self.contentView.layer.borderWidth = 1
+        self.contentView.layer.cornerRadius = Constants.ModalView.ContentView.cornerRadius
+        self.contentView.layer.borderColor = Constants.ModalView.ContentView.borderColor
+        self.contentView.layer.borderWidth = Constants.ModalView.ContentView.borderWidth
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                  action: #selector(self.dismissView))
@@ -160,7 +165,8 @@ class AcceptChequeFormController: BasicViewController {
     
     func showStart(animated: Bool) {
         self.screenStatus = .start
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "You got a cheque!"
             self.processAnimation.alpha = 0
             self.successIcon.alpha = 0
@@ -180,7 +186,8 @@ class AcceptChequeFormController: BasicViewController {
     
     func showAccepting(animated: Bool) {
         self.screenStatus = .accepting
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0, animations: { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0, animations: { [unowned self] in
             self.titleLabel.text = "You got a cheque!"
             self.processAnimation.alpha = 1
             self.successIcon.alpha = 0
@@ -201,11 +208,13 @@ class AcceptChequeFormController: BasicViewController {
     
     @objc func showAccepted(animated: Bool) {
         self.screenStatus = .accepted
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.successIcon.alpha = 1
             self.successIcon.transform = CGAffineTransform(scaleX: 3, y: 3)
         }
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Cheque accepted!"
             self.titleLabel.textColor = Colors.mainGreen
             self.processAnimation.alpha = 0
@@ -228,7 +237,8 @@ class AcceptChequeFormController: BasicViewController {
     
     @objc func showSave(animated: Bool) {
         self.screenStatus = .save
-        UIView.animate(withDuration: animated ? Constants.animationDuration : 0) { [unowned self] in
+        UIView.animate(withDuration: animated ?
+            Constants.ModalView.animationDuration : 0) { [unowned self] in
             self.titleLabel.text = "Save as contact"
             self.titleLabel.textColor = Colors.mainBlue
             self.successIcon.alpha = 0
@@ -242,7 +252,7 @@ class AcceptChequeFormController: BasicViewController {
             self.fromStack.alpha = 0
             self.amountStack.alpha = 0
             self.upperConfirmation.alpha = 1
-            self.contactNameFieldHeight.constant = Constants.textFields.heights.main
+            self.contactNameFieldHeight.constant = Constants.TextField.height
             self.fromStackHeight.constant = 0
         }
     }

@@ -55,7 +55,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         self.sendMoneyButton.setTitle("Write cheque", for: .normal)
         self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
-        self.topViewForModalAnimation.tag = Constants.modalViewTag
+        self.topViewForModalAnimation.tag = Constants.ModalView.ShadowView.tag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
         self.tabBarController?.view.addSubview(topViewForModalAnimation)
     }
@@ -67,10 +67,10 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuPresentMode = .menuSlideIn
-        SideMenuManager.default.menuWidth = 0.85 * UIScreen.main.bounds.width
-        SideMenuManager.default.menuShadowOpacity = 0.5
+        SideMenuManager.default.menuWidth = Constants.SideMenu.widthCoeff * UIScreen.main.bounds.width
+        SideMenuManager.default.menuShadowOpacity = Constants.SideMenu.shadowOpacity
         SideMenuManager.default.menuShadowColor = UIColor.black
-        SideMenuManager.default.menuShadowRadius = 5
+        SideMenuManager.default.menuShadowRadius = Constants.SideMenu.shadowRadius
     }
 
     func setupTableView() {
@@ -91,7 +91,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     }
     
     func appearAnimation() {
-        UIView.animate(withDuration: Constants.animationDuration) { [unowned self] in
+        UIView.animate(withDuration: Constants.ModalView.animationDuration) { [unowned self] in
             self.view.alpha = 1
         }
     }
@@ -227,7 +227,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -235,8 +235,8 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
-                self.topViewForModalAnimation.alpha = 0.5
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
+                self.topViewForModalAnimation.alpha = Constants.ModalView.ShadowView.alpha
             })
         }
     }
@@ -246,7 +246,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         let sendMoneyVC = SendMoneyController()
         sendMoneyVC.delegate = self
         sendMoneyVC.modalPresentationStyle = .overCurrentContext
-        sendMoneyVC.view.layer.speed = Constants.modalViewSpeed
+        sendMoneyVC.view.layer.speed = Constants.ModalView.animationSpeed
         self.tabBarController?.present(sendMoneyVC, animated: true, completion: nil)
     }
     
@@ -255,7 +255,7 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
 extension WalletViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.rows.heights.tokens
+        return UIScreen.main.bounds.height * Constants.TokenCell.heightCoef
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -325,7 +325,7 @@ extension WalletViewController: TokenCellDelegate {
         let publicKeyController = PublicKeyViewController(for: wallet)
         publicKeyController.delegate = self
         publicKeyController.modalPresentationStyle = .overCurrentContext
-        publicKeyController.view.layer.speed = Constants.modalViewSpeed
+        publicKeyController.view.layer.speed = Constants.ModalView.animationSpeed
         self.tabBarController?.present(publicKeyController, animated: true, completion: nil)
     }
 }

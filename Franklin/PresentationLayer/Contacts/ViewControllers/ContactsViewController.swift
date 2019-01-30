@@ -46,7 +46,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         self.addContactButton.setTitle("Add contact", for: .normal)
         self.topViewForModalAnimation.blurView()
         self.topViewForModalAnimation.alpha = 0
-        self.topViewForModalAnimation.tag = Constants.modalViewTag
+        self.topViewForModalAnimation.tag = Constants.ModalView.ShadowView.tag
         self.topViewForModalAnimation.isUserInteractionEnabled = false
         self.tabBarController?.view.addSubview(topViewForModalAnimation)
     }
@@ -95,7 +95,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewBeenDismissed() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0
             })
         }
@@ -104,7 +104,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
     
     func modalViewAppeared() {
         DispatchQueue.main.async { [unowned self] in
-            UIView.animate(withDuration: Constants.animationDuration, animations: {
+            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
                 self.topViewForModalAnimation.alpha = 0.5
             })
         }
@@ -129,7 +129,7 @@ class ContactsViewController: BasicViewController, ModalViewDelegate {
         let addContactController = AddContactController()
         addContactController.delegate = self
         addContactController.modalPresentationStyle = .overCurrentContext
-        addContactController.view.layer.speed = Constants.modalViewSpeed
+        addContactController.view.layer.speed = Constants.ModalView.animationSpeed
         self.tabBarController?.present(addContactController, animated: true, completion: nil)
     }
     
@@ -213,9 +213,9 @@ extension ContactsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = UIScreen.main.bounds.width * 0.8 / 3 - 15
+        let width = UIScreen.main.bounds.width * Constants.CollectionView.widthCoeff - 15
         
-        return CGSize(width: width, height: Constants.collectionCell.height)
+        return CGSize(width: width, height: Constants.CollectionCell.height)
     }
     
     func collectionView(_ collectionView: UICollectionView,
