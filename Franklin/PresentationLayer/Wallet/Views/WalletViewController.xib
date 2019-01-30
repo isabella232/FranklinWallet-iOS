@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="khk-pc-SNg" customClass="BasicTableView" customModule="Franklin" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="94" width="414" height="669.66666666666663"/>
+                    <rect key="frame" x="0.0" y="94" width="414" height="668"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="eYH-5o-rLM"/>
@@ -47,18 +47,18 @@
                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="7ID-fu-5ua"/>
                     </connections>
                 </button>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="QDe-ca-gsZ">
-                    <rect key="frame" x="20" y="773.66666666666663" width="374" height="58.333333333333371"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="bottom" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="QDe-ca-gsZ">
+                    <rect key="frame" x="27" y="772" width="360" height="60"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRA-Np-TwH" customClass="ScanButton" customModule="Franklin" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="58.333333333333336" height="58.333333333333336"/>
+                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="yRA-Np-TwH" secondAttribute="height" multiplier="1:1" id="I89-6T-g9w"/>
                             </constraints>
                             <state key="normal" backgroundImage="photo"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="amZ-Py-VCG" customClass="BasicBlueButton" customModule="Franklin" customModuleProvider="target">
-                            <rect key="frame" x="68.333333333333343" y="0.0" width="305.66666666666663" height="58.333333333333336"/>
+                            <rect key="frame" x="75" y="0.0" width="285" height="60"/>
                             <color key="backgroundColor" red="0.27450980390000002" green="0.49803921569999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="26"/>
                             <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -73,6 +73,7 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="yRA-Np-TwH" firstAttribute="height" secondItem="QDe-ca-gsZ" secondAttribute="height" id="8ae-96-RuV"/>
+                        <constraint firstAttribute="width" secondItem="QDe-ca-gsZ" secondAttribute="height" multiplier="360:60" id="fRc-mV-P0I"/>
                         <constraint firstItem="amZ-Py-VCG" firstAttribute="height" secondItem="QDe-ca-gsZ" secondAttribute="height" id="nHw-hR-khu"/>
                     </constraints>
                 </stackView>
@@ -80,15 +81,14 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="rb0-dq-Wdw" firstAttribute="top" secondItem="iPF-hr-DoE" secondAttribute="top" constant="10" id="1g8-9F-bHn"/>
-                <constraint firstItem="iPF-hr-DoE" firstAttribute="trailing" secondItem="QDe-ca-gsZ" secondAttribute="trailing" constant="20" id="8fg-qo-Vd7"/>
+                <constraint firstItem="QDe-ca-gsZ" firstAttribute="width" secondItem="LUp-ao-XXN" secondAttribute="width" multiplier="0.87" id="6kO-la-k6G"/>
                 <constraint firstItem="khk-pc-SNg" firstAttribute="top" secondItem="rb0-dq-Wdw" secondAttribute="bottom" constant="10" id="Dne-io-FYS"/>
                 <constraint firstItem="iPF-hr-DoE" firstAttribute="trailing" secondItem="khk-pc-SNg" secondAttribute="trailing" id="IgP-rW-3wG"/>
                 <constraint firstItem="rb0-dq-Wdw" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" constant="10" id="U0t-su-4pe"/>
-                <constraint firstItem="QDe-ca-gsZ" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" constant="20" id="V27-4l-eW4"/>
+                <constraint firstItem="QDe-ca-gsZ" firstAttribute="centerX" secondItem="iPF-hr-DoE" secondAttribute="centerX" id="d6a-er-OD2"/>
                 <constraint firstItem="khk-pc-SNg" firstAttribute="leading" secondItem="iPF-hr-DoE" secondAttribute="leading" id="g7x-Q7-D0u"/>
                 <constraint firstItem="iPF-hr-DoE" firstAttribute="bottom" secondItem="QDe-ca-gsZ" secondAttribute="bottom" constant="30" id="peW-PH-R19"/>
                 <constraint firstItem="QDe-ca-gsZ" firstAttribute="top" secondItem="khk-pc-SNg" secondAttribute="bottom" constant="10" id="q8p-4J-dBj"/>
-                <constraint firstItem="QDe-ca-gsZ" firstAttribute="height" secondItem="LUp-ao-XXN" secondAttribute="height" multiplier="0.065" id="vAP-H6-XwK"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="iPF-hr-DoE"/>
             <point key="canvasLocation" x="119.2" y="52.623688155922046"/>
