@@ -16,21 +16,19 @@ class OnboardingViewController: BasicViewController {
     let userDefaults = UserDefaultKeys()
     let alerts = Alerts()
     var walletCreated = false
-    
-    var prodName = UILabel()
-    var subtitle = UILabel()
-    var bottomInfo = UILabel()
-    var link = UIButton()
-    var settingUp = UILabel()
-    var iv = UIImageView()
 
     var pageViewController: UIPageViewController!
-    let continueButton = BasicGreenButton(frame: CGRect(x: 0,
-                                                        y: 0,
-                                                        width: Constants.commonWidthCoeff * UIScreen.main.bounds.width,
-                                                        height: Constants.Button.height))
-    let animationImageView = UIImageView(gifImage: UIImage(gifName: "loading.gif"),
-                                         loopCount: -1)
+    
+    @IBOutlet weak var settingUp: UILabel!
+    @IBOutlet weak var iv: UIImageView!
+    @IBOutlet weak var link: UILabel!
+    @IBOutlet weak var bottomInfo: UILabel!
+    @IBOutlet weak var prodName: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+    @IBOutlet weak var continueButton: BasicGreenButton!
+    @IBOutlet weak var animationImageView: UIImageView!
+    
+    //let animationImageView = UIImageView(gifImage: UIImage(gifName: "loading.gif"), loopCount: -1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +46,8 @@ class OnboardingViewController: BasicViewController {
     }
     
     func createView() {
+        animationImageView.setGifImage(UIImage(gifName: "loading.gif"))
+        animationImageView.loopCount = -1
         
         prodName.text = "FRANKLIN"
         prodName.textAlignment = .center
@@ -69,7 +69,7 @@ class OnboardingViewController: BasicViewController {
             NSAttributedString.Key.foregroundColor : Colors.mainGreen,
             NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
         let buttonTitleString = NSAttributedString(string: "terms and conditions", attributes: attrs)
-        link.setAttributedTitle(buttonTitleString, for: .normal)
+        link.attributedText = buttonTitleString
         
         settingUp.textAlignment = .center
         settingUp.text = "Setting up your wallet"
@@ -92,73 +92,8 @@ class OnboardingViewController: BasicViewController {
         continueButton.setTitle("Continue", for: .normal)
         continueButton.alpha = 1
         
-        link.addTarget(self, action: #selector(readTerms(sender:)), for: .touchUpInside)
+//        link.addTarget(self, action: #selector(readTerms(sender:)), for: .touchUpInside)
         
-        let views = [
-            "title": self.prodName,
-            "subtitle": self.subtitle,
-            "iv": self.iv,
-            "continue": self.continueButton,
-            "animation": self.animationImageView,
-            "settingup": self.settingUp,
-            "bottomInfo": self.bottomInfo,
-            "link": self.link
-        ]
-        
-        for (_, v) in views {
-            v.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(v)
-        }
-        
-        var constraints = [NSLayoutConstraint(
-            item: self.continueButton,
-            attribute: .centerX,
-            relatedBy: .equal,
-            toItem: self.view,
-            attribute: .centerX,
-            multiplier: 1,
-            constant: 0)]
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-[title]-|",
-                                                          options: .alignAllCenterX,
-                                                          metrics: [:],
-                                                          views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-[subtitle]-|",
-                                                          options: .alignAllCenterX,
-                                                          metrics: [:],
-                                                          views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|[iv]|",
-                                                          options: .alignAllCenterX,
-                                                          metrics: [:],
-                                                          views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|[bottomInfo]|",
-                                                          options: .alignAllCenterX,
-                                                          metrics: [:],
-                                                          views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|[link]|",
-                                                          options: .alignAllCenterX,
-                                                          metrics: [:],
-                                                          views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-70-[title(67)]-[subtitle(27)]-[iv]-80-[continue(60)]-20-[bottomInfo(20)]-10-[link(20)]-100-|",
-                                                                      options: .alignAllCenterX,
-                                                                      metrics: [:],
-                                                                      views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|-36-[animation]-36-|",
-                                                                      options: .alignAllCenterX,
-                                                                      metrics: [:],
-                                                                      views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:[animation]-55-|",
-                                                                      options: .alignAllCenterX,
-                                                                      metrics: [:],
-                                                                      views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:[settingup]-120-|",
-                                                                      options: .alignAllCenterX,
-                                                                      metrics: [:],
-                                                                      views: views as [String : Any]))
-        constraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "H:|[settingup]|",
-                                                                      options: .alignAllCenterX,
-                                                                      metrics: [:],
-                                                                      views: views as [String : Any]))
-        NSLayoutConstraint.activate(constraints)
     }
 
     //TODO: - think need to make pages with info in future

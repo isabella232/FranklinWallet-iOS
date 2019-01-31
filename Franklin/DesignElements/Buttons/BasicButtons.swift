@@ -29,28 +29,6 @@ class BasicGreenButton: UIButton {
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpOutside)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        self.layer.cornerRadius = Constants.Button.cornerRadius
-        self.clipsToBounds = true
-        let font = UIFont(name: Constants.Fonts.regular, size: Constants.Button.maximumFontSize) ?? UIFont.systemFont(ofSize: Constants.Button.maximumFontSize)
-        self.titleLabel?.font = font
-        self.backgroundColor = Colors.mainGreen
-        self.setTitleColor(Colors.textWhite, for: .normal)
-        self.layer.borderWidth = Constants.Button.borderWidth
-        //self.layer.borderColor = Colors.firstMain.cgColor
-        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
-        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
-        self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
-        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchDragOutside)
-        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpInside)
-        self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchUpOutside)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     @objc func buttonTouchedDown(_ sender: UIButton) {
         animation.pressButtonStartedAnimation(for: sender, color: Colors.mainGreen)
     }

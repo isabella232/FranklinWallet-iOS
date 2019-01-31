@@ -160,6 +160,7 @@
 		E2D451C621EE292700218872 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451C521EE292700218872 /* BasicViewController.swift */; };
 		E2D451D721EE331600218872 /* BasicSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451D621EE331600218872 /* BasicSegmentedControl.swift */; };
 		E2D451DD21EE980B00218872 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451DC21EE980B00218872 /* DoubleExtension.swift */; };
+		E2E20215220309340046C956 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E20213220309340046C956 /* OnboardingViewController.xib */; };
 		E2EB2C0321FBC5A200F2864D /* TransactionsHistoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF9D214BB2890023FC18 /* TransactionsHistoryState.swift */; };
 		E2EB2C0421FBC5A200F2864D /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF99214BAEDB0023FC18 /* TransactionCell.swift */; };
 		E2EB2C0521FBC5A200F2864D /* TransactionsHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B271CF94214BAD730023FC18 /* TransactionsHistoryViewController.swift */; };
@@ -450,6 +451,7 @@
 		E2DCA65C219323B000F94FBA /* TransactionInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionInfoCell.xib; sourceTree = "<group>"; };
 		E2DCA65D219323B000F94FBA /* TransactionInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionInfoCell.swift; sourceTree = "<group>"; };
 		E2DCA65E219323B000F94FBA /* TransactionInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TransactionInfoController.xib; sourceTree = "<group>"; };
+		E2E20213220309340046C956 /* OnboardingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		E2F0EF6C21F7C2F500F11AD1 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E2F0EF7B21F7FCC700F11AD1 /* ContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCell.swift; sourceTree = "<group>"; };
 		E2F0EF7C21F7FCC700F11AD1 /* ContactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactCell.xib; sourceTree = "<group>"; };
@@ -1410,6 +1412,7 @@
 		E2C1109721E566AD0012A978 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				E2E202162203093A0046C956 /* Views */,
 				E2C110AA21E64B870012A978 /* ViewControllers */,
 				E2C110A821E64B7B0012A978 /* Models */,
 			);
@@ -1722,6 +1725,14 @@
 				E2DCA65E219323B000F94FBA /* TransactionInfoController.xib */,
 			);
 			path = TransactionInfo;
+			sourceTree = "<group>";
+		};
+		E2E202162203093A0046C956 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2E20213220309340046C956 /* OnboardingViewController.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E2F0EF6B21F7C2E500F11AD1 /* TabBarController */ = {
@@ -2053,6 +2064,7 @@
 				E2F686A921F9DEF600BD3D14 /* SendMoneyController.xib in Resources */,
 				E2F0EFB821F8BA2700F11AD1 /* SF-Pro-Display-Bold.otf in Resources */,
 				E2215AC121FF44A700FC79AB /* AcceptChequeController.xib in Resources */,
+				E2E20215220309340046C956 /* OnboardingViewController.xib in Resources */,
 				E2F0EF7E21F7FCC700F11AD1 /* ContactCell.xib in Resources */,
 				9197F2EE2143B92B00C358AA /* WalletViewController.xib in Resources */,
 				B2091507214A5AD000C8B408 /* WalletCell.xib in Resources */,
