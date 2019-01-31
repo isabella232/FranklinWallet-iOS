@@ -13,6 +13,7 @@ import SwiftyGif
 
 class AcceptChequeFormController: BasicViewController {
     
+    @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var upperConfirmation: UIStackView!
@@ -25,15 +26,10 @@ class AcceptChequeFormController: BasicViewController {
     @IBOutlet weak var processAnimation: UIImageView!
     @IBOutlet weak var topButton: BasicWhiteButton!
     @IBOutlet weak var bottomButton: BasicWhiteButton!
-    @IBOutlet weak var fromStackHeight: NSLayoutConstraint!
-    @IBOutlet weak var contactNameFieldHeight: NSLayoutConstraint!
-    @IBOutlet weak var amountHeight: UIStackView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var contactNameField: BasicTextField!
-    @IBOutlet weak var contactNameLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var amountStack: UIStackView!
-    @IBOutlet weak var contactAddressHeight: NSLayoutConstraint!
     
     enum RedeemScreenStatus {
         case start
@@ -97,7 +93,7 @@ class AcceptChequeFormController: BasicViewController {
     
     func setupContact() {
         self.amountLabel.text = "$" + self.cheque.amount
-        let name = self.isContactExists(address: self.cheque.address)
+        let name = self.isContactExists(address: self.cheque.address) ?? "Unknown contact"
         self.contactName.text = name
         self.contactAddress.text = self.cheque.address.address
         let blockies = Blockies(seed: cheque.address.address, size: 5, scale: 4, color: Colors.mainGreen, bgColor: Colors.mostLightGray, spotColor: Colors.mainBlue)
@@ -105,14 +101,12 @@ class AcceptChequeFormController: BasicViewController {
         self.contactImage.layer.cornerRadius = Constants.TableContact.cornerRadius
         self.contactImage.clipsToBounds = true
         self.contactImage.image = img
-        self.contactNameLabelHeight.constant = name != nil ? Constants.TableContact.nameHeight : 0
         self.contactAddress.font = UIFont(name: Constants.TableContact.font,
                                           size: name != nil ?
                                             Constants.TableContact.minimumFontSize :
                                             Constants.TableContact.maximumFontSize)
         //self.contactAddress.adjustsFontSizeToFitWidth = true
         self.contactAddress.fitTextToBounds()
-        self.contactAddressHeight.constant = name != nil ? Constants.TableContact.addressHeight : Constants.TableContact.height
     }
     
     func mainSetup() {
@@ -179,8 +173,9 @@ class AcceptChequeFormController: BasicViewController {
             self.fromStack.alpha = 1
             self.amountStack.alpha = 1
             self.upperConfirmation.alpha = 0
-            self.contactNameFieldHeight.constant = 0
-            self.fromStackHeight.constant = 80
+            self.contactNameField.alpha = 0
+            self.contactNameField.isUserInteractionEnabled = false
+            self.fromLabel.text = "From:"
         }
     }
     
@@ -197,8 +192,8 @@ class AcceptChequeFormController: BasicViewController {
             self.fromStack.alpha = 1
             self.amountStack.alpha = 1
             self.upperConfirmation.alpha = 0
-            self.contactNameFieldHeight.constant = 0
-            self.fromStackHeight.constant = 80
+            self.contactNameField.alpha = 0
+            self.contactNameField.isUserInteractionEnabled = false
         }) { [unowned self] (completed) in
             if completed {
                 self.accepting()
@@ -230,8 +225,8 @@ class AcceptChequeFormController: BasicViewController {
             self.fromStack.alpha = 1
             self.amountStack.alpha = 1
             self.upperConfirmation.alpha = 0
-            self.contactNameFieldHeight.constant = 0
-            self.fromStackHeight.constant = 80
+            self.contactNameField.alpha = 0
+            self.contactNameField.isUserInteractionEnabled = false
         }
     }
     
@@ -252,8 +247,9 @@ class AcceptChequeFormController: BasicViewController {
             self.fromStack.alpha = 0
             self.amountStack.alpha = 0
             self.upperConfirmation.alpha = 1
-            self.contactNameFieldHeight.constant = Constants.TextField.height
-            self.fromStackHeight.constant = 0
+            self.contactNameField.alpha = 1
+            self.contactNameField.isUserInteractionEnabled = true
+            self.fromLabel.text = "Contact name:"
         }
     }
     
