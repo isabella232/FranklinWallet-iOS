@@ -218,7 +218,8 @@ class OnboardingViewController: BasicViewController {
                 let password = Constants.Wallet.newPassword
                 let wallet = try self.walletsService.createHDWallet(name: name,
                                                                     password: password,
-                                                                    mnemonics: mnemonicFrase)
+                                                                    mnemonics: mnemonicFrase,
+                                                                    backupNeeded: true)
                 try wallet.save()
                 try wallet.addPassword(password)
                 CurrentWallet.currentWallet = wallet

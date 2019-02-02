@@ -18,5 +18,6 @@ target 'Franklin' do
   pod 'SwiftyGif'
   pod 'SideMenu'
   pod 'BlockiesSwift'
+  pod 'BadgeSwift', '~> 7.0'
 
 end

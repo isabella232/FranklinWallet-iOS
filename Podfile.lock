@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - BadgeSwift (7.0.0)
   - BigInt (3.1.0):
     - SipHash (~> 1.2)
   - BlockiesSwift (0.1.2)
@@ -50,6 +51,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - BadgeSwift (~> 7.0)
   - BlockiesSwift
   - Crashlytics
   - Fabric
@@ -66,6 +68,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - BadgeSwift
     - BigInt
     - BlockiesSwift
     - Crashlytics
@@ -89,6 +92,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  BadgeSwift: 5cfacfad916d85e2f68d93dbb9ade4e9555903da
   BigInt: 76b5dfdfa3e2e478d4ffdf161aeede5502e2742f
   BlockiesSwift: 22d8d56dd187e6bfd16cb8c8fbd4fd4896c3e65d
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
@@ -110,6 +114,6 @@ SPEC CHECKSUMS:
   TransitionableTab: 54a5d0af475033bdb83959fde4e5d6201af7e2ab
   web3swift: aeb3d08ded961e0562919d4161f5af6ccb0ab30f
 
-PODFILE CHECKSUM: 6cc31a67b6e6fa902d9ef9397d08816758321a4e
+PODFILE CHECKSUM: f6293673afba98dc3e86bf018eaa8b98e7e50e22
 
 COCOAPODS: 1.6.0.beta.2

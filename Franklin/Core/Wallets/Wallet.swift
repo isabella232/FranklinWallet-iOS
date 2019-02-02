@@ -32,6 +32,7 @@ protocol IWalletTokens {
     func setBalance(token: ERC20Token, network: Web3Network, balance: String) throws
     func setUsdBalance(token: ERC20Token, network: Web3Network, usdBalance: String) throws
     func add(token: ERC20Token, network: Web3Network) throws
+    func performBackup() throws
     func delete(token: ERC20Token, network: Web3Network) throws
     func getAllTokens(network: Web3Network) throws -> [ERC20Token]
     func getSelectedToken(network: Web3Network) throws -> ERC20Token
@@ -83,6 +84,7 @@ public class Wallet: IWallet {
     let data: Data
     let name: String
     let isHD: Bool
+    var backup: String?
     
     private var web3Instance: web3? {
         let web3 = CurrentNetwork.currentWeb
@@ -111,20 +113,25 @@ public class Wallet: IWallet {
             let name = crModel.name else {
                 throw Web3Error.walletError
         }
+        let backup = crModel.backup
+        
         self.address = address
         self.data = data
         self.name = name
         self.isHD = crModel.isHD
+        self.backup = backup
     }
     
     public init(address: String,
                 data: Data,
                 name: String,
-                isHD: Bool) {
+                isHD: Bool,
+                backup: String?) {
         self.address = address
         self.data = data
         self.name = name
         self.isHD = isHD
+        self.backup = backup
     }
     
     public init(wallet: Wallet) {
@@ -132,6 +139,7 @@ public class Wallet: IWallet {
         self.data = wallet.data
         self.name = wallet.name
         self.isHD = wallet.isHD
+        self.backup = wallet.backup
     }
     
     public func getPrivateKey(withPassword: String) throws -> String {
@@ -193,6 +201,7 @@ extension Wallet: IWalletStorage {
             entity.data = self.data
             entity.name = self.name
             entity.isHD = self.isHD
+            entity.backup = self.backup
             do {
                 try context.save()
                 group.leave()
@@ -217,6 +226,30 @@ extension Wallet: IWalletStorage {
             for item in results {
                 let isEqual = item.address == self.address
                 item.isSelected = isEqual
+            }
+            try ContainerCD.context.save()
+            group.leave()
+        } catch let someErr {
+            error = someErr
+            group.leave()
+        }
+        group.wait()
+        if let resErr = error {
+            throw resErr
+        }
+    }
+    
+    public func performBackup() throws {
+        let group = DispatchGroup()
+        group.enter()
+        var error: Error?
+        let requestWallet: NSFetchRequest<WalletModel> = WalletModel.fetchRequest()
+        do {
+            let results = try ContainerCD.context.fetch(requestWallet)
+            for item in results {
+                if item.address == self.address {
+                    item.backup = nil
+                }
             }
             try ContainerCD.context.save()
             group.leave()

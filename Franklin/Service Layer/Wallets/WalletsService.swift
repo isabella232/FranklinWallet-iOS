@@ -20,7 +20,8 @@ protocol IWalletsService {
                       password: String) throws -> Wallet
     func createHDWallet(name: String,
                         password: String,
-                        mnemonics: String) throws -> Wallet
+                        mnemonics: String,
+                        backupNeeded: Bool) throws -> Wallet
     func generateMnemonics(bitsOfEntropy: Int) throws -> String
 }
 
@@ -53,9 +54,10 @@ public class WalletsService: IWalletsService {
             throw Errors.StorageErrors.cantImportWallet
         }
         let w = Wallet(address: address,
-                            data: keyData,
-                            name: name,
-                            isHD: false)
+                       data: keyData,
+                       name: name,
+                       isHD: false,
+                       backup: nil)
         return w
     }
     
@@ -74,15 +76,17 @@ public class WalletsService: IWalletsService {
             throw Errors.StorageErrors.cantCreateWallet
         }
         let w = Wallet(address: address,
-                            data: keyData,
-                            name: name,
-                            isHD: false)
+                       data: keyData,
+                       name: name,
+                       isHD: false,
+                       backup: nil)
         return w
     }
     
     public func createHDWallet(name: String,
                                password: String,
-                               mnemonics: String) throws -> Wallet {
+                               mnemonics: String,
+                               backupNeeded: Bool) throws -> Wallet {
         guard let keystore = try? BIP32Keystore(mnemonics: mnemonics,
                                                 password: password,
                                                 mnemonicsPassword: "",
@@ -98,7 +102,8 @@ public class WalletsService: IWalletsService {
         let w = Wallet(address: address,
                        data: keyData,
                        name: name,
-                       isHD: true)
+                       isHD: true,
+                       backup: backupNeeded ? mnemonics : nil)
         return w
     }
     

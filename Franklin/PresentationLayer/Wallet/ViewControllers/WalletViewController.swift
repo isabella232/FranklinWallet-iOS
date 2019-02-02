@@ -88,6 +88,13 @@ class WalletViewController: BasicViewController, ModalViewDelegate {
         super.viewDidAppear(animated)
         self.appearAnimation()
         self.setTokensList()
+        
+//        print(CurrentWallet.currentWallet?.address)
+//        print(try? walletsService.getSelectedWallet().address)
+//        guard let wallets = try? walletsService.getAllWallets() else {return}
+//        for w in wallets {
+//            print(w.address)
+//        }
     }
     
     func appearAnimation() {

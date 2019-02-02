@@ -30,7 +30,8 @@ class TokenCell: UITableViewCell {
     
     weak var delegate: TokenCellDelegate?
     
-    override func awakeFromNib() {self.balance.font = UIFont(name: Constants.TokenCell.Balance.font, size: Constants.TokenCell.Balance.size)
+    override func awakeFromNib() {
+        self.balance.font = UIFont(name: Constants.TokenCell.Balance.font, size: Constants.TokenCell.Balance.size)
         self.balance.textColor = Constants.TokenCell.Balance.color
         self.balanceLabel.font = UIFont(name: Constants.TokenCell.BalanceLabel.font, size: Constants.TokenCell.BalanceLabel.size)
         self.balanceLabel.textColor = Constants.TokenCell.BalanceLabel.color

@@ -156,6 +156,8 @@
 		E2C110C821E8A86C0012A978 /* BasicButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C110C721E8A86C0012A978 /* BasicButtons.swift */; };
 		E2C110CC21E8A8B90012A978 /* BasicTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C110CB21E8A8B90012A978 /* BasicTextView.swift */; };
 		E2C110CE21E8A8D90012A978 /* TableHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C110CD21E8A8D90012A978 /* TableHeader.swift */; };
+		E2C14A96220489BC00B060AD /* BackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C14A94220489BC00B060AD /* BackupViewController.swift */; };
+		E2C14A97220489BC00B060AD /* BackupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2C14A95220489BC00B060AD /* BackupViewController.xib */; };
 		E2C59074215258B800FF53D3 /* TableTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C59073215258B800FF53D3 /* TableTokens.swift */; };
 		E2D451C621EE292700218872 /* BasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451C521EE292700218872 /* BasicViewController.swift */; };
 		E2D451D721EE331600218872 /* BasicSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D451D621EE331600218872 /* BasicSegmentedControl.swift */; };
@@ -443,6 +445,8 @@
 		E2C110C721E8A86C0012A978 /* BasicButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButtons.swift; sourceTree = "<group>"; };
 		E2C110CB21E8A8B90012A978 /* BasicTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTextView.swift; sourceTree = "<group>"; };
 		E2C110CD21E8A8D90012A978 /* TableHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableHeader.swift; sourceTree = "<group>"; };
+		E2C14A94220489BC00B060AD /* BackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackupViewController.swift; sourceTree = "<group>"; };
+		E2C14A95220489BC00B060AD /* BackupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BackupViewController.xib; sourceTree = "<group>"; };
 		E2C59073215258B800FF53D3 /* TableTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableTokens.swift; sourceTree = "<group>"; };
 		E2D451C521EE292700218872 /* BasicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicViewController.swift; sourceTree = "<group>"; };
 		E2D451D621EE331600218872 /* BasicSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSegmentedControl.swift; sourceTree = "<group>"; };
@@ -755,6 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F686A421F9DE5A00BD3D14 /* NeedToBe */,
+				E2C14A912204898300B060AD /* Backup */,
 				E2215ABA21FF43CD00FC79AB /* AcceptCheque */,
 				B271CF98214BADD00023FC18 /* TransactionsHistory */,
 				E2F686A521F9DE9B00BD3D14 /* SendMoney */,
@@ -1642,6 +1647,31 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		E2C14A912204898300B060AD /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				E2C14A932204899600B060AD /* ViewControllers */,
+				E2C14A922204898B00B060AD /* Views */,
+			);
+			path = Backup;
+			sourceTree = "<group>";
+		};
+		E2C14A922204898B00B060AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E2C14A95220489BC00B060AD /* BackupViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E2C14A932204899600B060AD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E2C14A94220489BC00B060AD /* BackupViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		E2D451CE21EE2FFC00218872 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -2053,6 +2083,7 @@
 				91E7255C214FEDE3003FAD76 /* AddressTableViewCell.xib in Resources */,
 				9197F322214403A400C358AA /* SettingsViewController.xib in Resources */,
 				E2F0EFD221F8BD1500F11AD1 /* librefranklin-semibolditalic.ttf in Resources */,
+				E2C14A97220489BC00B060AD /* BackupViewController.xib in Resources */,
 				E2F0EFA721F8BA2700F11AD1 /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				9197F2F32143B9D600C358AA /* TokenCell.xib in Resources */,
 				E2F0EFB621F8BA2700F11AD1 /* SF-Pro-Text-BoldItalic.otf in Resources */,
@@ -2160,6 +2191,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Franklin/Pods-Franklin-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BadgeSwift/BadgeSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
 				"${BUILT_PRODUCTS_DIR}/BlockiesSwift/BlockiesSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
@@ -2184,6 +2216,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BadgeSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BlockiesSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
@@ -2324,6 +2357,7 @@
 				E2C1108121E507340012A978 /* FloatExtension.swift in Sources */,
 				E2C59074215258B800FF53D3 /* TableTokens.swift in Sources */,
 				914F22952149A24C00ED58E6 /* PincodeCreationStatus.swift in Sources */,
+				E2C14A96220489BC00B060AD /* BackupViewController.swift in Sources */,
 				914F22982149BF2400ED58E6 /* EnterPincodeViewController.swift in Sources */,
 				E2F0EF6D21F7C2F500F11AD1 /* TabBarController.swift in Sources */,
 				E2A8DB9921F616BE0031AC58 /* Franklin.swift in Sources */,

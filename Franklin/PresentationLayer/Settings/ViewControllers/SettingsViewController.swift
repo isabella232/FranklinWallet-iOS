@@ -10,7 +10,7 @@ import UIKit
 import Web3swift
 import SideMenu
 
-class SettingsViewController: BasicViewController {
+class SettingsViewController: BasicViewController, ModalViewDelegate {
 
     @IBOutlet weak var settingsTableView: BasicTableView!
 
@@ -61,6 +61,22 @@ class SettingsViewController: BasicViewController {
         self.mainSettings = settings
         self.reloadDataInTable()
     }
+    
+    func modalViewBeenDismissed() {
+//        DispatchQueue.main.async { [unowned self] in
+//            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
+//                self.topViewForModalAnimation.alpha = 0
+//            })
+//        }
+    }
+    
+    func modalViewAppeared() {
+//        DispatchQueue.main.async { [unowned self] in
+//            UIView.animate(withDuration: Constants.ModalView.animationDuration, animations: {
+//                self.topViewForModalAnimation.alpha = Constants.ModalView.ShadowView.alpha
+//            })
+//        }
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -103,17 +119,14 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-//        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
-//            return
-//        }
-//        let setting = mainSettings[indexPathForSelectedRow.row]
-//        if setting == MainSetting(.network) {
-//            let networksViewController = NetworksViewController()
-//            self.navigationController?.pushViewController(networksViewController, animated: true)
-//        } else if setting == MainSetting(.wallet) {
-//            let walletsViewController = WalletsViewController()
-//            self.navigationController?.pushViewController(walletsViewController, animated: true)
-//        }
+        guard let indexPathForSelectedRow = tableView.indexPathForSelectedRow else {
+            return
+        }
+        let setting = mainSettings[indexPathForSelectedRow.row]
+        if setting == MainSetting(.backup) {
+            let backupVC = BackupViewController()
+            self.navigationController?.pushViewController(backupVC, animated: true)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
