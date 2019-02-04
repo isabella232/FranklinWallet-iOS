@@ -52,14 +52,14 @@ public class AppController {
         return nav
     }
     
-//    public func createPincodeController() -> UINavigationController {
-//        let vc = CreatePincodeViewController()
-//        let nav = navigationController(withTitle: "Create Pincode",
-//                                       withImage: nil,
-//                                       withController: vc,
-//                                       tag: 0)
-//        return nav
-//    }
+    public func enterPincodeController() -> UINavigationController {
+        let vc = EnterPincodeViewController(for: EnterPincodeCases.enterWallet, data: Data())
+        let nav = navigationController(withTitle: "Enter Pincode",
+                                       withImage: nil,
+                                       withController: vc,
+                                       tag: 0)
+        return nav
+    }
     
 //    public func walletCreationVC() -> UINavigationController {
 //        let vc = WalletCreationAnimationViewController()
@@ -215,7 +215,11 @@ public class AppController {
         
         if let selectedWallet = CurrentWallet.currentWallet {
             self.initPreparations(for: selectedWallet, on: selectedNetwork)
-            startViewController = self.goToApp()
+            if self.userDefaultKeys.isPincodeExists {
+                startViewController = self.enterPincodeController()
+            } else {
+                startViewController = self.goToApp()
+            }
             self.createRootViewController(startViewController, in: window)
         } else {
             startViewController = self.onboardingController()

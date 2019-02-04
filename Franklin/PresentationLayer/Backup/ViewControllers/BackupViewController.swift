@@ -109,9 +109,11 @@ class BackupViewController: BasicViewController {
             try wallet.performBackup()
             let selectedWallet = try WalletsService().getSelectedWallet()
             CurrentWallet.currentWallet = selectedWallet
-            self.navigationController?.popViewController(animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: { [unowned self] in
+                self.navigationController?.popViewController(animated: true)
+            })
         } catch let error {
-            alerts.showErrorAlert(for: self, error: error) {
+            alerts.showErrorAlert(for: self, error: error) { [unowned self] in
                 self.navigationController?.popViewController(animated: true)
             }
         }

@@ -759,6 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				E2F686A421F9DE5A00BD3D14 /* NeedToBe */,
+				E20F3D17220857E600669C8B /* Pincode */,
 				E2C14A912204898300B060AD /* Backup */,
 				E2215ABA21FF43CD00FC79AB /* AcceptCheque */,
 				B271CF98214BADD00023FC18 /* TransactionsHistory */,
@@ -836,6 +837,16 @@
 				B2E668DE2151238200C3CC2D /* Enumerations.swift */,
 			);
 			path = Sending;
+			sourceTree = "<group>";
+		};
+		E20F3D17220857E600669C8B /* Pincode */ = {
+			isa = PBXGroup;
+			children = (
+				E2C110C421E7DBBC0012A978 /* ViewControllers */,
+				E2C110C321E7DBB60012A978 /* Models */,
+				E2C110C221E7DBAE0012A978 /* Views */,
+			);
+			path = Pincode;
 			sourceTree = "<group>";
 		};
 		E2215ABA21FF43CD00FC79AB /* AcceptCheque */ = {
@@ -1582,9 +1593,6 @@
 		E2C110C121E7DB730012A978 /* Pincode */ = {
 			isa = PBXGroup;
 			children = (
-				E2C110C421E7DBBC0012A978 /* ViewControllers */,
-				E2C110C321E7DBB60012A978 /* Models */,
-				E2C110C221E7DBAE0012A978 /* Views */,
 			);
 			path = Pincode;
 			sourceTree = "<group>";

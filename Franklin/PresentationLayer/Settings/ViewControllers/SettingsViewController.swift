@@ -126,6 +126,9 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
         if setting == MainSetting(.backup) {
             let backupVC = BackupViewController()
             self.navigationController?.pushViewController(backupVC, animated: true)
+        } else if setting == MainSetting(.pincode) {
+            let pincodeVC = CreatePincodeViewController()
+            self.navigationController?.pushViewController(pincodeVC, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

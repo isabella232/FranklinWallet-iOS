@@ -17,8 +17,8 @@ class PinCodeNumberButton: UIButton {
         //self.layer.masksToBounds = false
         self.layer.cornerRadius = self.bounds.size.width / 2
         self.clipsToBounds = true
-        self.backgroundColor = Colors.background
-        self.setTitleColor(Colors.textDarkGray, for: .normal)
+        self.backgroundColor = Colors.lightBlue
+        self.setTitleColor(Colors.mainBlue, for: .normal)
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDown)
         self.addTarget(self, action: #selector(buttonTouchedUp(_:)), for: .touchCancel)
         self.addTarget(self, action: #selector(buttonTouchedDown(_:)), for: .touchDragInside)
@@ -26,10 +26,10 @@ class PinCodeNumberButton: UIButton {
     }
     
     @objc func buttonTouchedDown(_ sender: UIButton) {
-        animation.pressButtonStartedAnimation(for: sender, color: Colors.mostLightGray)
+        animation.pressButtonStartedAnimation(for: sender, color: Colors.lightBlue)
     }
     
     @objc func buttonTouchedUp(_ sender: UIButton) {
-        animation.pressButtonCanceledAnimation(for: sender, color: Colors.mostLightGray)
+        animation.pressButtonCanceledAnimation(for: sender, color: Colors.lightBlue)
     }
 }
