@@ -89,15 +89,15 @@ public class AppController {
         let nav = UINavigationController()
         let tabs = TabBarController()
         let nav1 = navigationController(withTitle: nil,
-                                        withImage: UIImage(named: "wallet_white"),
+                                        withImage: UIImage(named: "wallet"),
                                         withController: WalletViewController(nibName: nil, bundle: nil),
                                         tag: 1)
         let nav2 = navigationController(withTitle: nil,
-                                        withImage: UIImage(named: "transactions_white"),
+                                        withImage: UIImage(named: "list"),
                                         withController: TransactionsHistoryViewController(nibName: nil, bundle: nil),
                                         tag: 2)
         let nav3 = navigationController(withTitle: nil,
-                                        withImage: UIImage(named: "contacts_white"),
+                                        withImage: UIImage(named: "user_male"),
                                         withController: ContactsViewController(nibName: nil, bundle: nil),
                                         tag: 3)
 //        let nav2 = navigationController(withTitle: "Transactions History",
@@ -109,7 +109,7 @@ public class AppController {
 //                                        withController: SettingsViewController(nibName: nil, bundle: nil),
 //                                        tag: 4)
 //        let nav3 = navigationController(withTitle: "Contacts",
-//                                        withImage: UIImage(named: "contacts_white"),
+//                                        withImage: UIImage(named: "list"),
 //                                        withController: ContactsViewController(nibName: nil, bundle: nil),
 //                                        tag: 3)
         tabs.tabBar.barTintColor = Colors.background

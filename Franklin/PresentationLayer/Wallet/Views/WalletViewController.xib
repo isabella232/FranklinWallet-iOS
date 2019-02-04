@@ -42,7 +42,7 @@
                         <constraint firstAttribute="width" secondItem="rb0-dq-Wdw" secondAttribute="height" multiplier="1:1" id="10P-tB-fxM"/>
                         <constraint firstAttribute="height" constant="30" id="BoZ-g8-dud"/>
                     </constraints>
-                    <state key="normal" image="menuicon"/>
+                    <state key="normal" image="menu"/>
                     <connections>
                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="7ID-fu-5ua"/>
                     </connections>
@@ -95,7 +95,7 @@
         </view>
     </objects>
     <resources>
-        <image name="menuicon" width="21" height="16"/>
+        <image name="menu" width="30" height="30"/>
         <image name="photo" width="96" height="96"/>
         <image name="writing-tool" width="96" height="96"/>
     </resources>

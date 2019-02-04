@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsHistoryViewController" customModule="Franklin_dev" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransactionsHistoryViewController" customModule="Franklin" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="1v0-2Z-m9X" id="weW-q2-Wlc"/>
                 <outlet property="transactionsTypeSegmentedControl" destination="2QD-ja-FLv" id="I4y-u2-45F"/>
@@ -57,7 +57,7 @@
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="nAH-Bf-RCy"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wUm-wY-SEu"/>
                     </constraints>
-                    <state key="normal" image="menuicon"/>
+                    <state key="normal" image="menu"/>
                     <connections>
                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="Uy8-T3-e44"/>
                     </connections>
@@ -82,6 +82,6 @@
         </view>
     </objects>
     <resources>
-        <image name="menuicon" width="21" height="16"/>
+        <image name="menu" width="30" height="30"/>
     </resources>
 </document>

@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "add-contacts.png",
+      "filename" : "new-user (2).png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "add-contacts2.png",
+      "filename" : "new-user (1).png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "add-contacts2-1.png",
+      "filename" : "new-user.png",
       "scale" : "3x"
     }
   ],

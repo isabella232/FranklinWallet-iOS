@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsViewController" customModule="Franklin_dev" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContactsViewController" customModule="Franklin" customModuleProvider="target">
             <connections>
                 <outlet property="addContactButton" destination="rZs-6I-w5i" id="6Dn-qU-dP1"/>
                 <outlet property="collectionView" destination="gZc-jg-Soc" id="P8K-bV-Aiu"/>
@@ -33,13 +33,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contacts" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBh-M9-TID">
-                    <rect key="frame" x="20" y="50" width="335" height="42"/>
+                    <rect key="frame" x="20" y="50" width="335" height="44"/>
                     <fontDescription key="fontDescription" name="LibreFranklin-SemiBold" family="Libre Franklin" pointSize="36"/>
                     <color key="textColor" red="0.27450980390000002" green="0.49803921569999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gZc-jg-Soc">
-                    <rect key="frame" x="37.5" y="201" width="300" height="366"/>
+                    <rect key="frame" x="37.5" y="203" width="300" height="364"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Qw-dE-OWW">
                         <size key="itemSize" width="50" height="50"/>
@@ -48,7 +48,7 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-6I-w5i" customClass="BasicBlueButton" customModule="Franklin_dev" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rZs-6I-w5i" customClass="BasicBlueButton" customModule="Franklin" customModuleProvider="target">
                     <rect key="frame" x="37.5" y="587" width="300" height="50"/>
                     <color key="backgroundColor" red="0.27450980390000002" green="0.49803921569999998" blue="0.84313725490000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -76,13 +76,13 @@
                         <constraint firstAttribute="width" constant="30" id="qtB-vB-lEa"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="zXF-zI-dK5"/>
                     </constraints>
-                    <state key="normal" image="menuicon"/>
+                    <state key="normal" image="menu"/>
                     <connections>
                         <action selector="showMenu:" destination="-1" eventType="touchUpInside" id="NDf-MU-sSs"/>
                     </connections>
                 </button>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAc-Ei-VFq" customClass="BasicTextField" customModule="Franklin_dev" customModuleProvider="target">
-                    <rect key="frame" x="37.5" y="117" width="300" height="59"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contact name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sAc-Ei-VFq" customClass="BasicTextField" customModule="Franklin" customModuleProvider="target">
+                    <rect key="frame" x="37.5" y="119" width="300" height="59"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="59" id="Kqo-UH-cbK"/>
                     </constraints>
@@ -118,6 +118,6 @@
     </objects>
     <resources>
         <image name="add-contacts" width="48" height="48"/>
-        <image name="menuicon" width="21" height="16"/>
+        <image name="menu" width="30" height="30"/>
     </resources>
 </document>
